@@ -1,25 +1,47 @@
 ---
 /** Tarjeta de un modelo. No contiene texto propio: todo viene de los datos. */
 import sitio from "../datos/sitio.json";
+import carrito from "../datos/carrito.json";
 import { enlace, ruta } from "../lib/ruta.js";
 import { tamanoImagen } from "../lib/imagenes.js";
 
 interface Props { producto: any; }
 const { producto } = Astro.props;
 const categoria = sitio.menu.find((m) => m.id === producto.categoria);
+const idTalla = `talla-${producto.slug}`;
+const enlaceProducto = enlace(`/producto/${producto.slug}`);
 ---
 
-<a class="tarjeta-producto aparece" href={enlace(`/producto/${producto.slug}`)}>
-  <div class="foto">
+<article class="tarjeta-producto aparece">
+  <a class="foto" href={enlaceProducto} aria-label={`${sitio.ui.verModelos}: ${producto.nombre}`}>
     <img src={ruta(producto.imagen)} alt={producto.imagenAlt} width={tamanoImagen(producto.imagen).ancho} height={tamanoImagen(producto.imagen).alto} loading="lazy" />
-  </div>
+  </a>
   <div class="cuerpo">
     <span class="linea">{categoria ? categoria.texto : producto.categoria}</span>
-    <h3>{producto.nombre}</h3>
+    <h3><a href={enlaceProducto}>{producto.nombre}</a></h3>
     <p>{producto.resumen}</p>
     <div class="fila-final">
       <span class="precio">{producto.precioTexto}</span>
-      <span class="flecha" aria-hidden="true"><i data-lucide="arrow-up-right"></i></span>
+      <a class="flecha" href={enlaceProducto} aria-label={`${sitio.ui.verModelos}: ${producto.nombre}`}><i data-lucide="arrow-up-right"></i></a>
+    </div>
+    <div class="tarjeta-accion">
+      <label class="tarjeta-talla-label" for={idTalla}>{carrito.ui.talla}</label>
+      <select id={idTalla} class="tarjeta-talla">
+        <option value="">{carrito.ui.elegirTalla}</option>
+        {producto.tallas.map((talla) => <option value={talla}>{talla}</option>)}
+      </select>
+      <button
+        type="button"
+        class="btn btn-primary btn-agregar"
+        data-agregar={producto.slug}
+        data-titulo={producto.nombre}
+        data-precio={producto.precio}
+        data-imagen={producto.imagen}
+        data-talla-select={idTalla}
+        data-requiere-talla="true"
+      >
+        {carrito.ui.agregar}
+      </button>
     </div>
   </div>
-</a>
+</article>

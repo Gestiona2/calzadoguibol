@@ -9,7 +9,7 @@
   "portada": {
     "titulo": "Hablemos de",
     "tituloAcento": "tu pedido.",
-    "texto": "Elige un modelo, indícanos tu talla y envíanos el mensaje. Respondemos por WhatsApp para confirmar los detalles."
+    "texto": "Arma tu carrito, indícanos la talla de cada modelo y envía el pedido. También puedes escribirnos directamente si tienes una pregunta."
   },
 
   "formulario": {
@@ -26,6 +26,7 @@
   "datos": {
     "titulo": "Dónde encontrarnos.",
     "whatsappEtiqueta": "WhatsApp",
+    "botonWhatsApp": "Escribir por WhatsApp",
     "correoTitulo": "Correo",
     "correoTexto": "Por definir. Mientras tanto, escríbenos por WhatsApp.",
     "ciudadTitulo": "Ciudad",

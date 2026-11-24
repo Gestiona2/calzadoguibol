@@ -4,6 +4,7 @@
 - **Lucide**: subconjunto local de íconos en `public/vendor/lucide/lucide.min.js`
 - **Tipografías**: Fraunces y Manrope, archivos woff2 locales en `src/fonts/`
 - **Fotos**: 15 WebP en `public/img/`, de Pexels, guardadas dentro del sitio
+- **Carrito**: lógica propia en `src/scripts/` (sin librerías), guardada en `localStorage`
 - Sin bases de datos, sin API keys, sin formularios con backend
 
 Versiones exactas: `package.json` y `package-lock.json`.
@@ -16,14 +17,17 @@ fotos) se referencian desde los `.astro` con `ruta()` para que lleven la base co
 ## Dónde está cada cosa
 
 ```
-src/datos/            Todo el texto editable (9 archivos JSON)
+src/datos/            Todo el texto editable (10 archivos JSON)
 src/pages/index.astro                 Inicio
 src/pages/coleccion/[slug].astro      Las 3 colecciones
 src/pages/producto/[slug].astro       Las 15 fichas
 src/pages/contacto.astro              Contacto
 src/pages/404.astro                   Página no encontrada
-src/layouts/Layout.astro              Menú, pie, tema y botones flotantes
-src/components/TarjetaProducto.astro  Tarjeta reutilizable de modelo
+src/layouts/Layout.astro              Menú, pie, tema y panel del carrito
+src/components/TarjetaProducto.astro  Tarjeta de modelo con talla y botón de agregar
+src/scripts/carrito.js                Panel, cantidades, formulario y cierre del pedido
+src/scripts/pedido.js                 Sumas, tallas y mensaje de WhatsApp (sin pantalla)
+src/scripts/formato.js                Precios en pesos colombianos
 src/lib/ruta.js                       Enlaces y rutas con la base del sitio
 src/styles/global.css                 Tokens de marca y todos los estilos
 src/fonts/                             Tipografías locales (Vite las versiona)
@@ -44,4 +48,10 @@ PUBLIC_SITE=https://www.calzadoguibol.com PUBLIC_BASE=/ npm run build
 ```
 
 Todos los enlaces internos y las rutas de imágenes pasan por `src/lib/ruta.js`, que ya
-aplica esa base.
+aplica esa base. El carrito lee la base desde el atributo `data-base` del elemento `<html>`
+para que las fotos del pedido carguen igual en la demo que en un dominio propio.
+
+**Por qué el pedido está separado en `pedido.js`:** las sumas, las tallas y el mensaje se
+prueban sin navegador. `carrito.js` solo pinta y recoge lo que la persona escribe. El
+carrito se guarda en `localStorage` bajo la clave `calzado-guibol-pedido`; si el navegador
+lo bloquea, el carrito sigue funcionando durante la visita.

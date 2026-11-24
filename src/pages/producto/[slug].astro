@@ -3,8 +3,9 @@
 import Layout from "../../layouts/Layout.astro";
 import TarjetaProducto from "../../components/TarjetaProducto.astro";
 import sitio from "../../datos/sitio.json";
+import carrito from "../../datos/carrito.json";
 import catalogo from "../../datos/productos.json";
-import { enlace, ruta, whatsapp } from "../../lib/ruta.js";
+import { enlace, ruta } from "../../lib/ruta.js";
 import { tamanoImagen } from "../../lib/imagenes.js";
 
 export function getStaticPaths() {
@@ -20,16 +21,14 @@ const relacionados = catalogo.productos
   .filter((p) => p.categoria === producto.categoria && p.slug !== producto.slug)
   .slice(0, 4);
 
-const mensaje = sitio.mensajes.producto
-  .replace("{producto}", producto.nombre)
-  .replace("{precio}", producto.precioTexto)
-  .replace("{talla}", sitio.ui.sinTalla);
-const enlacePedido = whatsapp(sitio.whatsapp, mensaje);
+const descripcionProducto = sitio.plantillas.descripcionProducto
+  .replace("{resumen}", producto.resumen)
+  .replace("{precio}", producto.precioTexto);
 ---
 
 <Layout
   titulo={`${producto.nombre} · ${sitio.nombre}`}
-  descripcion={`${producto.resumen} Precio: ${producto.precioTexto}. Escríbenos por WhatsApp para pedirlo.`}
+  descripcion={descripcionProducto}
   activa={producto.categoria}
 >
   <div class="container">
@@ -63,9 +62,19 @@ const enlacePedido = whatsapp(sitio.whatsapp, mensaje);
           <p class="nota-tallas">{sitio.ui.tallasDemo}</p>
         </div>
 
-        <a id="botonPedir" class="btn btn-primary boton-pedir" href={enlacePedido} target="_blank" rel="noopener">
-          {sitio.ui.pedirEste} <i data-lucide="arrow-up-right"></i>
-        </a>
+        <button
+          type="button"
+          id="botonPedir"
+          class="btn btn-primary boton-pedir"
+          data-agregar={producto.slug}
+          data-titulo={producto.nombre}
+          data-precio={producto.precio}
+          data-imagen={producto.imagen}
+          data-requiere-talla="true"
+          data-grupo-tallas="listaTallas"
+        >
+          {carrito.ui.agregar} <i data-lucide="shopping-bag"></i>
+        </button>
 
         <ul class="caracteristicas">
           {producto.caracteristicas.map((caracteristica) => (
@@ -91,19 +100,11 @@ const enlacePedido = whatsapp(sitio.whatsapp, mensaje);
   </section>
 </Layout>
 
-<script is:inline define:vars={{ numero: sitio.whatsapp, plantilla: sitio.mensajes.producto, nombre: producto.nombre, precio: producto.precioTexto, sinTalla: sitio.ui.sinTalla }}>
+<script is:inline>
   (function () {
     var boton = document.getElementById("botonPedir");
     var grupo = document.getElementById("listaTallas");
     if (!boton || !grupo) return;
-
-    function construir(talla) {
-      var mensaje = plantilla
-        .replace("{producto}", nombre)
-        .replace("{precio}", precio)
-        .replace("{talla}", talla || sinTalla);
-      boton.href = "https://wa.me/" + numero + "?text=" + encodeURIComponent(mensaje);
-    }
 
     grupo.addEventListener("click", function (evento) {
       var botonTalla = evento.target.closest("button[data-talla]");
@@ -111,7 +112,7 @@ const enlacePedido = whatsapp(sitio.whatsapp, mensaje);
       Array.prototype.forEach.call(grupo.querySelectorAll("button"), function (b) {
         b.setAttribute("aria-pressed", String(b === botonTalla));
       });
-      construir(botonTalla.dataset.talla);
+      boton.dataset.talla = botonTalla.dataset.talla;
     });
   })();
 </script>

@@ -3,7 +3,7 @@
 import Layout from "../layouts/Layout.astro";
 import sitio from "../datos/sitio.json";
 import datos from "../datos/contacto.json";
-import { enlace } from "../lib/ruta.js";
+import { enlace, whatsapp } from "../lib/ruta.js";
 ---
 
 <Layout titulo={datos.meta.titulo} descripcion={datos.meta.descripcion} activa="contacto">
@@ -21,8 +21,8 @@ import { enlace } from "../lib/ruta.js";
         <div class="tarjeta-wa">
           <span class="etiqueta">{datos.datos.whatsappEtiqueta}</span>
           <span class="numero">{sitio.whatsappTexto}</span>
-          <a class="btn btn-claro" href={enlace(sitio.ctaPrincipal.href)} target="_blank" rel="noopener">
-            {sitio.ctaPrincipal.texto} <i data-lucide="arrow-up-right"></i>
+          <a class="btn btn-claro" href={whatsapp(sitio.whatsapp, sitio.mensajes.general)} target="_blank" rel="noopener">
+            {datos.datos.botonWhatsApp} <i data-lucide="arrow-up-right"></i>
           </a>
         </div>
         <div class="datos-contacto">

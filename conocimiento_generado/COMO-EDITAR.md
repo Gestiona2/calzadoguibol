@@ -5,9 +5,10 @@ Siempre: cambios en `src/datos/`, mostrar antes de publicar, y esperar aprobaci�
 ## Cambiar el WhatsApp
 
 1. `src/datos/sitio.json` → cambiar `whatsapp` (solo números, con indicativo) y `whatsappTexto`.
-2. Revisar `src/datos/inicio.json`: hay dos botones con enlaces `wa.me` escritos, en
-   `portada.botones` y en `precio.boton` y `cierre.boton`. Cambiar el número en todos.
-3. Mostrar la portada y la página de contacto para comprobar los botones.
+2. No hay que cambiar nada más: el carrito y la página de contacto toman el número de ahí.
+   Los botones del inicio ya no llevan un enlace de WhatsApp escrito, sino al carrito.
+3. Mostrar la portada, agregar un modelo al carrito y abrir el pedido para comprobar que el
+   mensaje va al número nuevo. Revisar también la página de contacto.
 
 ## Cambiar un precio
 
@@ -45,6 +46,20 @@ o de la sección correspondiente. Si se llama igual que la anterior, no hay que 
 
 `src/datos/contacto.json` → `formulario`. El mensaje que se abre en WhatsApp sale de
 `sitio.json` → `mensajes.contacto`; no borrar los campos entre llaves.
+
+## Cambiar textos del carrito o del pedido
+
+`src/datos/carrito.json` → `ui`. Ahí están el botón «Agregar al carrito», los avisos, las
+etiquetas del formulario y el texto que acompaña al pedido. El nombre del negocio y el
+número de WhatsApp **no** se cambian aquí: salen de `sitio.json`.
+
+Si se cambia el texto de un campo obligatorio (`nombre`, `telefono`, `ciudad`), cambiar
+también su versión corta en `ui.faltan`, que es la que aparece en el aviso cuando falta.
+
+## Cambiar el nombre que aparece en el pedido
+
+El mensaje de WhatsApp empieza con «Nuevo pedido — [nombre]». Ese nombre sale de
+`sitio.json` → `nombre`. No escribir otro texto en `carrito.json`.
 
 ## Quitar el aviso de demo
 

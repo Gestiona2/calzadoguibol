@@ -1,0 +1,45 @@
+{
+  "_comentario": "Todos los textos del carrito y del pedido. Si cambia el número de WhatsApp, se toma de sitio.json; aquí no se repite. El aviso de demo recuerda que no hay servidor.",
+
+  "ui": {
+    "abrirCarrito": "Abrir carrito",
+    "cerrarCarrito": "Cerrar carrito",
+    "titulo": "Tu pedido",
+    "enCarrito": "en el carrito",
+    "agregar": "Agregar al carrito",
+    "agregado": "agregado a tu pedido",
+    "eligeTalla": "Elige una talla antes de agregar el modelo",
+    "talla": "Talla",
+    "elegirTalla": "Elige talla",
+    "vacio": "Tu pedido está vacío.",
+    "vacioTexto": "Recorre las colecciones y agrega los modelos que te gusten.",
+    "verModelos": "Ver los modelos",
+    "quitar": "Quitar del pedido",
+    "menos": "Quitar una unidad",
+    "mas": "Agregar una unidad",
+    "vaciar": "Vaciar pedido",
+    "total": "Total",
+    "cadaUno": "c/u",
+    "producto": "producto",
+    "productos": "productos",
+    "formularioTitulo": "Datos de entrega",
+    "nombre": "Nombre y apellido",
+    "nombrePlaceholder": "Tu nombre",
+    "telefono": "Teléfono / WhatsApp",
+    "telefonoPlaceholder": "300 123 4567",
+    "ciudad": "Ciudad",
+    "ciudadPlaceholder": "¿Desde dónde nos escribes?",
+    "nota": "Nota (opcional)",
+    "notaPlaceholder": "Detalles de la entrega o del pedido",
+    "enviar": "Enviar pedido por WhatsApp",
+    "notaEnvio": "Se abre WhatsApp con el pedido completo para que lo revises y lo envíes. La disponibilidad y la entrega se confirman en la conversación.",
+    "demo": "Demo: el pedido no se guarda en ningún servidor.",
+    "falta": "Falta",
+    "faltan": {
+      "nombre": "tu nombre",
+      "telefono": "tu teléfono",
+      "ciudad": "tu ciudad"
+    },
+    "enviado": "Pedido listo. Revisa WhatsApp."
+  }
+}

@@ -1,10 +1,11 @@
 ---
 /**
- * Estructura compartida: menú, pie, botón de tema, WhatsApp y volver arriba.
- * REGLA: aquí no se escribe texto del negocio. Todo sale de src/datos/sitio.json.
+ * Estructura compartida: menú, pie, tema, carrito y volver arriba.
+ * REGLA: aquí no se escribe texto del negocio. Todo sale de src/datos/.
  */
 import "../styles/global.css";
 import sitio from "../datos/sitio.json";
+import carrito from "../datos/carrito.json";
 import { enlace, ruta } from "../lib/ruta.js";
 
 interface Props {
@@ -13,11 +14,10 @@ interface Props {
   activa?: string;
 }
 const { titulo, descripcion = sitio.descripcion, activa = "" } = Astro.props;
-const mensajeGeneral = encodeURIComponent(sitio.mensajes.general);
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang="es" data-base={import.meta.env.BASE_URL}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -49,7 +49,7 @@ const mensajeGeneral = encodeURIComponent(sitio.mensajes.general);
       <div class="container nav-inner">
         <a href={enlace("/")} class="logo">
           <strong>{sitio.nombre}</strong>
-          <small>Calzado en cuero</small>
+          <small>{sitio.lema}</small>
         </a>
 
         <nav class="nav-links" id="navLinks" aria-label={sitio.ui.enlacesPie}>
@@ -60,7 +60,11 @@ const mensajeGeneral = encodeURIComponent(sitio.mensajes.general);
 
         <div class="nav-actions">
           <button id="botonTema" class="icono-boton" aria-label={sitio.ui.temaOscuro}></button>
-          <a href={sitio.ctaPrincipal.href} class="btn btn-primary">{sitio.ctaPrincipal.texto}</a>
+          <a href={enlace(sitio.ctaPrincipal.href)} class="btn btn-primary">{sitio.ctaPrincipal.texto}</a>
+          <a href="#carrito" id="abrirCarrito" class="icono-boton carrito-boton" aria-label={carrito.ui.abrirCarrito}>
+            <i data-lucide="shopping-bag"></i>
+            <span class="carrito-globo" id="contadorCarrito" aria-hidden="true" hidden>0</span>
+          </a>
           <button id="botonMenu" class="icono-boton" aria-label={sitio.ui.abrirMenu} aria-expanded="false" aria-controls="navLinks"></button>
         </div>
       </div>
@@ -85,15 +89,31 @@ const mensajeGeneral = encodeURIComponent(sitio.mensajes.general);
       </div>
     </footer>
 
-    <a
-      href={`https://wa.me/${sitio.whatsapp}?text=${mensajeGeneral}`}
-      class="flota-wa"
-      target="_blank"
-      rel="noopener"
-      aria-label={sitio.ui.escribirWhatsApp}
+    <div class="carrito-fondo" id="carritoFondo" hidden></div>
+
+    <aside
+      class="carrito-panel"
+      id="carrito"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="carritoTitulo"
+      aria-hidden="true"
+      hidden
+      data-whatsapp={sitio.whatsapp}
+      data-negocio={sitio.nombre}
+      data-textos={JSON.stringify(carrito.ui)}
     >
-      <i data-lucide="message-circle"></i>
-    </a>
+      <div class="carrito-cabecera">
+        <h2 id="carritoTitulo">{carrito.ui.titulo}</h2>
+        <button type="button" class="icono-boton" id="cerrarCarrito" aria-label={carrito.ui.cerrarCarrito}>
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+      <div class="carrito-cuerpo" id="carritoCuerpo"></div>
+    </aside>
+
+    <div class="aviso-carrito" id="avisoCarrito" role="status" aria-live="polite" hidden></div>
+
     <button class="volver-arriba" id="volverArriba" aria-label={sitio.ui.volverArriba}>
       <i data-lucide="arrow-up"></i>
     </button>
@@ -175,6 +195,9 @@ const mensajeGeneral = encodeURIComponent(sitio.mensajes.general);
           window.scrollTo({ top: 0, behavior: menosMovimiento ? "auto" : "smooth" });
         });
       })();
+    </script>
+    <script>
+      import "../scripts/carrito.js";
     </script>
   </body>
 </html>

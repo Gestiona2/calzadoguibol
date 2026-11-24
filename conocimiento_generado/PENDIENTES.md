@@ -24,6 +24,10 @@ Este sitio es un **demo para presentar al cliente**. Lo siguiente no es definiti
 - Auditoría técnica hecha el 22 nov 2026: contraste en claro y oscuro, foco de teclado,
   tamaños 390/768/1440 px y pruebas automáticas de accesibilidad, SEO y buenas prácticas
   (100 en las tres, sin avisos). Esto **no sustituye** la revisión de una persona mirando.
+- El carrito se probó completo el 23 nov 2026: agregar desde tarjeta y ficha, dos tallas del
+  mismo modelo como líneas separadas, cantidades, total, persistencia al recargar, panel en
+  claro y oscuro, y mensaje final consolidado sin campos vacíos. Falta que una persona lo
+  mire y lo apruebe en la vista previa antes de publicar.
 - Faltan páginas legales (política de privacidad, términos, tratamiento de datos). No se
   inventaron textos legales para el demo; los enlaces del pie se dejaron vacíos a propósito.
 - Publicación sin decidir con el cliente. `astro.config.mjs` apunta a la demo prevista.
@@ -35,5 +39,10 @@ Este sitio es un **demo para presentar al cliente**. Lo siguiente no es definiti
 
 - No se activó blog, notificaciones de Telegram ni catálogo con planilla de Excel: el precio
   es fijo y el dueño no pidió esos módulos.
-- No hay carrito ni pago en línea: el pedido se conversa por WhatsApp.
-- Sin analítica ni formulario con backend: el formulario solo arma el mensaje de WhatsApp.
+- Sí hay carrito, a petición del dueño, pero **no hay pago en línea ni servidor**: el pedido
+  se junta en el navegador y se envía como un solo mensaje de WhatsApp. Se quitaron los
+  botones de WhatsApp por producto y el botón flotante para que no haya dos formas distintas
+  de pedir. La página de contacto conserva WhatsApp solo para consultas.
+- No se promete envío gratis ni plazo de entrega: las condiciones están sin definir y el
+  carrito no escribe esa promesa en el mensaje.
+- Sin analítica ni formulario con backend: los formularios solo arman mensajes de WhatsApp.

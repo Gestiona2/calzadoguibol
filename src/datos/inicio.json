@@ -3,7 +3,7 @@
 
   "meta": {
     "titulo": "Calzado Guibol · Calzado en cuero a $200.000",
-    "descripcion": "Fabricantes de calzado en cuero. Modelos elegantes, tenis y casuales, todos a $200.000. Escríbenos por WhatsApp para pedir el tuyo."
+    "descripcion": "Fabricantes de calzado en cuero. Modelos elegantes, tenis y casuales, todos a $200.000. Arma tu carrito y envía un solo pedido."
   },
 
   "portada": {
@@ -13,7 +13,7 @@
     "texto": "Somos fabricantes de calzado en cuero. Tres líneas, un mismo precio: $200.000.",
     "botones": [
       { "texto": "Ver las tres líneas", "href": "/#colecciones", "estilo": "btn-primary" },
-      { "texto": "Pedir por WhatsApp", "href": "https://wa.me/573202706283?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20calzado%20de%20Calzado%20Guibol.", "estilo": "btn-outline" }
+      { "texto": "Armar mi pedido", "href": "#carrito", "estilo": "btn-outline" }
     ],
     "imagen": "/img/elegante-01.webp",
     "imagenAlt": "Zapato Oxford de cuero negro sobre fondo neutro",
@@ -28,7 +28,7 @@
     "cifra": "200.000",
     "moneda": "$",
     "detalle": "Precio de demostración para los modelos publicados. Condiciones de envío y pedidos mínimos por confirmar con el fabricante.",
-    "boton": { "texto": "Escríbenos por WhatsApp", "href": "https://wa.me/573202706283" }
+    "boton": { "texto": "Armar mi pedido", "href": "#carrito" }
   },
 
   "colecciones": {
@@ -61,7 +61,7 @@
 
   "destacados": {
     "titulo": "Modelos de la muestra.",
-    "texto": "Seis ejemplos, dos por línea. En cada ficha puedes elegir talla y escribirnos directamente.",
+    "texto": "Seis ejemplos, dos por línea. Elige talla, agrega los que te gusten y envía un solo pedido.",
     "slugs": [
       "oxford-negro-clasico",
       "derby-marron",
@@ -75,11 +75,11 @@
 
   "pedido": {
     "titulo": "Cómo pedir.",
-    "texto": "Sin carrito y sin pago en línea. El pedido se conversa por WhatsApp.",
+    "texto": "Carrito sin pago en línea: juntas varios modelos y envías un solo pedido por WhatsApp.",
     "pasos": [
-      { "titulo": "Elige el modelo", "texto": "Recorre las tres líneas y abre la ficha del zapato que te interesa." },
-      { "titulo": "Indica tu talla", "texto": "En la ficha, selecciona una talla. El botón prepara el mensaje con ese dato." },
-      { "titulo": "Escribe por WhatsApp", "texto": "Enviamos el mensaje y confirmamos contigo el modelo y la disponibilidad." }
+      { "titulo": "Elige modelo y talla", "texto": "Recorre las tres líneas y selecciona la talla en la tarjeta o en la ficha." },
+      { "titulo": "Arma tu carrito", "texto": "Agrega todos los pares que quieras. Puedes cambiar cantidades o quitar modelos." },
+      { "titulo": "Envía un solo pedido", "texto": "Deja tus datos de entrega y se abre WhatsApp con el pedido completo, listo para revisar." }
     ]
   },
 
@@ -96,15 +96,15 @@
       },
       {
         "pregunta": "¿Qué tallas hay disponibles?",
-        "respuesta": "Las tallas que aparecen en las fichas son de muestra. Confirma la disponibilidad real al escribir por WhatsApp."
+        "respuesta": "Las tallas que aparecen en las fichas son de muestra. Confirma la disponibilidad real cuando envíes el pedido."
       },
       {
         "pregunta": "¿Se puede pedir desde cualquier ciudad?",
-        "respuesta": "Escríbenos por WhatsApp con tu ciudad y el modelo que quieres; ahí confirmamos cómo se entrega."
+        "respuesta": "Indica tu ciudad en el carrito junto con el pedido; ahí confirmamos cómo se entrega."
       },
       {
         "pregunta": "¿Hay descuentos por pedir varios pares?",
-        "respuesta": "No hay una promoción publicada en esta muestra. Pregúntanos directamente por WhatsApp si necesitas varios pares."
+        "respuesta": "No hay una promoción publicada en esta muestra. Puedes juntar varios pares en el carrito y consultar la condición al enviar el pedido."
       },
       {
         "pregunta": "¿Las fotos son de los productos reales?",
@@ -115,7 +115,7 @@
 
   "cierre": {
     "titulo": "¿Cuál te llevas?",
-    "texto": "Dinos qué modelo te gustó y en qué talla. Respondemos por WhatsApp.",
-    "boton": { "texto": "Escribir a Calzado Guibol", "href": "https://wa.me/573202706283" }
+    "texto": "Elige tus modelos, agrégalos al carrito y envía el pedido completo.",
+    "boton": { "texto": "Ver mi carrito", "href": "#carrito" }
   }
 }

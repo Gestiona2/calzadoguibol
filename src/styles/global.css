@@ -102,6 +102,7 @@ h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -.03em; line-
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
 button { font-family: inherit; }
+[hidden] { display: none !important; }
 ::selection { background: var(--marca); color: var(--sobre-marca); }
 
 .container { width: 100%; max-width: 1240px; margin: 0 auto; padding: 0 32px; }
@@ -109,7 +110,7 @@ button { font-family: inherit; }
 section { position: relative; }
 section + section { border-top: 1px solid var(--border); }
 
-a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, summary:focus-visible {
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible, summary:focus-visible {
   outline: 2px solid var(--foco); outline-offset: 3px; border-radius: 2px;
 }
 .salta {
@@ -157,9 +158,18 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   cursor: pointer; border-radius: 50%; transition: border-color .2s, background .2s;
 }
 .icono-boton:hover { border-color: var(--marca); background: var(--surface); }
-.icono-boton svg, .flota-wa svg, .volver-arriba svg { width: 18px; height: 18px; }
+.icono-boton svg, .volver-arriba svg { width: 18px; height: 18px; }
 #botonMenu { display: none; }
-.icono-boton, .lista-tallas button, .flota-wa, .volver-arriba { touch-action: manipulation; }
+.icono-boton, .lista-tallas button, .volver-arriba { touch-action: manipulation; }
+.carrito-boton { position: relative; }
+.carrito-globo {
+  position: absolute; top: -6px; right: -6px; min-width: 19px; height: 19px;
+  display: grid; place-items: center; padding: 0 5px;
+  background: var(--marca); color: var(--sobre-marca);
+  border: 2px solid var(--bg); border-radius: 999px;
+  font-size: .64rem; font-weight: 800; line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
 
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 10px;
@@ -262,6 +272,15 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .tarjeta-producto .precio { font-family: var(--font-display); font-size: 1.22rem; color: var(--text); font-variant-numeric: tabular-nums; }
 .tarjeta-producto .flecha { color: var(--marca); }
 .tarjeta-producto .flecha svg { width: 20px; height: 20px; }
+.tarjeta-producto h3 a:hover { color: var(--marca); }
+.tarjeta-accion { display: flex; align-items: center; gap: 8px; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--border); }
+.tarjeta-talla-label { font-size: .66rem; font-weight: 800; text-transform: uppercase; letter-spacing: .12em; color: var(--text-muted); }
+.tarjeta-talla {
+  flex: 1; min-width: 0; padding: 10px 8px; border: 1px solid var(--border-strong);
+  background: var(--bg); color: var(--text); font-family: var(--font-body);
+  font-size: .82rem; font-weight: 700; border-radius: 2px;
+}
+.btn-agregar { padding: 11px 14px; font-size: .78rem; white-space: nowrap; }
 .cabeza-grilla { display: flex; justify-content: space-between; align-items: end; gap: 20px; flex-wrap: wrap; margin-top: 40px; margin-bottom: 26px; }
 .cabeza-grilla h3 { font-size: 1.5rem; }
 
@@ -359,15 +378,65 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .pie-abajo { display: flex; flex-wrap: wrap; gap: 12px 28px; justify-content: space-between; border-top: 1px solid rgba(245,240,232,.16); margin-top: 40px; padding-top: 20px; font-size: .74rem; }
 .pie-abajo .aviso-demo { max-width: 60ch; }
 
-.flota-wa, .volver-arriba {
-  position: fixed; right: 22px; z-index: 55; width: 50px; height: 50px; border-radius: 50%;
-  display: grid; place-items: center; cursor: pointer; border: 0;
-  box-shadow: 0 6px 20px rgba(0,0,0,.18);
+.volver-arriba {
+  position: fixed; right: 22px; bottom: 22px; z-index: 55;
+  width: 50px; height: 50px; border-radius: 50%; display: grid; place-items: center;
+  cursor: pointer; border: 1px solid var(--border); background: var(--surface); color: var(--text);
+  box-shadow: 0 6px 20px rgba(0,0,0,.18); opacity: 0; pointer-events: none; transition: opacity .25s;
 }
-.flota-wa { bottom: 22px; background: var(--marca); color: var(--sobre-marca); }
-.flota-wa svg { width: 24px; height: 24px; }
-.volver-arriba { bottom: 84px; background: var(--surface); color: var(--text); border: 1px solid var(--border); opacity: 0; pointer-events: none; transition: opacity .25s; }
 .volver-arriba.visible { opacity: 1; pointer-events: auto; }
+
+/* ============================================================
+   CARRITO Y PEDIDO
+   ============================================================ */
+.carrito-fondo {
+  position: fixed; inset: 0; z-index: 80;
+  background: rgba(12, 9, 7, .55); backdrop-filter: blur(2px);
+}
+.carrito-panel {
+  position: fixed; top: 0; right: 0; bottom: 0; z-index: 81;
+  width: min(100%, 480px); display: flex; flex-direction: column;
+  background: var(--surface); color: var(--text); border-left: 1px solid var(--border);
+  box-shadow: -16px 0 50px rgba(0,0,0,.22);
+  transform: translateX(100%); transition: transform .28s ease;
+}
+.carrito-panel.abierto { transform: none; }
+.carrito-cabecera { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 22px 24px; border-bottom: 1px solid var(--border); }
+.carrito-cabecera h2 { font-size: 1.6rem; }
+.carrito-cuerpo { flex: 1; overflow-y: auto; padding: 22px 24px 32px; }
+.carrito-vacio { padding: 40px 0; text-align: center; }
+.carrito-vacio p { color: var(--text-soft); }
+.carrito-vacio-texto { font-size: .88rem; margin: 8px 0 24px; }
+.carrito-linea { display: grid; grid-template-columns: 64px 1fr auto; gap: 10px 14px; align-items: start; padding: 16px 0; border-bottom: 1px solid var(--border); }
+.carrito-linea img { width: 64px; height: 64px; object-fit: cover; background: var(--surface-2); }
+.carrito-linea-datos { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.carrito-linea-datos a { font-weight: 700; font-size: .92rem; }
+.carrito-linea-datos a:hover { color: var(--marca); text-decoration: underline; }
+.carrito-linea-datos span { font-size: .78rem; color: var(--text-muted); }
+.carrito-cantidad { grid-column: 2; display: inline-flex; align-items: center; gap: 10px; }
+.carrito-cantidad button { width: 28px; height: 28px; display: grid; place-items: center; border: 1px solid var(--border-strong); background: var(--bg); color: var(--text); cursor: pointer; font-size: 1rem; line-height: 1; }
+.carrito-cantidad span { min-width: 1.5ch; text-align: center; font-weight: 800; font-variant-numeric: tabular-nums; }
+.carrito-linea-total { grid-column: 3; grid-row: 1; font-size: .95rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.carrito-quitar { grid-column: 3; grid-row: 2; justify-self: end; border: 0; background: transparent; color: var(--text-muted); cursor: pointer; font-size: 1.3rem; line-height: 1; padding: 2px 6px; }
+.carrito-quitar:hover { color: var(--marca); }
+.carrito-vaciar { margin: 16px 0 8px; font-size: .78rem; }
+.carrito-formulario { border-top: 1px solid var(--border); margin-top: 20px; padding-top: 22px; display: grid; gap: 14px; }
+.carrito-formulario h3 { font-size: 1.3rem; margin-bottom: 2px; }
+.carrito-formulario .campo { margin: 0; }
+.carrito-formulario textarea { min-height: 70px; }
+.campo-falta { border-color: var(--marca) !important; }
+.carrito-total { border-top: 1px solid var(--border); margin-top: 8px; padding-top: 16px; }
+.carrito-total-linea { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 14px; font-size: 1rem; }
+.carrito-total-linea strong { font-family: var(--font-display); font-size: 1.7rem; color: var(--marca); font-variant-numeric: tabular-nums; }
+.carrito-enviar { width: 100%; }
+.carrito-nota { font-size: .74rem; color: var(--text-muted); line-height: 1.5; margin-top: 10px; }
+.aviso-carrito {
+  position: fixed; left: 50%; bottom: 22px; transform: translate(-50%, 12px); z-index: 95;
+  max-width: calc(100% - 36px); background: var(--oscuro); color: var(--sobre-oscuro);
+  padding: 12px 18px; font-size: .84rem; font-weight: 700; opacity: 0;
+  transition: opacity .2s, transform .2s; pointer-events: none; box-shadow: 0 8px 24px rgba(0,0,0,.22);
+}
+.aviso-carrito.visible { opacity: 1; transform: translate(-50%, 0); }
 
 /* ============================================================
    APARICIONES SUAVES (IntersectionObserver, sin ocultar si falla JS)
@@ -424,6 +493,13 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .tarjeta-wa, .formulario { padding: 24px; }
   .pie nav { justify-content: flex-start; }
   .pie-abajo { flex-direction: column; }
-  .flota-wa { right: 14px; bottom: 14px; }
-  .volver-arriba { right: 14px; bottom: 74px; }
+  .volver-arriba { right: 14px; bottom: 14px; }
+  .carrito-cabecera { padding: 18px; }
+  .carrito-cuerpo { padding: 18px 18px 28px; }
+  .carrito-linea { grid-template-columns: 52px 1fr auto; gap: 8px 10px; }
+  .carrito-linea img { width: 52px; height: 52px; }
+  .tarjeta-accion { flex-wrap: wrap; }
+  .tarjeta-talla { flex-basis: 70px; }
+  .btn-agregar { flex: 1; }
+  .aviso-carrito { bottom: 14px; }
 }

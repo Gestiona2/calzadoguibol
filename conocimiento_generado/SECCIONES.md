@@ -6,12 +6,28 @@ Todo lo que se puede cambiar está en `src/datos/`. Los `.astro` solo pintan eso
 
 | Sección | Campo | Límites / nota |
 |---|---|---|
-| Nombre y menú | `nombre`, `menu` | El menú tiene 5 entradas. Si se agrega una página, agregar su entrada aquí |
-| WhatsApp | `whatsapp`, `whatsappTexto` | `whatsapp` va sin espacios ni `+`: `573202706283`. Cambiar también los enlaces escritos en `inicio.json` si el número cambia |
-| Botón del menú | `ctaPrincipal` | Texto y destino del botón que aparece en todas las páginas |
+| Nombre y menú | `nombre`, `menu`, `nombreLargo`, `razonSocial`, `lema` | El menú tiene 5 entradas. Si se agrega una página, agregar su entrada aquí. `nombre` es el que aparece en el pedido de WhatsApp |
+| WhatsApp | `whatsapp`, `whatsappTexto` | `whatsapp` va sin espacios ni `+`: `573202706283`. El carrito y el contacto lo toman de aquí: no hay que cambiar enlaces en otros archivos |
+| Botón del menú | `ctaPrincipal` | Texto y destino del botón que aparece en todas las páginas. Apunta al carrito (`#carrito`) |
 | Etiquetas de interfaz | `ui` | Nombres de botones, tallas, aviso de demo y pie |
-| Mensajes | `mensajes` | Textos que se abren en WhatsApp. Los campos `{producto}`, `{precio}`, `{talla}`, `{nombre}` y `{mensaje}` se rellenan solos: no borrarlos |
+| Plantilla de ficha | `plantillas.descripcionProducto` | Descripción que ve Google de cada ficha. Los campos `{resumen}` y `{precio}` se rellenan solos: no borrarlos |
+| Mensajes | `mensajes` | Textos que se abren en WhatsApp desde la página de contacto. Los campos `{nombre}` y `{mensaje}` se rellenan solos: no borrarlos. El mensaje del pedido se arma en `carrito.json`, no aquí |
 | Enlace de salto | `ui.saltarContenido` | Texto del enlace que aparece al recorrer la página con Tab. No cambiar su destino (`#contenido`) |
+
+## Carrito y pedido — `carrito.json`
+
+Todo lo que se ve en el panel del carrito y en el pedido final. El número de WhatsApp y el
+nombre del negocio salen de `sitio.json`; aquí no se repiten.
+
+| Sección | Campo | Límites / nota |
+|---|---|---|
+| Botones y etiquetas | `ui.abrirCarrito`, `cerrarCarrito`, `titulo`, `agregar`, `agregado`, `quitar`, `vaciar`, `total` | Textos del panel y del botón «Agregar al carrito» de tarjetas y fichas |
+| Tallas | `ui.talla`, `elegirTalla`, `eligeTalla` | `elegirTalla` es la opción vacía del selector; `eligeTalla` es el aviso si se agrega sin talla |
+| Carrito vacío | `ui.vacio`, `vacioTexto`, `verModelos` | Se ve cuando no hay nada en el pedido |
+| Cantidades | `ui.menos`, `mas`, `cadaUno`, `producto`, `productos` | `menos` y `mas` son solo para lectores de pantalla (los botones muestran − y +) |
+| Formulario | `ui.formularioTitulo`, `nombre`, `telefono`, `ciudad`, `nota` y sus `...Placeholder` | Solo se piden nombre, teléfono y ciudad. La nota es opcional. No agregar campos nuevos sin tocar el formulario |
+| Envío del pedido | `ui.enviar`, `notaEnvio`, `demo`, `enviado` | `enviado` es el aviso después de abrir WhatsApp |
+| Validación | `ui.falta`, `faltan` | `faltan` tiene `nombre`, `telefono` y `ciudad`; deben coincidir con los campos del formulario |
 
 ## Inicio — `inicio.json`
 

@@ -7,19 +7,27 @@ asuma que algo está incluido cuando no lo está.
 
 - **Home** con hero, catálogo destacado, colecciones, pasos y preguntas frecuentes.
 - **3 páginas de colección**: Elegante, Tenis y Casual (`/coleccion/<slug>`).
-- **Página de contacto** (`/contacto`) con formulario que abre WhatsApp.
-- **15 fichas de producto** (`/producto/<slug>`) con galería, tallas demo y enlace
-  directo de consulta por WhatsApp.
+- **Página de contacto** (`/contacto`) con WhatsApp para consultas y formulario que abre
+  WhatsApp. Es el único WhatsApp directo que queda: ya no hay botón por producto ni botón
+  flotante.
+- **15 fichas de producto** (`/producto/<slug>`) con galería, tallas demo y botón de
+  agregar al carrito.
+- **Carrito y pedido**: selector de talla en tarjetas y fichas, varias líneas por modelo y
+  talla, cantidades, quitar/vaciar, datos de entrega y un solo mensaje de WhatsApp con el
+  pedido completo. Se guarda en el navegador.
 - Diseño responsive, tema claro/oscuro, menú accesible, navegación y estados de
   error (404).
 - Fotos de demostración descargadas de Pexels y guardadas en `public/img/`.
 
 ## Lo que NO está incluido
 
-- **Carrito de compras ni pago en línea.** El sitio es informativo/escaparate;
-  la compra se coordina por WhatsApp.
-- **Backend, base de datos ni envío real de formularios.** El formulario arma un
-  mensaje y abre WhatsApp; no persiste ni envía correos.
+- **Pago en línea ni pasarela.** El carrito junta el pedido pero no cobra: el negocio
+  confirma y acuerda el pago en la conversación de WhatsApp.
+- **Servidor, base de datos ni envío real de pedidos.** El carrito se guarda solo en el
+  navegador de quien lo arma; el pedido arma un mensaje y abre WhatsApp. No persiste en el
+  negocio, no envía correos y no genera comprobantes.
+- **Condiciones de envío.** No se promete domicilio gratis, plazos ni pedido mínimo: esos
+  datos están sin definir y el mensaje no los inventa.
 - **Panel de administración** para editar productos desde el navegador. El
   contenido se edita en los archivos JSON de `src/datos/`.
 - **Nombres de modelos, tallas y descripciones reales.** Los actuales son

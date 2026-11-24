@@ -1,12 +1,13 @@
 {
-  "_comentario": "Datos que se repiten en todas las páginas: nombre, WhatsApp, menú, pie y textos de interfaz. Lo específico de cada página va en su propio archivo. demo: true indica que este sitio es una muestra para presentar al cliente.",
+  "_comentario": "Datos que se repiten en todas las páginas: nombre, WhatsApp, menú, pie y textos de interfaz. Lo específico de cada página va en su propio archivo. demo: true indica que este sitio es una muestra para presentar al cliente. Los textos del carrito viven en carrito.json.",
 
   "demo": true,
   "nombre": "Calzado Guibol",
   "nombreLargo": "Calzado Guibol — fabricantes de calzado en cuero",
   "razonSocial": "Calzado Guibol",
+  "lema": "Calzado en cuero",
   "nit": "",
-  "descripcion": "Fabricantes de calzado en cuero. Modelos elegantes, tenis y casuales, todos a $200.000. Escríbenos por WhatsApp para pedir el tuyo.",
+  "descripcion": "Fabricantes de calzado en cuero. Modelos elegantes, tenis y casuales, todos a $200.000. Arma tu pedido y envíalo por WhatsApp.",
   "whatsapp": "573202706283",
   "whatsappTexto": "320 270 6283",
   "correo": "",
@@ -25,8 +26,8 @@
   ],
 
   "ctaPrincipal": {
-    "texto": "Pedir por WhatsApp",
-    "href": "https://wa.me/573202706283"
+    "texto": "Ver carrito",
+    "href": "#carrito"
   },
 
   "redes": [],
@@ -37,24 +38,24 @@
     "temaClaro": "Cambiar a tema claro",
     "abrirMenu": "Abrir menú",
     "cerrarMenu": "Cerrar menú",
-    "escribirWhatsApp": "Escribir por WhatsApp",
     "volverArriba": "Volver arriba",
     "copyright": "Todos los derechos reservados",
     "avisoDemo": "Demo de muestra para presentación. Nombres de modelos y fotografías de Pexels.",
     "verModelos": "Ver modelos",
-    "pedirEste": "Pedir este modelo",
     "eligeTalla": "Elige tu talla",
-    "tallasDemo": "Tallas de muestra: confirma disponibilidad por WhatsApp.",
-    "sinTalla": "por confirmar",
+    "tallasDemo": "Tallas de muestra: confirma disponibilidad al enviar el pedido.",
     "otrosModelos": "Otros modelos de esta línea.",
     "volverColeccion": "Volver a la colección",
     "enlacesPie": "Enlaces del sitio",
     "saltarContenido": "Saltar al contenido"
   },
 
+  "plantillas": {
+    "descripcionProducto": "{resumen} Precio: {precio}. Agrégalo al carrito para enviar tu pedido."
+  },
+
   "mensajes": {
     "general": "Hola, quiero información sobre el calzado de Calzado Guibol.",
-    "producto": "Hola, quiero pedir el modelo {producto} de Calzado Guibol ({precio}). Talla {talla}.",
     "contacto": "Hola, mi nombre es {nombre}. {mensaje}"
   }
 }
