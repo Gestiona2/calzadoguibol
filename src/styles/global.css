@@ -88,13 +88,15 @@
    BASE
    ============================================================ */
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 88px; overflow-x: hidden; max-width: 100%; }
+/* overflow-x: clip evita el desbordamiento lateral SIN crear un contenedor de
+   scroll: con hidden, position: sticky del menú deja de pegarse al bajar. */
+html { scroll-behavior: smooth; scroll-padding-top: 88px; overflow-x: clip; max-width: 100%; }
 body {
   font-family: var(--font-body);
   background: var(--bg);
   color: var(--text);
   line-height: 1.6;
-  overflow-x: hidden;
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
   transition: background .35s ease, color .35s ease;
 }
