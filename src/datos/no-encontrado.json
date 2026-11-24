@@ -1,0 +1,10 @@
+{
+  "_comentario": "Texto de la página que aparece cuando una dirección no existe.",
+  "meta": {
+    "titulo": "Página no encontrada · Calzado Guibol",
+    "descripcion": "La dirección que buscas no existe en Calzado Guibol."
+  },
+  "titulo": "Esta página no existe.",
+  "texto": "Puede que el enlace haya cambiado. Vuelve al inicio para ver las tres líneas de calzado.",
+  "boton": { "texto": "Volver al inicio", "href": "/" }
+}

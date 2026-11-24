@@ -1,0 +1,116 @@
+---
+/** Ficha de un modelo. La ruta sale del campo slug de productos.json. */
+import Layout from "../../layouts/Layout.astro";
+import TarjetaProducto from "../../components/TarjetaProducto.astro";
+import sitio from "../../datos/sitio.json";
+import catalogo from "../../datos/productos.json";
+import { enlace, ruta, whatsapp } from "../../lib/ruta.js";
+
+export function getStaticPaths() {
+  return catalogo.productos.map((producto) => ({
+    params: { slug: producto.slug },
+    props: { producto },
+  }));
+}
+
+const { producto } = Astro.props;
+const categoria = sitio.menu.find((m) => m.id === producto.categoria);
+const relacionados = catalogo.productos
+  .filter((p) => p.categoria === producto.categoria && p.slug !== producto.slug)
+  .slice(0, 4);
+
+const mensaje = sitio.mensajes.producto
+  .replace("{producto}", producto.nombre)
+  .replace("{precio}", producto.precioTexto)
+  .replace("{talla}", sitio.ui.sinTalla);
+const enlacePedido = whatsapp(sitio.whatsapp, mensaje);
+---
+
+<Layout
+  titulo={`${producto.nombre} · ${sitio.nombre}`}
+  descripcion={`${producto.resumen} Precio: ${producto.precioTexto}. Escríbenos por WhatsApp para pedirlo.`}
+  activa={producto.categoria}
+>
+  <div class="container">
+    <nav class="migas" aria-label={sitio.ui.enlacesPie}>
+      <a href={enlace("/")}>{sitio.menu[0].texto}</a>
+      <span aria-hidden="true">/</span>
+      <a href={enlace(`/coleccion/${producto.categoria}`)}>{categoria ? categoria.texto : producto.categoria}</a>
+      <span aria-hidden="true">/</span>
+      <span>{producto.nombre}</span>
+    </nav>
+
+    <div class="ficha">
+      <div class="ficha-img aparece">
+        <img src={ruta(producto.imagen)} alt={producto.imagenAlt} loading="eager" />
+      </div>
+
+      <div class="ficha-info aparece">
+        <span class="etiqueta">{categoria ? categoria.texto : producto.categoria}</span>
+        <h1>{producto.nombre}</h1>
+        <div class="precio-grande">{producto.precioTexto}</div>
+        <p class="resumen">{producto.resumen}</p>
+        <p class="descripcion">{producto.descripcion}</p>
+
+        <div class="tallas">
+          <span class="etiqueta-tallas">{sitio.ui.eligeTalla}</span>
+          <div class="lista-tallas" id="listaTallas">
+            {producto.tallas.map((talla) => (
+              <button type="button" data-talla={talla} aria-pressed="false">{talla}</button>
+            ))}
+          </div>
+          <p class="nota-tallas">{sitio.ui.tallasDemo}</p>
+        </div>
+
+        <a id="botonPedir" class="btn btn-primary boton-pedir" href={enlacePedido} target="_blank" rel="noopener">
+          {sitio.ui.pedirEste} <i data-lucide="arrow-up-right"></i>
+        </a>
+
+        <ul class="caracteristicas">
+          {producto.caracteristicas.map((caracteristica) => (
+            <li><i data-lucide="check"></i>{caracteristica}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <section class="pad" id="relacionados">
+    <div class="container">
+      <div class="cabeza-grilla">
+        <h3>{sitio.ui.otrosModelos}</h3>
+        <a class="btn btn-outline" href={enlace(`/coleccion/${producto.categoria}`)}>
+          {sitio.ui.volverColeccion} <i data-lucide="arrow-right"></i>
+        </a>
+      </div>
+      <div class="grilla-productos" data-stagger>
+        {relacionados.map((relacionado) => <TarjetaProducto producto={relacionado} />)}
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script is:inline define:vars={{ numero: sitio.whatsapp, plantilla: sitio.mensajes.producto, nombre: producto.nombre, precio: producto.precioTexto, sinTalla: sitio.ui.sinTalla }}>
+  (function () {
+    var boton = document.getElementById("botonPedir");
+    var grupo = document.getElementById("listaTallas");
+    if (!boton || !grupo) return;
+
+    function construir(talla) {
+      var mensaje = plantilla
+        .replace("{producto}", nombre)
+        .replace("{precio}", precio)
+        .replace("{talla}", talla || sinTalla);
+      boton.href = "https://wa.me/" + numero + "?text=" + encodeURIComponent(mensaje);
+    }
+
+    grupo.addEventListener("click", function (evento) {
+      var botonTalla = evento.target.closest("button[data-talla]");
+      if (!botonTalla) return;
+      Array.prototype.forEach.call(grupo.querySelectorAll("button"), function (b) {
+        b.setAttribute("aria-pressed", String(b === botonTalla));
+      });
+      construir(botonTalla.dataset.talla);
+    });
+  })();
+</script>

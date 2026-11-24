@@ -1,0 +1,41 @@
+{
+  "_comentario": "Contenido de la colección Casual. Los modelos se toman de productos.json filtrando por categoria = casual.",
+
+  "meta": {
+    "titulo": "Calzado casual en cuero · Calzado Guibol",
+    "descripcion": "Mocasines, botines y sandalias de cuero para el día a día. Modelos de muestra a $200.000."
+  },
+
+  "portada": {
+    "nombre": "Casual",
+    "titulo": "Cuero para",
+    "tituloAcento": "el día informal.",
+    "texto": "Mocasines, botines y sandalias para jeans, lino y camisa abierta. Cinco modelos de muestra a $200.000.",
+    "imagen": "/img/casual-04.webp",
+    "imagenAlt": "Botines negros de cuero con suela gruesa"
+  },
+
+  "modelos": {
+    "titulo": "Los modelos de esta línea.",
+    "texto": "Cinco opciones de muestra. Todos a $200.000."
+  },
+
+  "detalle": {
+    "titulo": "Lo que define esta línea.",
+    "texto": "Formas relajadas que conservan el carácter del cuero sin la formalidad del zapato de vestir.",
+    "puntos": [
+      { "titulo": "Mocasines y botines", "texto": "Modelos que pasan del trabajo a la salida sin cambio de calzado." },
+      { "titulo": "Negro y marrón", "texto": "Tonos que combinan con casi todo el armario." },
+      { "titulo": "Un mismo precio", "texto": "Los cinco modelos de esta línea están a $200.000." }
+    ]
+  },
+
+  "cierre": {
+    "titulo": "¿Buscas otro estilo?",
+    "texto": "También hay líneas elegante y tenis, con el mismo precio.",
+    "enlaces": [
+      { "texto": "Ver elegante", "href": "/coleccion/elegante" },
+      { "texto": "Ver tenis", "href": "/coleccion/tenis" }
+    ]
+  }
+}

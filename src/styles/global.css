@@ -1,0 +1,415 @@
+@import "tailwindcss";
+
+/* ============================================================
+   FUENTES AUTO-HOSPEDADAS — /public/fonts
+   Fraunces (display) + Manrope (cuerpo). Sin Google, sin CDN.
+   ============================================================ */
+@font-face {
+  font-family: "Fraunces";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/fraunces-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Fraunces";
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/fraunces-italic.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("/fonts/manrope-normal.woff2") format("woff2");
+}
+
+/* ============================================================
+   TOKENS DE MARCA — docs/MARCA.md
+   Cuero coñac, marfil y carbón. Un solo acento, sin degradados.
+   ============================================================ */
+@theme {
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --color-marca: #8a4b2a;
+  --color-acento: #b07a49;
+  --color-oscuro: #1c1917;
+  --color-claro: #f5f0e8;
+  --color-medio: #4a4038;
+}
+
+:root {
+  --marca: #8a4b2a;
+  --acento: #b07a49;
+  --oscuro: #1c1917;
+  --claro: #f5f0e8;
+  --medio: #4a4038;
+
+  --bg: #f5f0e8;
+  --bg-soft: #ece3d6;
+  --surface: #fbf8f2;
+  --surface-2: #e6dac9;
+  --border: rgba(28, 25, 23, 0.14);
+  --border-strong: rgba(28, 25, 23, 0.26);
+  --text: #1c1917;
+  --text-soft: #4a4038;
+  --text-muted: #6d6157;
+  --nav-bg: rgba(245, 240, 232, 0.94);
+  --sobre-oscuro: #f5f0e8;
+  --sobre-oscuro-soft: #cfbda9;
+  --panel-oscuro: #241d18;
+  --foco: #8a4b2a;
+}
+
+:root[data-theme="dark"] {
+  --marca: #c58a58;
+  --acento: #dfb184;
+  --bg: #17120f;
+  --bg-soft: #211a15;
+  --surface: #241d18;
+  --surface-2: #30261f;
+  --border: rgba(245, 240, 232, 0.14);
+  --border-strong: rgba(245, 240, 232, 0.28);
+  --text: #f5f0e8;
+  --text-soft: #d8c8b4;
+  --text-muted: #a99886;
+  --nav-bg: rgba(23, 18, 15, 0.94);
+  --panel-oscuro: #100c0a;
+  --foco: #dfb184;
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 88px; overflow-x: hidden; max-width: 100%; }
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  transition: background .35s ease, color .35s ease;
+}
+h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -.03em; line-height: 1.06; font-weight: 500; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+button { font-family: inherit; }
+::selection { background: var(--marca); color: #fff; }
+
+.container { width: 100%; max-width: 1240px; margin: 0 auto; padding: 0 32px; }
+.pad { padding-top: 104px; padding-bottom: 104px; }
+section { position: relative; }
+section + section { border-top: 1px solid var(--border); }
+
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, summary:focus-visible {
+  outline: 2px solid var(--foco); outline-offset: 3px; border-radius: 2px;
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1 !important; transform: none !important; }
+}
+
+/* ============================================================
+   NAVEGACIÓN
+   ============================================================ */
+.nav {
+  position: sticky; top: 0; z-index: 60;
+  border-bottom: 1px solid transparent;
+  transition: background .3s ease, border-color .3s ease;
+}
+.nav.bajado { background: var(--nav-bg); border-bottom-color: var(--border); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+.nav-inner { display: flex; align-items: center; gap: 28px; min-height: 82px; }
+.logo { display: inline-flex; flex-direction: column; line-height: 1; flex: 0 0 auto; }
+.logo strong {
+  font-family: var(--font-display); font-size: 1.55rem; font-weight: 600;
+  letter-spacing: .03em;
+}
+.logo small {
+  font-family: var(--font-body); font-size: .58rem; font-weight: 700;
+  letter-spacing: .24em; text-transform: uppercase; color: var(--marca); margin-top: 4px;
+}
+.nav-links { display: flex; align-items: center; gap: 26px; margin-left: auto; }
+.nav-links a {
+  font-size: .86rem; font-weight: 600; color: var(--text-soft);
+  padding: 6px 0; border-bottom: 1px solid transparent; transition: color .2s, border-color .2s;
+}
+.nav-links a:hover, .nav-links a.activo { color: var(--text); border-bottom-color: var(--marca); }
+.nav-actions { display: flex; align-items: center; gap: 12px; }
+.icono-boton {
+  width: 38px; height: 38px; display: grid; place-items: center;
+  background: transparent; border: 1px solid var(--border); color: var(--text);
+  cursor: pointer; border-radius: 50%; transition: border-color .2s, background .2s;
+}
+.icono-boton:hover { border-color: var(--marca); background: var(--surface); }
+.icono-boton svg, .flota-wa svg, .volver-arriba svg { width: 18px; height: 18px; }
+#botonMenu { display: none; }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  font-family: var(--font-body); font-weight: 700; font-size: .86rem;
+  padding: 13px 22px; border-radius: 2px; border: 1px solid transparent;
+  cursor: pointer; transition: background .2s, color .2s, border-color .2s, transform .2s;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn svg { width: 16px; height: 16px; }
+.btn-primary { background: var(--marca); color: #fff; }
+.btn-primary:hover { background: var(--oscuro); color: var(--sobre-oscuro); }
+.btn-outline { border-color: var(--border-strong); color: var(--text); background: transparent; }
+.btn-outline:hover { border-color: var(--marca); color: var(--marca); }
+.btn-claro { background: var(--sobre-oscuro); color: var(--oscuro); }
+.btn-claro:hover { background: #fff; }
+.btn-texto {
+  background: transparent; color: var(--marca); padding: 0 0 4px;
+  border-bottom: 1px solid var(--marca); border-radius: 0; font-weight: 700;
+}
+.btn-texto:hover { color: var(--text); border-color: var(--text); transform: none; }
+
+/* ============================================================
+   TITULOS Y TEXTO
+   ============================================================ */
+.titulo-seccion { font-size: clamp(2.1rem, 4.4vw, 3.5rem); max-width: 18ch; }
+.titulo-seccion .acento { color: var(--marca); }
+.cabeza-seccion { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 48px; }
+.cabeza-seccion p { color: var(--text-soft); max-width: 42ch; font-size: .98rem; }
+.texto-plomo { color: var(--text-soft); }
+.etiqueta {
+  display: inline-block; font-size: .66rem; font-weight: 800; letter-spacing: .2em;
+  text-transform: uppercase; color: var(--marca); font-family: var(--font-body);
+}
+
+/* ============================================================
+   PORTADA
+   ============================================================ */
+.portada { padding: 56px 0 92px; }
+.portada-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+.portada h1 { font-size: clamp(3.1rem, 6.6vw, 6.2rem); margin: 18px 0 26px; max-width: 12ch; }
+.portada h1 .acento { display: block; color: var(--marca); }
+.portada .lead { font-size: clamp(1rem, 1.5vw, 1.18rem); color: var(--text-soft); max-width: 38ch; }
+.portada-botones { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
+.portada-visual { position: relative; }
+.portada-visual .marco-img { aspect-ratio: 4 / 4.6; overflow: hidden; background: var(--surface-2); }
+.portada-visual img { width: 100%; height: 100%; object-fit: cover; }
+.sello {
+  position: absolute; right: -18px; bottom: 34px; z-index: 2;
+  background: var(--marca); color: #fff; padding: 18px 24px;
+  min-width: 172px; border: 5px solid var(--bg);
+}
+.sello strong { display: block; font-family: var(--font-display); font-size: 1.7rem; line-height: 1; font-weight: 600; }
+.sello span { display: block; font-size: .64rem; text-transform: uppercase; letter-spacing: .16em; margin-top: 8px; font-weight: 700; }
+.pie-imagen { display: flex; justify-content: space-between; gap: 16px; margin-top: 12px; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-muted); font-weight: 700; }
+
+.portada-coleccion h1, .portada-contacto h1 { font-size: clamp(2.8rem, 5.4vw, 5rem); max-width: 14ch; }
+.portada-contacto { padding-bottom: 70px; }
+.portada-contacto h1 { margin: 18px 0 22px; }
+.portada-contacto .lead { max-width: 52ch; }
+
+/* ============================================================
+   BANDA DE PRECIO
+   ============================================================ */
+.banda-precio { background: var(--panel-oscuro); color: var(--sobre-oscuro); border: 0; }
+.banda-precio .contenido { display: grid; grid-template-columns: auto 1fr auto; gap: 48px; align-items: center; }
+.cifra { font-family: var(--font-display); font-size: clamp(4.4rem, 11vw, 9.5rem); line-height: .85; font-weight: 500; color: var(--acento); white-space: nowrap; }
+.cifra .moneda { font-size: .42em; vertical-align: top; margin-right: 4px; }
+.banda-precio h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); margin-bottom: 10px; }
+.banda-precio p { color: var(--sobre-oscuro-soft); max-width: 52ch; font-size: .92rem; }
+.banda-precio .detalle { grid-column: 2 / 4; font-size: .76rem; color: var(--sobre-oscuro-soft); border-top: 1px solid rgba(245,240,232,.2); padding-top: 14px; max-width: none; }
+
+/* ============================================================
+   COLECCIONES — filas alternas
+   ============================================================ */
+.fila-coleccion { display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center; padding: 34px 0; }
+.fila-coleccion + .fila-coleccion { border-top: 1px solid var(--border); }
+.fila-coleccion.impar .fila-img { order: 2; }
+.fila-img { aspect-ratio: 16 / 11; overflow: hidden; background: var(--surface-2); }
+.fila-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+.fila-coleccion:hover .fila-img img { transform: scale(1.03); }
+.fila-texto h3 { font-size: clamp(2rem, 4vw, 3.2rem); margin: 10px 0 16px; }
+.fila-texto p { color: var(--text-soft); max-width: 40ch; margin-bottom: 20px; }
+.numero-linea { font-family: var(--font-body); font-size: .72rem; letter-spacing: .2em; color: var(--text-muted); font-weight: 700; }
+
+/* ============================================================
+   GRILLA DE PRODUCTOS
+   ============================================================ */
+.grilla-productos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.tarjeta-producto { display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--border); }
+.tarjeta-producto .foto { aspect-ratio: 4 / 4.4; overflow: hidden; background: var(--surface-2); }
+.tarjeta-producto .foto img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+.tarjeta-producto:hover .foto img { transform: scale(1.035); }
+.tarjeta-producto .cuerpo { padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.tarjeta-producto .linea { font-size: .66rem; text-transform: uppercase; letter-spacing: .18em; font-weight: 800; color: var(--marca); }
+.tarjeta-producto h3 { font-size: 1.32rem; font-weight: 500; }
+.tarjeta-producto p { font-size: .86rem; color: var(--text-soft); line-height: 1.5; }
+.tarjeta-producto .fila-final { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: auto; padding-top: 14px; border-top: 1px solid var(--border); }
+.tarjeta-producto .precio { font-family: var(--font-display); font-size: 1.22rem; color: var(--text); }
+.tarjeta-producto .flecha { color: var(--marca); }
+.tarjeta-producto .flecha svg { width: 20px; height: 20px; }
+.cabeza-grilla { display: flex; justify-content: space-between; align-items: end; gap: 20px; flex-wrap: wrap; margin-top: 40px; margin-bottom: 26px; }
+.cabeza-grilla h3 { font-size: 1.5rem; }
+
+/* ============================================================
+   PASOS / DETALLE / FAQ
+   ============================================================ */
+.grilla-pasos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.paso { border-top: 2px solid var(--marca); padding-top: 18px; }
+.paso .orden { font-size: .7rem; letter-spacing: .18em; text-transform: uppercase; font-weight: 800; color: var(--marca); }
+.paso h3 { font-size: 1.35rem; margin: 10px 0; }
+.paso p { color: var(--text-soft); font-size: .92rem; }
+.grilla-puntos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 42px; }
+.punto h3 { font-size: 1.25rem; margin-bottom: 10px; }
+.punto p { color: var(--text-soft); font-size: .92rem; }
+
+.faq-lista { max-width: 860px; margin-top: 36px; }
+.faq-lista details { border-top: 1px solid var(--border); padding: 20px 0; }
+.faq-lista details:last-child { border-bottom: 1px solid var(--border); }
+.faq-lista summary { cursor: pointer; font-weight: 700; font-size: 1rem; list-style: none; display: flex; justify-content: space-between; gap: 20px; align-items: center; }
+.faq-lista summary::-webkit-details-marker { display: none; }
+.faq-lista summary svg { width: 18px; height: 18px; color: var(--marca); flex: 0 0 auto; transition: transform .2s; }
+.faq-lista details[open] summary svg { transform: rotate(45deg); }
+.faq-lista details p { color: var(--text-soft); font-size: .94rem; padding-top: 14px; max-width: 68ch; }
+
+/* ============================================================
+   CIERRE
+   ============================================================ */
+.cierre { background: var(--panel-oscuro); color: var(--sobre-oscuro); border: 0; }
+.cierre h2 { font-size: clamp(2.4rem, 5vw, 4.4rem); margin-bottom: 14px; }
+.cierre p { color: var(--sobre-oscuro-soft); max-width: 46ch; margin-bottom: 28px; }
+.enlaces-cruce { display: flex; gap: 24px; flex-wrap: wrap; margin-top: 32px; }
+.enlaces-cruce a { color: var(--sobre-oscuro); border-bottom: 1px solid var(--acento); padding-bottom: 3px; font-weight: 600; }
+
+/* ============================================================
+   FICHA DE PRODUCTO
+   ============================================================ */
+.migas { display: flex; gap: 10px; align-items: center; font-size: .78rem; color: var(--text-muted); padding: 26px 0 0; flex-wrap: wrap; }
+.migas a { border-bottom: 1px solid var(--border-strong); }
+.ficha { display: grid; grid-template-columns: 1.05fr .95fr; gap: 64px; padding: 28px 0 96px; }
+.ficha-img { background: var(--surface-2); aspect-ratio: 4 / 4.4; overflow: hidden; }
+.ficha-img img { width: 100%; height: 100%; object-fit: cover; }
+.ficha-info { padding-top: 14px; }
+.ficha-info h1 { font-size: clamp(2.5rem, 5vw, 4.2rem); margin: 16px 0 10px; }
+.ficha-info .precio-grande { font-family: var(--font-display); font-size: 2.4rem; color: var(--marca); margin: 18px 0; }
+.ficha-info .resumen { font-size: 1.05rem; color: var(--text-soft); max-width: 42ch; }
+.ficha-info .descripcion { color: var(--text-soft); margin: 22px 0 26px; max-width: 48ch; }
+.tallas { margin: 28px 0 10px; }
+.tallas .etiqueta-tallas { display: block; font-size: .74rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 12px; }
+.lista-tallas { display: flex; flex-wrap: wrap; gap: 8px; }
+.lista-tallas button {
+  min-width: 50px; padding: 10px 12px; background: transparent; color: var(--text);
+  border: 1px solid var(--border-strong); cursor: pointer; font-weight: 700; font-size: .86rem;
+  transition: background .15s, color .15s, border-color .15s;
+}
+.lista-tallas button:hover { border-color: var(--marca); }
+.lista-tallas button[aria-pressed="true"] { background: var(--marca); color: #fff; border-color: var(--marca); }
+.nota-tallas { font-size: .76rem; color: var(--text-muted); margin-top: 10px; }
+.boton-pedir { margin-top: 22px; width: 100%; max-width: 340px; }
+.caracteristicas { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; padding-top: 22px; border-top: 1px solid var(--border); }
+.caracteristicas li { font-size: .76rem; font-weight: 700; padding: 6px 12px; border: 1px solid var(--border); background: var(--surface); }
+.caracteristicas li svg { width: 13px; height: 13px; color: var(--marca); vertical-align: -2px; margin-right: 5px; }
+
+/* ============================================================
+   CONTACTO
+   ============================================================ */
+.contacto-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+.tarjeta-wa { background: var(--panel-oscuro); color: var(--sobre-oscuro); padding: 38px; margin-bottom: 28px; }
+.tarjeta-wa .etiqueta { color: var(--acento); }
+.tarjeta-wa .numero { display: block; font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3.1rem); margin: 14px 0 22px; }
+.formulario { background: var(--surface); border: 1px solid var(--border); padding: 32px; }
+.formulario h2 { font-size: 1.9rem; margin-bottom: 10px; }
+.formulario > p { color: var(--text-soft); font-size: .9rem; margin-bottom: 24px; }
+.campo { display: block; margin-bottom: 18px; font-size: .78rem; font-weight: 800; letter-spacing: .06em; }
+.campo input, .campo textarea {
+  display: block; width: 100%; margin-top: 8px; padding: 13px 14px;
+  border: 1px solid var(--border-strong); background: var(--bg); color: var(--text);
+  font-family: var(--font-body); font-size: .92rem; font-weight: 400;
+  letter-spacing: normal; border-radius: 2px;
+}
+.campo textarea { min-height: 130px; resize: vertical; }
+.formulario .btn { width: 100%; }
+.formulario .nota-form { font-size: .76rem; color: var(--text-muted); margin-top: 14px; }
+.datos-contacto { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 46px; padding-top: 30px; border-top: 1px solid var(--border); }
+.datos-contacto h3 { font-family: var(--font-body); font-size: .72rem; letter-spacing: .16em; text-transform: uppercase; font-weight: 800; color: var(--marca); margin-bottom: 8px; }
+.datos-contacto p { font-size: .9rem; color: var(--text-soft); }
+
+/* ============================================================
+   PIE Y BOTONES FLOTANTES
+   ============================================================ */
+.pie { background: var(--panel-oscuro); color: var(--sobre-oscuro-soft); padding: 54px 0 30px; }
+.pie-inner { display: flex; flex-wrap: wrap; gap: 24px; justify-content: space-between; align-items: start; }
+.pie .logo strong { color: var(--sobre-oscuro); }
+.pie nav { display: flex; flex-wrap: wrap; gap: 18px; font-size: .84rem; max-width: 460px; justify-content: flex-end; }
+.pie nav a:hover { color: var(--sobre-oscuro); text-decoration: underline; }
+.pie-abajo { display: flex; flex-wrap: wrap; gap: 12px 28px; justify-content: space-between; border-top: 1px solid rgba(245,240,232,.16); margin-top: 40px; padding-top: 20px; font-size: .74rem; }
+.pie-abajo .aviso-demo { max-width: 60ch; }
+
+.flota-wa, .volver-arriba {
+  position: fixed; right: 22px; z-index: 55; width: 50px; height: 50px; border-radius: 50%;
+  display: grid; place-items: center; cursor: pointer; border: 0;
+  box-shadow: 0 6px 20px rgba(0,0,0,.18);
+}
+.flota-wa { bottom: 22px; background: var(--marca); color: #fff; }
+.flota-wa svg { width: 24px; height: 24px; }
+.volver-arriba { bottom: 84px; background: var(--surface); color: var(--text); border: 1px solid var(--border); opacity: 0; pointer-events: none; transition: opacity .25s; }
+.volver-arriba.visible { opacity: 1; pointer-events: auto; }
+
+/* ============================================================
+   APARICIONES SUAVES (IntersectionObserver, sin ocultar si falla JS)
+   ============================================================ */
+.js .aparece { opacity: 0; transform: translateY(22px); transition: opacity .65s ease, transform .65s cubic-bezier(.2,.7,.2,1); }
+.js .aparece.visto { opacity: 1; transform: none; }
+.js [data-stagger] > .aparece { transition-delay: calc(var(--d, 0) * 80ms); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 1024px) {
+  .pad { padding-top: 78px; padding-bottom: 78px; }
+  .portada-grid, .ficha, .contacto-grid { gap: 36px; }
+  .banda-precio .contenido { grid-template-columns: 1fr 1fr; gap: 24px; }
+  .banda-precio .boton-band { grid-column: 2; justify-self: start; }
+  .banda-precio .detalle { grid-column: 1 / 3; }
+}
+@media (max-width: 900px) {
+  .nav-links {
+    display: none; position: absolute; left: 0; right: 0; top: 100%;
+    flex-direction: column; align-items: stretch; gap: 0; margin: 0;
+    background: var(--nav-bg); border-bottom: 1px solid var(--border); padding: 12px 24px 20px;
+  }
+  .nav-links.abierto { display: flex; }
+  .nav-links a { padding: 12px 0; border-bottom: 1px solid var(--border); }
+  #botonMenu { display: grid; }
+  .portada-grid, .fila-coleccion, .ficha, .contacto-grid { grid-template-columns: 1fr; }
+  .fila-coleccion.impar .fila-img { order: 0; }
+  .grilla-productos { grid-template-columns: repeat(2, 1fr); }
+  .portada { padding-top: 30px; }
+  .portada h1 { max-width: 14ch; }
+  .portada-visual .marco-img { aspect-ratio: 4 / 3.4; }
+}
+@media (max-width: 640px) {
+  .container { padding: 0 18px; }
+  .pad { padding-top: 62px; padding-bottom: 62px; }
+  .nav-inner { min-height: 68px; }
+  .logo strong { font-size: 1.28rem; }
+  .nav-actions .btn { display: none; }
+  .portada { padding-bottom: 62px; }
+  .portada h1 { font-size: clamp(2.6rem, 11vw, 3.8rem); }
+  .sello { right: 8px; bottom: 8px; padding: 12px 16px; min-width: 138px; border-width: 3px; }
+  .sello strong { font-size: 1.25rem; }
+  .banda-precio .contenido { grid-template-columns: 1fr; }
+  .banda-precio .boton-band, .banda-precio .detalle { grid-column: 1; }
+  .cifra { font-size: clamp(4rem, 19vw, 6rem); }
+  .grilla-productos, .grilla-pasos, .grilla-puntos, .datos-contacto { grid-template-columns: 1fr; }
+  .grilla-productos { gap: 16px; }
+  .tarjeta-producto .cuerpo { padding: 16px; }
+  .cabeza-seccion { margin-bottom: 30px; }
+  .ficha-img { aspect-ratio: 1 / 1; }
+  .ficha-info h1 { font-size: 2.4rem; }
+  .tarjeta-wa, .formulario { padding: 24px; }
+  .pie nav { justify-content: flex-start; }
+  .pie-abajo { flex-direction: column; }
+  .flota-wa { right: 14px; bottom: 14px; }
+  .volver-arriba { right: 14px; bottom: 74px; }
+}

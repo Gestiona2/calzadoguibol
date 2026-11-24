@@ -1,0 +1,41 @@
+{
+  "_comentario": "Contenido de la colección Tenis. Los modelos se toman de productos.json filtrando por categoria = tenis.",
+
+  "meta": {
+    "titulo": "Tenis y zapatillas · Calzado Guibol",
+    "descripcion": "Tenis de muestra para el día a día, todos a $200.000. Elige modelo y talla y escribe por WhatsApp."
+  },
+
+  "portada": {
+    "nombre": "Tenis",
+    "titulo": "Tenis para",
+    "tituloAcento": "todos los días.",
+    "texto": "Zapatillas para caminar, trabajar y salir sin cambiar de calzado. Cinco modelos de muestra a $200.000.",
+    "imagen": "/img/tenis-03.webp",
+    "imagenAlt": "Primer plano de unas zapatillas blancas"
+  },
+
+  "modelos": {
+    "titulo": "Los modelos de esta línea.",
+    "texto": "Cinco opciones de muestra. Todos a $200.000."
+  },
+
+  "detalle": {
+    "titulo": "Lo que define esta línea.",
+    "texto": "Una selección de tenis claros y neutros, fáciles de combinar con cualquier ropa.",
+    "puntos": [
+      { "titulo": "Para uso diario", "texto": "Formas pensadas para el ritmo de todos los días." },
+      { "titulo": "Colores neutros", "texto": "Blanco y negro para combinar sin complicaciones." },
+      { "titulo": "Un mismo precio", "texto": "Los cinco modelos de esta línea están a $200.000." }
+    ]
+  },
+
+  "cierre": {
+    "titulo": "¿Prefieres otro estilo?",
+    "texto": "Mira también las líneas elegante y casual, con el mismo precio.",
+    "enlaces": [
+      { "texto": "Ver elegante", "href": "/coleccion/elegante" },
+      { "texto": "Ver casual", "href": "/coleccion/casual" }
+    ]
+  }
+}

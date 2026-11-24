@@ -1,0 +1,121 @@
+{
+  "_comentario": "Contenido de la página de inicio, en el orden en que aparece. Los nombres de modelos son de muestra; las fotos vienen de Pexels. Los textos se editan aquí, nunca en el .astro.",
+
+  "meta": {
+    "titulo": "Calzado Guibol · Calzado en cuero a $200.000",
+    "descripcion": "Fabricantes de calzado en cuero. Modelos elegantes, tenis y casuales, todos a $200.000. Escríbenos por WhatsApp para pedir el tuyo."
+  },
+
+  "portada": {
+    "etiqueta": "Fabricantes de calzado en cuero",
+    "titulo": "Calzado en cuero,",
+    "tituloAcento": "para cada día.",
+    "texto": "Somos fabricantes de calzado en cuero. Tres líneas, un mismo precio: $200.000.",
+    "botones": [
+      { "texto": "Ver las tres líneas", "href": "/#colecciones", "estilo": "btn-primary" },
+      { "texto": "Pedir por WhatsApp", "href": "https://wa.me/573202706283?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20calzado%20de%20Calzado%20Guibol.", "estilo": "btn-outline" }
+    ],
+    "imagen": "/img/elegante-01.webp",
+    "imagenAlt": "Zapato Oxford de cuero negro sobre fondo neutro",
+    "etiquetaImagen": "Cuero · Elegante",
+    "precioSello": "$200.000",
+    "precioSelloTexto": "Todos los modelos"
+  },
+
+  "precio": {
+    "titulo": "Un solo precio.",
+    "texto": "Elegante, tenis o casual. Cada modelo de esta muestra tiene el mismo valor: $200.000.",
+    "cifra": "200.000",
+    "moneda": "$",
+    "detalle": "Precio de demostración para los modelos publicados. Condiciones de envío y pedidos mínimos por confirmar con el fabricante.",
+    "boton": { "texto": "Escríbenos por WhatsApp", "href": "https://wa.me/573202706283" }
+  },
+
+  "colecciones": {
+    "titulo": "Tres maneras de vestir el cuero.",
+    "texto": "Cada línea tiene su propia forma de usar el material. Elige la que encaja contigo y pide el modelo que te guste.",
+    "items": [
+      {
+        "slug": "elegante",
+        "nombre": "Elegante",
+        "texto": "Zapatos de vestir de líneas limpias, para traje, camisa y ocasiones que piden cuidado.",
+        "imagen": "/img/elegante-03.webp",
+        "imagenAlt": "Par de zapatos Oxford de cuero marrón sobre fondo oscuro"
+      },
+      {
+        "slug": "tenis",
+        "nombre": "Tenis",
+        "texto": "Zapatillas para el día a día, con la comodidad de un calzado que se usa sin pensar en él.",
+        "imagen": "/img/tenis-03.webp",
+        "imagenAlt": "Primer plano de unas zapatillas blancas"
+      },
+      {
+        "slug": "casual",
+        "nombre": "Casual",
+        "texto": "Mocasines, botines y formas relajadas para acompañar jeans, lino y camisa abierta.",
+        "imagen": "/img/casual-04.webp",
+        "imagenAlt": "Botines negros de cuero con suela gruesa"
+      }
+    ]
+  },
+
+  "destacados": {
+    "titulo": "Modelos de la muestra.",
+    "texto": "Seis ejemplos, dos por línea. En cada ficha puedes elegir talla y escribirnos directamente.",
+    "slugs": [
+      "oxford-negro-clasico",
+      "derby-marron",
+      "tenis-blanco-liso",
+      "tenis-blanco-franjas",
+      "mocasin-negro-hebilla",
+      "botin-urbano-negro"
+    ],
+    "boton": { "texto": "Ver todos los modelos", "href": "/coleccion/elegante" }
+  },
+
+  "pedido": {
+    "titulo": "Cómo pedir.",
+    "texto": "Sin carrito y sin pago en línea. El pedido se conversa por WhatsApp.",
+    "pasos": [
+      { "titulo": "Elige el modelo", "texto": "Recorre las tres líneas y abre la ficha del zapato que te interesa." },
+      { "titulo": "Indica tu talla", "texto": "En la ficha, selecciona una talla. El botón prepara el mensaje con ese dato." },
+      { "titulo": "Escribe por WhatsApp", "texto": "Enviamos el mensaje y confirmamos contigo el modelo y la disponibilidad." }
+    ]
+  },
+
+  "faq": {
+    "titulo": "Preguntas frecuentes.",
+    "items": [
+      {
+        "pregunta": "¿Todos los modelos cuestan $200.000?",
+        "respuesta": "Sí. En esta muestra, los modelos de las tres líneas tienen el mismo precio: $200.000."
+      },
+      {
+        "pregunta": "¿El calzado es de cuero?",
+        "respuesta": "Calzado Guibol se dedica a la fabricación de calzado en cuero. Las fichas describen el material de cada modelo mostrado."
+      },
+      {
+        "pregunta": "¿Qué tallas hay disponibles?",
+        "respuesta": "Las tallas que aparecen en las fichas son de muestra. Confirma la disponibilidad real al escribir por WhatsApp."
+      },
+      {
+        "pregunta": "¿Se puede pedir desde cualquier ciudad?",
+        "respuesta": "Escríbenos por WhatsApp con tu ciudad y el modelo que quieres; ahí confirmamos cómo se entrega."
+      },
+      {
+        "pregunta": "¿Hay descuentos por pedir varios pares?",
+        "respuesta": "No hay una promoción publicada en esta muestra. Pregúntanos directamente por WhatsApp si necesitas varios pares."
+      },
+      {
+        "pregunta": "¿Las fotos son de los productos reales?",
+        "respuesta": "No. Este sitio es una demostración y usa fotografías de Pexels para ilustrar los estilos. Las fotos definitivas se cambian cuando el fabricante las aporte."
+      }
+    ]
+  },
+
+  "cierre": {
+    "titulo": "¿Cuál te llevas?",
+    "texto": "Dinos qué modelo te gustó y en qué talla. Respondemos por WhatsApp.",
+    "boton": { "texto": "Escribir a Calzado Guibol", "href": "https://wa.me/573202706283" }
+  }
+}

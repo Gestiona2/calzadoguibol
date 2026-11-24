@@ -1,0 +1,83 @@
+---
+/** Una página por línea de calzado. Los textos viven en src/datos/<slug>.json. */
+import Layout from "../../layouts/Layout.astro";
+import TarjetaProducto from "../../components/TarjetaProducto.astro";
+import catalogo from "../../datos/productos.json";
+import sitio from "../../datos/sitio.json";
+import elegante from "../../datos/elegante.json";
+import tenis from "../../datos/tenis.json";
+import casual from "../../datos/casual.json";
+import { enlace, ruta } from "../../lib/ruta.js";
+
+export function getStaticPaths() {
+  const colecciones = { elegante, tenis, casual };
+  return Object.entries(colecciones).map(([slug, datos]) => ({
+    params: { slug },
+    props: { datos, slug },
+  }));
+}
+
+const { datos, slug } = Astro.props;
+const modelos = catalogo.productos.filter((p) => p.categoria === slug);
+---
+
+<Layout titulo={datos.meta.titulo} descripcion={datos.meta.descripcion} activa={slug}>
+  <header class="portada portada-coleccion">
+    <div class="container portada-grid">
+      <div class="aparece">
+        <span class="etiqueta">{datos.portada.nombre}</span>
+        <h1>{datos.portada.titulo}<span class="acento">{datos.portada.tituloAcento}</span></h1>
+        <p class="lead">{datos.portada.texto}</p>
+        <div class="portada-botones">
+          <a class="btn btn-primary" href="#modelos">{sitio.ui.verModelos} <i data-lucide="arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="portada-visual aparece">
+        <div class="marco-img"><img src={ruta(datos.portada.imagen)} alt={datos.portada.imagenAlt} loading="eager" /></div>
+      </div>
+    </div>
+  </header>
+
+  <section class="pad" id="modelos">
+    <div class="container">
+      <div class="cabeza-seccion">
+        <div class="aparece">
+          <h2 class="titulo-seccion">{datos.modelos.titulo}</h2>
+          <p class="texto-plomo">{datos.modelos.texto}</p>
+        </div>
+      </div>
+      <div class="grilla-productos" data-stagger>
+        {modelos.map((producto) => <TarjetaProducto producto={producto} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="pad" id="detalle">
+    <div class="container">
+      <div class="cabeza-seccion">
+        <h2 class="titulo-seccion aparece">{datos.detalle.titulo}</h2>
+        <p class="aparece">{datos.detalle.texto}</p>
+      </div>
+      <div class="grilla-puntos" data-stagger>
+        {datos.detalle.puntos.map((punto) => (
+          <div class="punto aparece">
+            <h3>{punto.titulo}</h3>
+            <p>{punto.texto}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="cierre pad">
+    <div class="container aparece">
+      <h2>{datos.cierre.titulo}</h2>
+      <p>{datos.cierre.texto}</p>
+      <div class="enlaces-cruce">
+        {datos.cierre.enlaces.map((enlaceItem) => (
+          <a href={enlace(enlaceItem.href)}>{enlaceItem.texto} <i data-lucide="arrow-up-right"></i></a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

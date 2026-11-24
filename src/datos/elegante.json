@@ -1,0 +1,41 @@
+{
+  "_comentario": "Contenido de la colección Elegante. Los modelos se toman de productos.json filtrando por categoria = elegante.",
+
+  "meta": {
+    "titulo": "Calzado elegante en cuero · Calzado Guibol",
+    "descripcion": "Zapatos de vestir en cuero: Oxford, Derby y formas clásicas. Todos los modelos de muestra a $200.000."
+  },
+
+  "portada": {
+    "nombre": "Elegante",
+    "titulo": "Zapatos para",
+    "tituloAcento": "ocasiones formales.",
+    "texto": "Formas clásicas de cuero para acompañar traje, camisa y pantalón de vestir. Cinco modelos de muestra a $200.000.",
+    "imagen": "/img/elegante-03.webp",
+    "imagenAlt": "Par de zapatos Oxford de cuero marrón sobre fondo oscuro"
+  },
+
+  "modelos": {
+    "titulo": "Los modelos de esta línea.",
+    "texto": "Cinco opciones de muestra. Todos a $200.000."
+  },
+
+  "detalle": {
+    "titulo": "Lo que define esta línea.",
+    "texto": "Calzado de vestir en cuero, con diseños que van del negro clásico al marrón cálido.",
+    "puntos": [
+      { "titulo": "Formas clásicas", "texto": "Oxford y Derby: siluetas reconocibles que funcionan con traje o con camisa." },
+      { "titulo": "Cuero como material", "texto": "Cada ficha describe el acabado del modelo que muestra." },
+      { "titulo": "Un mismo precio", "texto": "Los cinco modelos de esta línea están a $200.000." }
+    ]
+  },
+
+  "cierre": {
+    "titulo": "¿Buscas otro estilo?",
+    "texto": "También tenemos líneas de tenis y casual, con el mismo precio.",
+    "enlaces": [
+      { "texto": "Ver tenis", "href": "/coleccion/tenis" },
+      { "texto": "Ver casual", "href": "/coleccion/casual" }
+    ]
+  }
+}

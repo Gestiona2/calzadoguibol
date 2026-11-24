@@ -1,0 +1,17 @@
+---
+import Layout from "../layouts/Layout.astro";
+import datos from "../datos/no-encontrado.json";
+import { enlace } from "../lib/ruta.js";
+---
+
+<Layout titulo={datos.meta.titulo} descripcion={datos.meta.descripcion}>
+  <header class="portada portada-contacto">
+    <div class="container">
+      <h1>{datos.titulo}</h1>
+      <p class="lead">{datos.texto}</p>
+      <div class="portada-botones">
+        <a class="btn btn-primary" href={enlace(datos.boton.href)}>{datos.boton.texto}</a>
+      </div>
+    </div>
+  </header>
+</Layout>

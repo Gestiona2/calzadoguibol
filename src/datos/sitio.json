@@ -1,0 +1,59 @@
+{
+  "_comentario": "Datos que se repiten en todas las páginas: nombre, WhatsApp, menú, pie y textos de interfaz. Lo específico de cada página va en su propio archivo. demo: true indica que este sitio es una muestra para presentar al cliente.",
+
+  "demo": true,
+  "nombre": "Calzado Guibol",
+  "nombreLargo": "Calzado Guibol — fabricantes de calzado en cuero",
+  "razonSocial": "Calzado Guibol",
+  "nit": "",
+  "descripcion": "Fabricantes de calzado en cuero. Modelos elegantes, tenis y casuales, todos a $200.000. Escríbenos por WhatsApp para pedir el tuyo.",
+  "whatsapp": "573202706283",
+  "whatsappTexto": "320 270 6283",
+  "correo": "",
+  "direccion": "",
+  "ciudad": "",
+  "horario": "",
+  "dominio": "",
+  "claveTema": "calzado-guibol-tema",
+
+  "menu": [
+    { "id": "inicio", "texto": "Inicio", "href": "/" },
+    { "id": "elegante", "texto": "Elegante", "href": "/coleccion/elegante" },
+    { "id": "tenis", "texto": "Tenis", "href": "/coleccion/tenis" },
+    { "id": "casual", "texto": "Casual", "href": "/coleccion/casual" },
+    { "id": "contacto", "texto": "Contacto", "href": "/contacto" }
+  ],
+
+  "ctaPrincipal": {
+    "texto": "Pedir por WhatsApp",
+    "href": "https://wa.me/573202706283"
+  },
+
+  "redes": [],
+  "legales": [],
+
+  "ui": {
+    "temaOscuro": "Cambiar a tema oscuro",
+    "temaClaro": "Cambiar a tema claro",
+    "abrirMenu": "Abrir menú",
+    "cerrarMenu": "Cerrar menú",
+    "escribirWhatsApp": "Escribir por WhatsApp",
+    "volverArriba": "Volver arriba",
+    "copyright": "Todos los derechos reservados",
+    "avisoDemo": "Demo de muestra para presentación. Nombres de modelos y fotografías de Pexels.",
+    "verModelos": "Ver modelos",
+    "pedirEste": "Pedir este modelo",
+    "eligeTalla": "Elige tu talla",
+    "tallasDemo": "Tallas de muestra: confirma disponibilidad por WhatsApp.",
+    "sinTalla": "por confirmar",
+    "otrosModelos": "Otros modelos de esta línea.",
+    "volverColeccion": "Volver a la colección",
+    "enlacesPie": "Enlaces del sitio"
+  },
+
+  "mensajes": {
+    "general": "Hola, quiero información sobre el calzado de Calzado Guibol.",
+    "producto": "Hola, quiero pedir el modelo {producto} de Calzado Guibol ({precio}). Talla {talla}.",
+    "contacto": "Hola, mi nombre es {nombre}. {mensaje}"
+  }
+}

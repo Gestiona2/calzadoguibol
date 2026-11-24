@@ -1,0 +1,170 @@
+---
+/**
+ * Estructura compartida: menú, pie, botón de tema, WhatsApp y volver arriba.
+ * REGLA: aquí no se escribe texto del negocio. Todo sale de src/datos/sitio.json.
+ */
+import "../styles/global.css";
+import sitio from "../datos/sitio.json";
+import { enlace } from "../lib/ruta.js";
+
+interface Props {
+  titulo: string;
+  descripcion?: string;
+  activa?: string;
+}
+const { titulo, descripcion = sitio.descripcion, activa = "" } = Astro.props;
+const mensajeGeneral = encodeURIComponent(sitio.mensajes.general);
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{titulo}</title>
+    <meta name="description" content={descripcion} />
+    <link rel="icon" type="image/svg+xml" href="/brand/favicon.svg" />
+
+    <meta property="og:title" content={titulo} />
+    <meta property="og:description" content={descripcion} />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#f5f0e8" />
+
+    <!-- Anti-parpadeo del tema: va antes de pintar nada. -->
+    <script is:inline define:vars={{ clave: sitio.claveTema }}>
+      (function () {
+        try {
+          document.documentElement.setAttribute("data-theme", localStorage.getItem(clave) || "light");
+        } catch (e) {
+          document.documentElement.setAttribute("data-theme", "light");
+        }
+        document.documentElement.classList.add("js");
+      })();
+    </script>
+  </head>
+
+  <body>
+    <header class="nav" id="nav">
+      <div class="container nav-inner">
+        <a href={enlace("/")} class="logo" aria-label={sitio.nombre}>
+          <strong>{sitio.nombre}</strong>
+          <small>Calzado en cuero</small>
+        </a>
+
+        <nav class="nav-links" id="navLinks" aria-label={sitio.ui.enlacesPie}>
+          {sitio.menu.map((item) => (
+            <a href={enlace(item.href)} class={activa === item.id ? "activo" : ""}>{item.texto}</a>
+          ))}
+        </nav>
+
+        <div class="nav-actions">
+          <button id="botonTema" class="icono-boton" aria-label={sitio.ui.temaOscuro}></button>
+          <a href={sitio.ctaPrincipal.href} class="btn btn-primary">{sitio.ctaPrincipal.texto}</a>
+          <button id="botonMenu" class="icono-boton" aria-label={sitio.ui.abrirMenu} aria-expanded="false" aria-controls="navLinks"></button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="pie">
+      <div class="container">
+        <div class="pie-inner">
+          <a href={enlace("/")} class="logo"><strong>{sitio.nombre}</strong></a>
+          <nav aria-label={sitio.ui.enlacesPie}>
+            {sitio.menu.map((item) => <a href={enlace(item.href)}>{item.texto}</a>)}
+          </nav>
+        </div>
+        <div class="pie-abajo">
+          <p>&copy; {new Date().getFullYear()} {sitio.razonSocial}. {sitio.ui.copyright}.</p>
+          <p class="aviso-demo">{sitio.ui.avisoDemo}</p>
+        </div>
+      </div>
+    </footer>
+
+    <a
+      href={`https://wa.me/${sitio.whatsapp}?text=${mensajeGeneral}`}
+      class="flota-wa"
+      target="_blank"
+      rel="noopener"
+      aria-label={sitio.ui.escribirWhatsApp}
+    >
+      <i data-lucide="message-circle"></i>
+    </a>
+    <button class="volver-arriba" id="volverArriba" aria-label={sitio.ui.volverArriba}>
+      <i data-lucide="arrow-up"></i>
+    </button>
+
+    <script is:inline src="/vendor/lucide/lucide.min.js"></script>
+    <script is:inline define:vars={{ clave: sitio.claveTema, temaOscuro: sitio.ui.temaOscuro, temaClaro: sitio.ui.temaClaro, abrirMenu: sitio.ui.abrirMenu, cerrarMenu: sitio.ui.cerrarMenu }}>
+      (function () {
+        var $ = function (s) { return document.querySelector(s); };
+        var raiz = document.documentElement;
+        var menosMovimiento = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        if (window.lucide) lucide.createIcons();
+
+        /* Tema */
+        var botonTema = $("#botonTema");
+        function pintarTema() {
+          if (!botonTema) return;
+          var oscuro = raiz.getAttribute("data-theme") === "dark";
+          botonTema.innerHTML = '<i data-lucide="' + (oscuro ? "sun" : "moon") + '"></i>';
+          botonTema.setAttribute("aria-label", oscuro ? temaClaro : temaOscuro);
+          if (window.lucide) lucide.createIcons();
+        }
+        botonTema && botonTema.addEventListener("click", function () {
+          var siguiente = raiz.getAttribute("data-theme") === "dark" ? "light" : "dark";
+          raiz.setAttribute("data-theme", siguiente);
+          try { localStorage.setItem(clave, siguiente); } catch (e) {}
+          pintarTema();
+        });
+        pintarTema();
+
+        /* Menú en celular */
+        var botonMenu = $("#botonMenu");
+        botonMenu && botonMenu.addEventListener("click", function () {
+          var abierto = $("#navLinks").classList.toggle("abierto");
+          botonMenu.setAttribute("aria-expanded", String(abierto));
+          botonMenu.setAttribute("aria-label", abierto ? cerrarMenu : abrirMenu);
+          botonMenu.innerHTML = '<i data-lucide="' + (abierto ? "x" : "menu") + '"></i>';
+          if (window.lucide) lucide.createIcons();
+        });
+
+        /* Apariciones: si no hay IntersectionObserver o hay menos movimiento, todo se ve */
+        var elementos = Array.prototype.slice.call(document.querySelectorAll(".aparece"));
+        if (menosMovimiento || !("IntersectionObserver" in window)) {
+          elementos.forEach(function (el) { el.style.opacity = 1; el.style.transform = "none"; });
+        } else {
+          document.querySelectorAll("[data-stagger]").forEach(function (grupo) {
+            Array.prototype.slice.call(grupo.children).forEach(function (hijo, i) { hijo.style.setProperty("--d", i); });
+          });
+          var observador = new IntersectionObserver(function (entradas) {
+            entradas.forEach(function (entrada) {
+              if (entrada.isIntersecting) {
+                entrada.target.classList.add("visto");
+                observador.unobserve(entrada.target);
+              }
+            });
+          }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+          elementos.forEach(function (el) { observador.observe(el); });
+        }
+
+        /* Nav con fondo al bajar y volver arriba */
+        var nav = $("#nav");
+        var volver = $("#volverArriba");
+        function alBajar() {
+          nav.classList.toggle("bajado", window.scrollY > 20);
+          volver.classList.toggle("visible", window.scrollY > 600);
+        }
+        window.addEventListener("scroll", alBajar, { passive: true });
+        alBajar();
+        volver && volver.addEventListener("click", function () {
+          window.scrollTo({ top: 0, behavior: menosMovimiento ? "auto" : "smooth" });
+        });
+      })();
+    </script>
+  </body>
+</html>

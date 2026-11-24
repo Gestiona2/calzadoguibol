@@ -1,0 +1,76 @@
+---
+/** Página de contacto. Los textos y etiquetas salen de src/datos/. */
+import Layout from "../layouts/Layout.astro";
+import sitio from "../datos/sitio.json";
+import datos from "../datos/contacto.json";
+import { enlace } from "../lib/ruta.js";
+---
+
+<Layout titulo={datos.meta.titulo} descripcion={datos.meta.descripcion} activa="contacto">
+  <header class="portada portada-contacto">
+    <div class="container">
+      <span class="etiqueta">{sitio.nombre}</span>
+      <h1>{datos.portada.titulo}<span class="acento">{datos.portada.tituloAcento}</span></h1>
+      <p class="lead">{datos.portada.texto}</p>
+    </div>
+  </header>
+
+  <section class="pad" id="escribir">
+    <div class="container contacto-grid">
+      <div class="aparece">
+        <div class="tarjeta-wa">
+          <span class="etiqueta">{datos.datos.whatsappEtiqueta}</span>
+          <span class="numero">{sitio.whatsappTexto}</span>
+          <a class="btn btn-claro" href={enlace(sitio.ctaPrincipal.href)} target="_blank" rel="noopener">
+            {sitio.ctaPrincipal.texto} <i data-lucide="arrow-up-right"></i>
+          </a>
+        </div>
+        <div class="datos-contacto">
+          <div>
+            <h3>{datos.datos.correoTitulo}</h3>
+            <p>{datos.datos.correoTexto}</p>
+          </div>
+          <div>
+            <h3>{datos.datos.ciudadTitulo}</h3>
+            <p>{datos.datos.ciudadTexto}</p>
+          </div>
+          <div>
+            <h3>{datos.datos.whatsappEtiqueta}</h3>
+            <p>{sitio.whatsappTexto}</p>
+          </div>
+        </div>
+      </div>
+
+      <form class="formulario aparece" id="formContacto">
+        <h2>{datos.formulario.titulo}</h2>
+        <p>{datos.formulario.texto}</p>
+        <label class="campo">
+          {datos.formulario.campoNombre}
+          <input type="text" id="campoNombre" name="nombre" placeholder={datos.formulario.campoNombrePlaceholder} autocomplete="name" />
+        </label>
+        <label class="campo">
+          {datos.formulario.campoMensaje}
+          <textarea id="campoMensaje" name="mensaje" placeholder={datos.formulario.campoMensajePlaceholder}></textarea>
+        </label>
+        <button type="submit" class="btn btn-primary">{datos.formulario.boton} <i data-lucide="arrow-up-right"></i></button>
+        <p class="nota-form">{datos.formulario.nota}</p>
+      </form>
+    </div>
+  </section>
+</Layout>
+
+<script is:inline define:vars={{ numero: sitio.whatsapp, plantilla: sitio.mensajes.contacto }}>
+  (function () {
+    var form = document.getElementById("formContacto");
+    if (!form) return;
+    form.addEventListener("submit", function (evento) {
+      evento.preventDefault();
+      var nombre = document.getElementById("campoNombre").value.trim();
+      var mensaje = document.getElementById("campoMensaje").value.trim();
+      var texto = plantilla
+        .replace("{nombre}", nombre)
+        .replace("{mensaje}", mensaje);
+      window.open("https://wa.me/" + numero + "?text=" + encodeURIComponent(texto), "_blank", "noopener");
+    });
+  })();
+</script>

@@ -1,0 +1,34 @@
+{
+  "_comentario": "Contenido de la página de contacto. El número de WhatsApp y las etiquetas salen de sitio.json; aquí solo van los textos propios de la página.",
+
+  "meta": {
+    "titulo": "Contacto · Calzado Guibol",
+    "descripcion": "Escríbenos por WhatsApp para pedir tu calzado en cuero. Modelos elegantes, tenis y casuales a $200.000."
+  },
+
+  "portada": {
+    "titulo": "Hablemos de",
+    "tituloAcento": "tu pedido.",
+    "texto": "Elige un modelo, indícanos tu talla y envíanos el mensaje. Respondemos por WhatsApp para confirmar los detalles."
+  },
+
+  "formulario": {
+    "titulo": "Escribe tu mensaje.",
+    "texto": "Este formulario no envía nada a un servidor: abre WhatsApp con tu texto ya listo para que lo revises y lo envíes.",
+    "campoNombre": "Tu nombre",
+    "campoNombrePlaceholder": "Nombre",
+    "campoMensaje": "Tu mensaje",
+    "campoMensajePlaceholder": "Ej. Me interesa el Oxford negro en talla 41",
+    "boton": "Abrir WhatsApp",
+    "nota": "Si lo prefieres, escribe directamente al número que aparece arriba."
+  },
+
+  "datos": {
+    "titulo": "Dónde encontrarnos.",
+    "whatsappEtiqueta": "WhatsApp",
+    "correoTitulo": "Correo",
+    "correoTexto": "Por definir. Mientras tanto, escríbenos por WhatsApp.",
+    "ciudadTitulo": "Ciudad",
+    "ciudadTexto": "Por definir. Indícanos desde dónde nos escribes y te confirmamos la entrega."
+  }
+}

@@ -1,0 +1,133 @@
+---
+/**
+ * Página de inicio. Solo define CÓMO se ve; el QUÉ dice está en src/datos/.
+ */
+import Layout from "../layouts/Layout.astro";
+import TarjetaProducto from "../components/TarjetaProducto.astro";
+import datos from "../datos/inicio.json";
+import sitio from "../datos/sitio.json";
+import catalogo from "../datos/productos.json";
+import { enlace, ruta } from "../lib/ruta.js";
+
+const { portada, precio, colecciones, destacados, pedido, faq, cierre } = datos;
+const modelos = destacados.slugs
+  .map((slug) => catalogo.productos.find((p) => p.slug === slug))
+  .filter(Boolean);
+---
+
+<Layout titulo={datos.meta.titulo} descripcion={datos.meta.descripcion} activa="inicio">
+  <header class="portada">
+    <div class="container portada-grid">
+      <div class="aparece">
+        <span class="etiqueta">{portada.etiqueta}</span>
+        <h1>{portada.titulo}<span class="acento">{portada.tituloAcento}</span></h1>
+        <p class="lead">{portada.texto}</p>
+        <div class="portada-botones">
+          {portada.botones.map((b) => (
+            <a href={enlace(b.href)} class={`btn ${b.estilo}`}>{b.texto}</a>
+          ))}
+        </div>
+      </div>
+      <div class="portada-visual aparece">
+        <div class="marco-img"><img src={ruta(portada.imagen)} alt={portada.imagenAlt} loading="eager" /></div>
+        <div class="sello" aria-label={`${portada.precioSello}: ${portada.precioSelloTexto}`}>
+          <strong>{portada.precioSello}</strong>
+          <span>{portada.precioSelloTexto}</span>
+        </div>
+        <div class="pie-imagen"><span>{portada.etiquetaImagen}</span><span>{sitio.nombre}</span></div>
+      </div>
+    </div>
+  </header>
+
+  <section class="banda-precio pad" id="precio">
+    <div class="container contenido">
+      <div class="cifra aparece"><span class="moneda">{precio.moneda}</span>{precio.cifra}</div>
+      <div class="aparece">
+        <h2>{precio.titulo}</h2>
+        <p>{precio.texto}</p>
+      </div>
+      <div class="boton-band aparece"><a href={enlace(precio.boton.href)} class="btn btn-claro">{precio.boton.texto}</a></div>
+      <p class="detalle">{precio.detalle}</p>
+    </div>
+  </section>
+
+  <section class="pad" id="colecciones">
+    <div class="container">
+      <div class="cabeza-seccion">
+        <div class="aparece">
+          <h2 class="titulo-seccion">{colecciones.titulo}</h2>
+        </div>
+        <p class="aparece">{colecciones.texto}</p>
+      </div>
+
+      {colecciones.items.map((item, i) => (
+        <a class="fila-coleccion aparece" href={enlace(`/coleccion/${item.slug}`)}>
+          <div class="fila-img"><img src={ruta(item.imagen)} alt={item.imagenAlt} loading="lazy" /></div>
+          <div class="fila-texto">
+            <span class="numero-linea">0{i + 1} / 03</span>
+            <h3>{item.nombre}</h3>
+            <p>{item.texto}</p>
+            <span class="btn btn-texto">{sitio.ui.verModelos} <i data-lucide="arrow-right"></i></span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="pad" id="modelos">
+    <div class="container">
+      <div class="cabeza-seccion">
+        <div class="aparece">
+          <h2 class="titulo-seccion">{destacados.titulo}</h2>
+          <p class="texto-plomo">{destacados.texto}</p>
+        </div>
+        <a class="btn btn-outline aparece" href={enlace(destacados.boton.href)}>{destacados.boton.texto}</a>
+      </div>
+      <div class="grilla-productos" data-stagger>
+        {modelos.map((producto) => <TarjetaProducto producto={producto} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="pad" id="pedido">
+    <div class="container">
+      <div class="cabeza-seccion">
+        <div class="aparece">
+          <h2 class="titulo-seccion">{pedido.titulo}</h2>
+          <p class="texto-plomo">{pedido.texto}</p>
+        </div>
+      </div>
+      <div class="grilla-pasos" data-stagger>
+        {pedido.pasos.map((paso, i) => (
+          <div class="paso aparece">
+            <span class="orden">0{i + 1}</span>
+            <h3>{paso.titulo}</h3>
+            <p>{paso.texto}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="pad" id="preguntas">
+    <div class="container">
+      <h2 class="titulo-seccion aparece">{faq.titulo}</h2>
+      <div class="faq-lista">
+        {faq.items.map((f) => (
+          <details class="aparece">
+            <summary>{f.pregunta}<i data-lucide="plus"></i></summary>
+            <p>{f.respuesta}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="cierre pad">
+    <div class="container aparece">
+      <h2>{cierre.titulo}</h2>
+      <p>{cierre.texto}</p>
+      <a href={enlace(cierre.boton.href)} class="btn btn-claro">{cierre.boton.texto} <i data-lucide="arrow-up-right"></i></a>
+    </div>
+  </section>
+</Layout>
