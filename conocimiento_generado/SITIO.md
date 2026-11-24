@@ -3,14 +3,15 @@
 ## El negocio
 
 Calzado Guibol fabrica calzado en cuero. Las tres líneas que se muestran son **Elegante**,
-**Tenis** y **Casual**. Todos los modelos de esta muestra tienen un precio único: **$200.000**.
+**Tenis** y **Casual**. Los 15 modelos originales están a **$200.000** y el Tenis blanco
+Flash, de la promo, a **$150.000**.
 
 ## Datos de contacto
 
 - WhatsApp: **320 270 6283** (en los enlaces: `573202706283`)
 - Correo, NIT, ciudad, dirección, horario, dominio y redes: todavía sin definir (ver `PENDIENTES.md`)
 
-Este sitio es **una demo para presentar al cliente**. Los nombres de los 15 modelos y las
+Este sitio es **una demo para presentar al cliente**. Los nombres de los 16 modelos y las
 fotografías son de muestra; las fotos son de Pexels y están guardadas dentro del sitio.
 
 ## Páginas
@@ -21,7 +22,7 @@ fotografías son de muestra; las fotos son de Pexels y están guardadas dentro d
 | `/coleccion/elegante` | Línea elegante, 5 modelos | `src/datos/elegante.json` |
 | `/coleccion/tenis` | Línea tenis, 5 modelos | `src/datos/tenis.json` |
 | `/coleccion/casual` | Línea casual, 5 modelos | `src/datos/casual.json` |
-| `/producto/<slug>` | 15 fichas de producto, una por modelo | `src/datos/productos.json` |
+| `/producto/<slug>` | 16 fichas de producto, una por modelo | `src/datos/productos.json` |
 | `/contacto` | WhatsApp, datos y formulario que arma el mensaje | `src/datos/contacto.json` |
 | `/404` | Página cuando una dirección no existe | `src/datos/no-encontrado.json` |
 
@@ -39,7 +40,8 @@ promoción Flash en `src/datos/promo.json`.
   los datos de entrega. No hay botón de WhatsApp por producto.
 - Ver sugerencias de otros modelos dentro del carrito y agregarlas eligiendo talla.
 - Ver la promoción Flash en una ventana al entrar por primera vez, y volver a abrirla desde
-  el bloque del inicio. El contador es de muestra: no hay descuento real.
+  el bloque del inicio. El bloque muestra el Tenis blanco Flash a $150.000 y permite elegir
+  talla y agregarlo al pedido. El contador es de muestra: no hay descuento real.
 - Escribir un mensaje desde la página de contacto: se abre WhatsApp con el texto listo.
 - Cambiar entre tema claro y oscuro (se recuerda en ese navegador).
 

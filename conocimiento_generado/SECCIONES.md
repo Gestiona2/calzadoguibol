@@ -18,14 +18,16 @@ Todo lo que se puede cambiar está en `src/datos/`. Los `.astro` solo pintan eso
 
 Aparece en dos lugares: una ventana emergente la primera vez que se entra al sitio desde un
 navegador, y un bloque siempre visible en el inicio, entre la banda de precio y las colecciones.
-Ambos comparten el mismo contador. No hay descuento: el precio sigue siendo $200.000.
+Ambos comparten el mismo contador. No hay descuento: el bloque muestra el modelo
+`tenis-blanco-flash` a $150.000 y los otros 15 siguen a $200.000.
 
 | Sección | Campo | Límites / nota |
 |---|---|---|
 | Ventana emergente | `ventana.titulo`, `tituloAcento`, `texto` | El título va en dos líneas. La nota debe dejar claro que es demostración |
 | Ventana emergente | `ventana.boton` | Texto y destino del botón; sale de la ventana hacia una colección |
 | Ventana emergente | `ventana.cerrar` | Etiqueta del botón de cerrar, para lectores de pantalla |
-| Bloque del inicio | `bloque.*` | Incluye imagen, textos y el botón «Ver la promo», que vuelve a abrir la ventana |
+| Bloque del inicio | `bloque.*` | Incluye textos y el botón «Ver la promo», que vuelve a abrir la ventana |
+| Modelo de la promo | `bloque.modelo.slug`, `bloque.modelo.etiqueta` | El slug debe existir en `productos.json`. La foto, el nombre, el precio y las tallas salen de ahí; la etiqueta es el rótulo del recuadro. `bloque.imagen` e `imagenAlt` son solo respaldo |
 | Contador | `config.duracionHoras` | Hoy 2. Es de muestra: cambiarlo no cambia el precio ni crea una oferta real |
 | Recuerdo | `config.claveVista` | El navegador guarda aquí que ya vio la ventana. No cambiar sin necesidad |
 
@@ -77,12 +79,13 @@ Un objeto por modelo dentro del arreglo `productos`. Campos:
 |---|---|
 | `slug` | Parte de la dirección `/producto/<slug>`. Sin espacios ni tildes. No repetirlo |
 | `nombre`, `categoria`, `resumen`, `descripcion` | Textos de la ficha. `categoria` solo puede ser `elegante`, `tenis` o `casual` |
-| `precio`, `precioTexto` | Número y texto con `$`. Actualmente todos son 200000 / `$200.000` |
+| `precio`, `precioTexto` | Número y texto con `$`. 15 modelos son 200000 / `$200.000` y el modelo Flash 150000 / `$150.000` |
 | `imagen`, `imagenAlt` | Ruta dentro de `/public/img/` y texto alternativo |
 | `caracteristicas`, `tallas` | Listas. Las tallas son de muestra; ver `PENDIENTES.md` |
 
 Al agregar un modelo, aparece solo en su colección y en la grilla de modelos relacionados
 de las fichas de esa misma línea. No aparece en destacados hasta que se agregue su slug a `inicio.json`.
+Para que salga en la promo Flash, se pone su slug en `promo.json` → `bloque.modelo.slug`.
 
 ## Contacto y otros — `contacto.json`, `no-encontrado.json`
 

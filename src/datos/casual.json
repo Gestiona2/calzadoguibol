@@ -32,7 +32,7 @@
 
   "cierre": {
     "titulo": "¿Buscas otro estilo?",
-    "texto": "También hay líneas elegante y tenis, con el mismo precio.",
+    "texto": "También hay líneas elegante y tenis, con sus precios de muestra.",
     "enlaces": [
       { "texto": "Ver elegante", "href": "/coleccion/elegante" },
       { "texto": "Ver tenis", "href": "/coleccion/tenis" }

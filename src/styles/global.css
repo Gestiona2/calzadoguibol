@@ -502,6 +502,39 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   border: 8px solid rgba(255, 255, 255, .2);
 }
 .promo-bloque-visual img { width: 100%; height: 100%; object-fit: cover; }
+.promo-modelo {
+  display: grid; grid-template-columns: 1fr 1fr; height: 100%;
+  background: var(--sobre-marca); color: var(--marca);
+}
+.promo-modelo-foto { display: block; min-width: 0; min-height: 0; overflow: hidden; }
+.promo-modelo-foto img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.promo-modelo-datos {
+  min-width: 0; padding: 20px; display: flex; flex-direction: column;
+  justify-content: center; gap: 10px;
+}
+.promo-modelo-etiqueta {
+  font-size: .62rem; font-weight: 800; text-transform: uppercase;
+  letter-spacing: .14em;
+}
+.promo-modelo-datos h3 { font-family: var(--font-display); font-size: 1.35rem; line-height: 1.1; font-weight: 500; }
+.promo-modelo-datos h3 a:hover { text-decoration: underline; }
+.promo-modelo-precio {
+  display: flex; align-items: baseline; flex-wrap: wrap; gap: 10px;
+  padding-top: 8px; border-top: 1px solid currentColor;
+}
+.promo-modelo-precio strong { font-family: var(--font-display); font-size: 1.5rem; font-variant-numeric: tabular-nums; }
+.promo-modelo-precio a { font-size: .74rem; font-weight: 800; text-decoration: underline; }
+.promo-modelo-accion { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+.promo-modelo-accion label {
+  font-size: .62rem; font-weight: 800; text-transform: uppercase;
+  letter-spacing: .12em;
+}
+.promo-modelo-select {
+  flex: 1; min-width: 72px; padding: 10px 8px; border: 1px solid var(--marca);
+  background: var(--bg); color: var(--text); border-radius: 2px;
+  font-family: var(--font-body); font-size: .8rem; font-weight: 700;
+}
+.promo-modelo-accion .btn { padding: 11px 12px; font-size: .74rem; }
 
 /* Sugerencias dentro del panel del carrito */
 .carrito-sugerencias {
@@ -556,6 +589,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   #botonMenu { display: grid; }
   .portada-grid, .fila-coleccion, .ficha, .contacto-grid { grid-template-columns: 1fr; }
   .promo-bloque-grid { gap: 32px; }
+  .promo-modelo-datos { padding: 14px; gap: 8px; }
+  .promo-modelo-datos h3 { font-size: 1.15rem; }
+  .promo-modelo-precio strong { font-size: 1.3rem; }
   .fila-coleccion.impar .fila-img { order: 0; }
   .grilla-productos { grid-template-columns: repeat(2, 1fr); }
   .portada { padding-top: 30px; }
@@ -599,7 +635,11 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .promo-cerrar { top: 10px; right: 10px; }
   .promo-cuenta strong { font-size: 1.6rem; }
   .promo-bloque-grid { grid-template-columns: 1fr; gap: 28px; padding-top: 52px; padding-bottom: 52px; }
-  .promo-bloque-visual { aspect-ratio: 4 / 2.6; border-width: 5px; }
+  .promo-bloque-visual { aspect-ratio: auto; border-width: 5px; }
+  .promo-modelo { grid-template-columns: 1fr; }
+  .promo-modelo-foto { aspect-ratio: 4 / 2.2; }
+  .promo-modelo-datos { padding: 16px; }
+  .promo-modelo-accion .btn { flex: 1; }
   .promo-bloque-acciones .btn { flex: 1 1 auto; }
   .sugerencia { grid-template-columns: 48px 1fr; gap: 10px; }
   .sugerencia img { width: 48px; height: 48px; }

@@ -15,6 +15,7 @@ const medidas = {
   "casual-03.webp": [960, 1200],
   "casual-04.webp": [1200, 1200],
   "casual-05.webp": [1200, 1200],
+  "tenis-flash.webp": [1200, 1200],
 };
 
 /** Devuelve el ancho y alto de una foto a partir de su ruta. */

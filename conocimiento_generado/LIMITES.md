@@ -10,13 +10,14 @@ asuma que algo está incluido cuando no lo está.
 - **Página de contacto** (`/contacto`) con WhatsApp para consultas y formulario que abre
   WhatsApp. Es el único WhatsApp directo que queda: ya no hay botón por producto ni botón
   flotante.
-- **15 fichas de producto** (`/producto/<slug>`) con galería, tallas demo y botón de
+- **16 fichas de producto** (`/producto/<slug>`) con galería, tallas demo y botón de
   agregar al carrito.
 - **Carrito y pedido**: selector de talla en tarjetas y fichas, varias líneas por modelo y
   talla, cantidades, quitar/vaciar, datos de entrega y un solo mensaje de WhatsApp con el
   pedido completo. Se guarda en el navegador.
 - **Promo Flash**: ventana emergente una vez por navegador y bloque en el inicio, con un
-  contador de muestra y un botón para volver a abrir la ventana. No cambia el precio.
+  contador de muestra y un botón para volver a abrir la ventana. El bloque muestra el Tenis
+  blanco Flash a $150.000, con talla y botón para agregarlo al pedido. No baja precios.
 - **Sugerencias dentro del carrito**: otros modelos de la misma línea con selector de talla
   y botón de agregar al pedido.
 - Diseño responsive, tema claro/oscuro, menú accesible, navegación y estados de
@@ -33,7 +34,8 @@ asuma que algo está incluido cuando no lo está.
 - **Condiciones de envío.** No se promete domicilio gratis, plazos ni pedido mínimo: esos
   datos están sin definir y el mensaje no los inventa.
 - **Descuentos ni ofertas reales.** La promo Flash es de presentación: su contador no baja
-  el precio de $200.000 y no habilita ningún beneficio.
+  los precios publicados ($200.000 en 15 modelos y $150.000 en el modelo Flash) y no
+  habilita ningún beneficio.
 - **Panel de administración** para editar productos desde el navegador. El
   contenido se edita en los archivos JSON de `src/datos/`.
 - **Nombres de modelos, tallas y descripciones reales.** Los actuales son
@@ -49,8 +51,9 @@ asuma que algo está incluido cuando no lo está.
 
 - No se instalan dependencias de pago ni servicios externos de terceros.
 - Las fuentes (Fraunces, Manrope) se sirven localmente desde `src/fonts/`.
-- El precio es único y fijo para toda la demo: todo a $200.000, definido en
-  `src/datos/inicio.json` y `src/datos/sitio.json`.
+- Los precios son fijos para toda la demo: 15 modelos a $200.000 y el Tenis blanco Flash a
+  $150.000, definidos en `src/datos/productos.json` y repetidos en los textos de
+  `inicio.json`, `sitio.json`, `promo.json` y las colecciones.
 - El número de WhatsApp de la demo es `573202706283` y está centralizado en
   `src/datos/sitio.json`.
 - La ventana Flash se recuerda en `localStorage` bajo `calzado-guibol-promo-vista`. Guarda

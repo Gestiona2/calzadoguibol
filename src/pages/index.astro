@@ -6,6 +6,7 @@ import Layout from "../layouts/Layout.astro";
 import TarjetaProducto from "../components/TarjetaProducto.astro";
 import datos from "../datos/inicio.json";
 import sitio from "../datos/sitio.json";
+import carrito from "../datos/carrito.json";
 import catalogo from "../datos/productos.json";
 import promo from "../datos/promo.json";
 import { enlace, ruta } from "../lib/ruta.js";
@@ -15,6 +16,10 @@ const { portada, precio, colecciones, destacados, pedido, faq, cierre } = datos;
 const modelos = destacados.slugs
   .map((slug) => catalogo.productos.find((p) => p.slug === slug))
   .filter(Boolean);
+const modeloPromo = catalogo.productos.find(
+  (p) => p.slug === promo.bloque.modelo?.slug
+);
+const idTallaPromo = `talla-${promo.bloque.modelo?.slug || "promo"}`;
 ---
 
 <Layout titulo={datos.meta.titulo} descripcion={datos.meta.descripcion} activa="inicio">
@@ -70,7 +75,42 @@ const modelos = destacados.slugs
         <p class="promo-nota">{promo.bloque.nota}</p>
       </div>
       <div class="promo-bloque-visual aparece">
-        <img src={ruta(promo.bloque.imagen)} alt={promo.bloque.imagenAlt} width={tamanoImagen(promo.bloque.imagen).ancho} height={tamanoImagen(promo.bloque.imagen).alto} loading="lazy" />
+        {modeloPromo ? (
+          <article class="promo-modelo">
+            <a class="promo-modelo-foto" href={enlace(`/producto/${modeloPromo.slug}`)} aria-label={`${sitio.ui.verModelos}: ${modeloPromo.nombre}`}>
+              <img src={ruta(modeloPromo.imagen)} alt={modeloPromo.imagenAlt} width={tamanoImagen(modeloPromo.imagen).ancho} height={tamanoImagen(modeloPromo.imagen).alto} loading="lazy" />
+            </a>
+            <div class="promo-modelo-datos">
+              <span class="promo-modelo-etiqueta">{promo.bloque.modelo.etiqueta}</span>
+              <h3><a href={enlace(`/producto/${modeloPromo.slug}`)}>{modeloPromo.nombre}</a></h3>
+              <div class="promo-modelo-precio">
+                <strong>{modeloPromo.precioTexto}</strong>
+                <a href={enlace(`/producto/${modeloPromo.slug}`)}>{sitio.ui.verModelos}</a>
+              </div>
+              <div class="promo-modelo-accion">
+                <label for={idTallaPromo}>{carrito.ui.talla}</label>
+                <select id={idTallaPromo} class="promo-modelo-select">
+                  <option value="">{carrito.ui.elegirTalla}</option>
+                  {modeloPromo.tallas.map((talla) => <option value={talla}>{talla}</option>)}
+                </select>
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  data-agregar={modeloPromo.slug}
+                  data-titulo={modeloPromo.nombre}
+                  data-precio={modeloPromo.precio}
+                  data-imagen={modeloPromo.imagen}
+                  data-talla-select={idTallaPromo}
+                  data-requiere-talla="true"
+                >
+                  {carrito.ui.agregar}
+                </button>
+              </div>
+            </div>
+          </article>
+        ) : (
+          <img src={ruta(promo.bloque.imagen)} alt={promo.bloque.imagenAlt} width={tamanoImagen(promo.bloque.imagen).ancho} height={tamanoImagen(promo.bloque.imagen).alto} loading="lazy" />
+        )}
       </div>
     </div>
   </section>

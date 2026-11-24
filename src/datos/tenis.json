@@ -3,21 +3,21 @@
 
   "meta": {
     "titulo": "Tenis y zapatillas · Calzado Guibol",
-    "descripcion": "Tenis de muestra para el día a día, todos a $200.000. Elige modelo y talla y agrégalos a tu carrito."
+    "descripcion": "Tenis de muestra para el día a día: cinco modelos a $200.000 y el modelo Flash a $150.000. Elige modelo y talla y agrégalos a tu carrito."
   },
 
   "portada": {
     "nombre": "Tenis",
     "titulo": "Tenis para",
     "tituloAcento": "todos los días.",
-    "texto": "Zapatillas para caminar, trabajar y salir sin cambiar de calzado. Cinco modelos de muestra a $200.000.",
+    "texto": "Zapatillas para caminar, trabajar y salir sin cambiar de calzado. Cinco modelos a $200.000 y el modelo Flash a $150.000.",
     "imagen": "/img/tenis-03.webp",
     "imagenAlt": "Primer plano de unas zapatillas blancas"
   },
 
   "modelos": {
     "titulo": "Los modelos de esta línea.",
-    "texto": "Cinco opciones de muestra. Todos a $200.000."
+    "texto": "Seis opciones de muestra: cinco a $200.000 y el modelo Flash a $150.000."
   },
 
   "detalle": {
@@ -26,13 +26,13 @@
     "puntos": [
       { "titulo": "Para uso diario", "texto": "Formas pensadas para el ritmo de todos los días." },
       { "titulo": "Colores neutros", "texto": "Blanco y negro para combinar sin complicaciones." },
-      { "titulo": "Un mismo precio", "texto": "Los cinco modelos de esta línea están a $200.000." }
+      { "titulo": "Dos precios", "texto": "Cinco modelos de esta línea están a $200.000 y el modelo Flash a $150.000." }
     ]
   },
 
   "cierre": {
     "titulo": "¿Prefieres otro estilo?",
-    "texto": "Mira también las líneas elegante y casual, con el mismo precio.",
+    "texto": "Mira también las líneas elegante y casual, con sus precios de muestra.",
     "enlaces": [
       { "texto": "Ver elegante", "href": "/coleccion/elegante" },
       { "texto": "Ver casual", "href": "/coleccion/casual" }

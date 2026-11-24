@@ -1,8 +1,8 @@
 # Calzado Guibol — demo
 
 Sitio de demostración para presentar a Calzado Guibol, fabricante de calzado en cuero.
-Todos los modelos aparecen a **$200.000** y el pedido se coordina por WhatsApp
-(**320 270 6283** en la demo).
+Los 15 modelos originales aparecen a **$200.000** y el Tenis blanco Flash a **$150.000**.
+El pedido se coordina por WhatsApp (**320 270 6283** en la demo).
 
 **No es el sitio definitivo.** Las fotos son de Pexels y los nombres de modelos y tallas son
 de muestra. La lista completa de lo que falta está en
@@ -14,7 +14,7 @@ Demo prevista: `https://demos.emp2web.com/calzadoguibol` (aún no publicada).
 
 - Portada: `/`
 - Colecciones: `/coleccion/elegante`, `/coleccion/tenis`, `/coleccion/casual`
-- 15 fichas de producto: `/producto/<slug>`
+- 16 fichas de producto: `/producto/<slug>`
 - Contacto: `/contacto`
 - Error: `/404`
 
@@ -42,7 +42,7 @@ el diseño y no llevan texto escrito directamente:
 | `sitio.json` | Nombre, WhatsApp, menú, pie y textos de interfaz |
 | `inicio.json` | Portada: hero, precio, colecciones, destacados, pasos y FAQ |
 | `elegante.json`, `tenis.json`, `casual.json` | Textos de cada colección |
-| `productos.json` | Los 15 modelos, slugs, fotos, precios y tallas |
+| `productos.json` | Los 16 modelos, slugs, fotos, precios y tallas |
 | `contacto.json` | Página de contacto |
 | `no-encontrado.json` | Página 404 |
 

@@ -28,7 +28,7 @@ directamente. Están todos en `src/styles/global.css`.
 
 Frases cortas, sin adjetivos de folleto. El precio se dice siempre con cifra y moneda.
 
-1. "Somos fabricantes de calzado en cuero. Tres líneas, un mismo precio: $200.000."
+1. "Somos fabricantes de calzado en cuero. Tres líneas: 15 modelos a $200.000 y el modelo Flash a $150.000."
 2. "Elige un modelo, indícanos tu talla y envíanos el mensaje."
 3. "Las tallas que aparecen son de muestra: confirma disponibilidad por WhatsApp."
 
@@ -38,7 +38,7 @@ fabricante no haya confirmado.
 ## Estilo de imagen
 
 Fotografía de producto con fondo limpio o neutro, luz suave y el zapato como protagonista.
-Las 15 fotos actuales vienen de Pexels (licencia Pexels, uso comercial permitido) y se
+Las 16 fotos actuales vienen de Pexels (licencia Pexels, uso comercial permitido) y se
 guardan en `public/img/`. Cuando el fabricante aporte fotos propias, se reemplazan por el mismo
 nombre de archivo y no hace falta tocar el código.
 
@@ -53,4 +53,4 @@ No hay manual de marca del cliente: ver `conocimiento_generado/PENDIENTES.md`.
 - Razón social / NIT: Calzado Guibol / pendiente
 - WhatsApp: 320 270 6283 (`573202706283` en el enlace)
 - Correo, dirección, ciudad, horario, dominio y redes: pendientes
-- Precio de todos los modelos de muestra: $200.000
+- Precios de muestra: 15 modelos a $200.000 y el Tenis blanco Flash a $150.000

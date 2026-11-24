@@ -3,7 +3,7 @@
 - **Astro 7.0** (sitio estático, sin servidor) + **Tailwind CSS 4.1** (`@tailwindcss/vite`)
 - **Lucide**: subconjunto local de íconos en `public/vendor/lucide/lucide.min.js`
 - **Tipografías**: Fraunces y Manrope, archivos woff2 locales en `src/fonts/`
-- **Fotos**: 15 WebP en `public/img/`, de Pexels, guardadas dentro del sitio
+- **Fotos**: 16 WebP en `public/img/`, de Pexels, guardadas dentro del sitio
 - **Carrito**: lógica propia en `src/scripts/` (sin librerías), guardada en `localStorage`
 - Sin bases de datos, sin API keys, sin formularios con backend
 
@@ -20,7 +20,7 @@ fotos) se referencian desde los `.astro` con `ruta()` para que lleven la base co
 src/datos/            Todo el texto editable (11 archivos JSON)
 src/pages/index.astro                 Inicio
 src/pages/coleccion/[slug].astro      Las 3 colecciones
-src/pages/producto/[slug].astro       Las 15 fichas
+src/pages/producto/[slug].astro       Las 16 fichas
 src/pages/contacto.astro              Contacto
 src/pages/404.astro                   Página no encontrada
 src/layouts/Layout.astro              Menú, pie, tema y panel del carrito

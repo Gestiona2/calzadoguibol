@@ -92,7 +92,7 @@ Nada se pierde de verdad. Todo queda guardado.
 - Agregar o quitar modelos de las colecciones
 - Agregar o quitar preguntas frecuentes y pasos del proceso
 - Cambiar teléfonos, correos, horarios y dirección
-- Cambiar el precio de todos los modelos a la vez
+- Cambiar los precios de muestra (el asistente avisa antes si suben o bajan)
 
 ## Lo que no
 

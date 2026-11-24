@@ -3,7 +3,8 @@
 Todo lo que necesitas saber para manejar tu página. **No hace falta saber nada técnico.**
 
 > Esta es una **demo para presentar el sitio**: las fotos son de Pexels, los nombres de los
-> modelos y las tallas son de muestra, y los 15 modelos cuestan $200.000.
+> modelos y las tallas son de muestra. Hay dos precios de muestra: 15 modelos a $200.000 y
+> el Tenis blanco Flash a $150.000.
 
 ---
 
@@ -100,11 +101,11 @@ y el enlace de WhatsApp para ese modelo.
 
 ## Cambiar el precio
 
-Hoy **todos los modelos cuestan $200.000**. Si pides cambiarlo, el asistente te confirma
-antes si sube o baja, y lo cambia en los 15 modelos a la vez para que no queden precios
-distintos:
+Hoy **15 modelos cuestan $200.000 y el Tenis blanco Flash cuesta $150.000**. Si pides
+cambiar un precio, el asistente te confirma antes si sube o baja y revisa los textos que lo
+mencionan:
 
-> *Cambia el precio de todos los modelos a $210.000*
+> *Cambia el precio de los 15 modelos de $200.000 a $210.000*
 
 > *Está en $200.000 y me pides $190.000: eso lo baja $10.000. ¿Lo hago?*
 
@@ -210,7 +211,7 @@ Estas cosas no están en la demo porque no se inventaron. Cuando las tengas, se 
 | Falta | Para qué |
 |---|---|
 | **Fotos reales del calzado** | Es la mejora más importante: hoy hay fotos de Pexels. |
-| **Nombres reales de los 15 modelos** | Los actuales son descriptivos, inventados para la muestra. |
+| **Nombres reales de los 16 modelos** | Los actuales son descriptivos, inventados para la muestra. |
 | **Tallas reales por modelo** | Hoy se muestran del 38 al 44 en todos. |
 | **WhatsApp definitivo** | Según lo acordado, se usa el 320 270 6283 solo para la demo. |
 | **NIT, correo, dirección, ciudad y horario** | Para la página de contacto y el pie. |

@@ -4,9 +4,11 @@ Este sitio es un **demo para presentar al cliente**. Lo siguiente no es definiti
 
 ## Fotos y nombres de producto
 
-- Las 15 fotos son de **Pexels** (licencia Pexels, uso comercial permitido), no del fabricante.
+- Las 16 fotos son de **Pexels** (licencia Pexels, uso comercial permitido), no del fabricante.
   Están en `public/img/`. Falta que Calzado Guibol aporte fotos propias y revisarlas en pantalla.
-- Los 15 nombres de modelos son descriptivos, inventados para la muestra. Confirmar con el dueño.
+- Los 16 nombres de modelos son descriptivos, inventados para la muestra. Confirmar con el dueño.
+- El **Tenis blanco Flash** se creó para esta demo a petición del dueño. Su nombre, sus
+  tallas y su precio de $150.000 son de muestra: confirmarlos antes de publicar.
 - Las tallas `38` a `44` son de muestra. Confirmar las tallas reales por modelo.
 
 ## Datos del negocio
@@ -37,6 +39,8 @@ Este sitio es un **demo para presentar al cliente**. Lo siguiente no es definiti
 - Los modelos sugeridos dentro del carrito se probaron el 23 nov 2026: se eligen de la misma
   línea del último modelo agregado, se puede elegir talla y agregarlos, y la talla elegida
   se conserva al actualizarse el panel. No hay una lista revisada por el dueño.
+- El Tenis blanco Flash y su precio de $150.000 se agregaron el 23 nov 2026. Falta que una
+  persona mire el bloque de la promo, su ficha y el carrito con ese modelo antes de publicar.
 - Faltan páginas legales (política de privacidad, términos, tratamiento de datos). No se
   inventaron textos legales para el demo; los enlaces del pie se dejaron vacíos a propósito.
 - Publicación sin decidir con el cliente. `astro.config.mjs` apunta a la demo prevista.
@@ -54,6 +58,7 @@ Este sitio es un **demo para presentar al cliente**. Lo siguiente no es definiti
   de pedir. La página de contacto conserva WhatsApp solo para consultas.
 - No se promete envío gratis ni plazo de entrega: las condiciones están sin definir y el
   carrito no escribe esa promesa en el mensaje.
-- La promo Flash no es una oferta: el contador es decorativo, el precio sigue siendo $200.000
-  en los 15 modelos y la nota de la ventana y del bloque lo dice abiertamente.
+- La promo Flash no es una oferta: el contador es decorativo y no baja precios. Muestra el
+  Tenis blanco Flash a $150.000 y recuerda que los otros 15 siguen a $200.000. La nota de la
+  ventana y del bloque lo dice abiertamente.
 - Sin analítica ni formulario con backend: los formularios solo arman mensajes de WhatsApp.

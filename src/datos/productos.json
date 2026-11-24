@@ -1,5 +1,5 @@
 {
-  "_comentario": "Los 15 modelos de muestra. Un objeto por zapato; slug define la dirección /producto/<slug>, categoria debe ser elegante, tenis o casual. Precio y tallas son de demostración. Para agregar un modelo, copiar un objeto y cambiar slug, nombre, imagen y textos.",
+  "_comentario": "Los 16 modelos de muestra: 15 a $200.000 y el Tenis blanco Flash a $150.000. Un objeto por zapato; slug define la dirección /producto/<slug>, categoria debe ser elegante, tenis o casual. Precio y tallas son de demostración. Para agregar un modelo, copiar un objeto y cambiar slug, nombre, imagen y textos.",
   "productos": [
     {
       "slug": "oxford-negro-clasico",
@@ -194,6 +194,19 @@
       "resumen": "Sandalia negra de cuero para días cálidos.",
       "descripcion": "Una sandalia negra de líneas sencillas, pensada para usar con pantalón corto, vestido ligero o ropa de fin de semana.",
       "caracteristicas": ["Cuero negro", "Forma sandalia", "Uso informal"],
+      "tallas": ["38", "39", "40", "41", "42", "43", "44"]
+    },
+    {
+      "slug": "tenis-blanco-flash",
+      "nombre": "Tenis blanco Flash",
+      "categoria": "tenis",
+      "precio": 150000,
+      "precioTexto": "$150.000",
+      "imagen": "/img/tenis-flash.webp",
+      "imagenAlt": "Zapatillas blancas presentadas sobre un sofá de cuero marrón",
+      "resumen": "Tenis blanco de líneas limpias, modelo de la promo Flash de muestra.",
+      "descripcion": "Un tenis blanco de silueta sencilla, fotografiado sobre cuero marrón. Es el modelo de muestra de la promoción Flash y tiene su propio precio dentro del catálogo.",
+      "caracteristicas": ["Color blanco", "Diseño liso", "Modelo Flash"],
       "tallas": ["38", "39", "40", "41", "42", "43", "44"]
     }
   ]

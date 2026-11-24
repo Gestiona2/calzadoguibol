@@ -3,7 +3,7 @@
 
   "meta": {
     "titulo": "Calzado elegante en cuero · Calzado Guibol",
-    "descripcion": "Zapatos de vestir en cuero: Oxford, Derby y formas clásicas. Todos los modelos de muestra a $200.000."
+    "descripcion": "Zapatos de vestir en cuero: Oxford, Derby y formas clásicas. Modelos de muestra a $200.000."
   },
 
   "portada": {
@@ -32,7 +32,7 @@
 
   "cierre": {
     "titulo": "¿Buscas otro estilo?",
-    "texto": "También tenemos líneas de tenis y casual, con el mismo precio.",
+    "texto": "También tenemos líneas de tenis y casual, con sus precios de muestra.",
     "enlaces": [
       { "texto": "Ver tenis", "href": "/coleccion/tenis" },
       { "texto": "Ver casual", "href": "/coleccion/casual" }

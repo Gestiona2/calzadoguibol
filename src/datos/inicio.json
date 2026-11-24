@@ -2,15 +2,15 @@
   "_comentario": "Contenido de la página de inicio, en el orden en que aparece. Los nombres de modelos son de muestra; las fotos vienen de Pexels. Los textos se editan aquí, nunca en el .astro.",
 
   "meta": {
-    "titulo": "Calzado Guibol · Calzado en cuero a $200.000",
-    "descripcion": "Fabricantes de calzado en cuero. Modelos elegantes, tenis y casuales, todos a $200.000. Arma tu carrito y envía un solo pedido."
+    "titulo": "Calzado Guibol · Calzado en cuero desde $150.000",
+    "descripcion": "Fabricantes de calzado en cuero. Modelos elegantes, tenis y casuales: 15 a $200.000 y el modelo Flash a $150.000. Arma tu carrito y envía un solo pedido."
   },
 
   "portada": {
     "etiqueta": "Fabricantes de calzado en cuero",
     "titulo": "Calzado en cuero,",
     "tituloAcento": "para cada día.",
-    "texto": "Somos fabricantes de calzado en cuero. Tres líneas, un mismo precio: $200.000.",
+    "texto": "Somos fabricantes de calzado en cuero. Tres líneas de muestra: 15 modelos a $200.000 y un modelo Flash a $150.000.",
     "botones": [
       { "texto": "Ver las tres líneas", "href": "/#colecciones", "estilo": "btn-primary" },
       { "texto": "Armar mi pedido", "href": "#carrito", "estilo": "btn-outline" }
@@ -19,15 +19,15 @@
     "imagenAlt": "Zapato Oxford de cuero negro sobre fondo neutro",
     "etiquetaImagen": "Cuero · Elegante",
     "precioSello": "$200.000",
-    "precioSelloTexto": "Todos los modelos"
+    "precioSelloTexto": "15 modelos"
   },
 
   "precio": {
-    "titulo": "Un solo precio.",
-    "texto": "Elegante, tenis o casual. Cada modelo de esta muestra tiene el mismo valor: $200.000.",
+    "titulo": "Precios de muestra.",
+    "texto": "Quince modelos de las tres líneas están a $200.000. El Tenis blanco Flash, de la promo, está a $150.000. Elige tus favoritos y junta todo en un solo pedido.",
     "cifra": "200.000",
     "moneda": "$",
-    "detalle": "Precio de demostración para los modelos publicados. Condiciones de envío y pedidos mínimos por confirmar con el fabricante.",
+    "detalle": "Precios de demostración para los modelos publicados. Condiciones de envío y pedidos mínimos por confirmar con el fabricante.",
     "boton": { "texto": "Armar mi pedido", "href": "#carrito" }
   },
 
@@ -87,8 +87,8 @@
     "titulo": "Preguntas frecuentes.",
     "items": [
       {
-        "pregunta": "¿Todos los modelos cuestan $200.000?",
-        "respuesta": "Sí. En esta muestra, los modelos de las tres líneas tienen el mismo precio: $200.000."
+        "pregunta": "¿Cuánto cuestan los modelos?",
+        "respuesta": "En esta muestra, 15 modelos están a $200.000. El Tenis blanco Flash, de la promo, está a $150.000."
       },
       {
         "pregunta": "¿El calzado es de cuero?",
@@ -104,7 +104,7 @@
       },
       {
         "pregunta": "¿Hay descuentos por pedir varios pares?",
-        "respuesta": "No hay una promoción publicada en esta muestra. Puedes juntar varios pares en el carrito y consultar la condición al enviar el pedido."
+        "respuesta": "La promo Flash es de muestra: no aplica descuentos sobre los precios publicados. Puedes juntar varios pares y consultar la condición al enviar el pedido."
       },
       {
         "pregunta": "¿Las fotos son de los productos reales?",

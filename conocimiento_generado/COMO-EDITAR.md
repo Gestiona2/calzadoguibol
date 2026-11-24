@@ -12,14 +12,15 @@ Siempre: cambios en `src/datos/`, mostrar antes de publicar, y esperar aprobaci�
 
 ## Cambiar un precio
 
-Todos los modelos están en **$200.000**, el precio fijado para esta muestra. Si el dueño
-pide otro valor:
+Hay dos precios de muestra: 15 modelos en **$200.000** y el Tenis blanco Flash en
+**$150.000**. Si el dueño pide otro valor:
 
 1. Decir antes: *"Está en $200.000 y me pides $X: eso lo **sube/baja** $Y. ¿Lo hago?"*
-2. Cambiar `precio` y `precioTexto` en cada modelo de `productos.json`.
-3. Cambiar las cifras de `inicio.json` (`portada.precioSello`, `precio.cifra`) y los textos
-   de `elegante.json`, `tenis.json` y `casual.json` que mencionan $200.000.
-4. Mostrar la banda de precio y una ficha antes de publicar.
+2. Cambiar `precio` y `precioTexto` solo en los modelos que corresponda de `productos.json`.
+3. Revisar los textos que mencionan precios: `inicio.json` (`portada.precioSello`, `precio.cifra`
+   y la FAQ), `promo.json`, `sitio.json`, `contacto.json`, `tenis.json`, `elegante.json` y
+   `casual.json`.
+4. Mostrar la banda de precio, la promo y una ficha antes de publicar.
 
 ## Cambiar el nombre de un modelo
 
@@ -32,6 +33,7 @@ El slug no se cambia: es la dirección de la página.
 2. Cambiar `slug`, `nombre`, `categoria`, textos e `imagen`.
 3. Poner la foto en `public/img/` con el mismo nombre que se escribió en `imagen`.
 4. Si debe aparecer en el inicio, agregar el slug a `inicio.json` → `destacados.slugs`.
+5. Si debe salir en la promo Flash, agregar el slug a `promo.json` → `bloque.modelo.slug`.
 
 ## Cambiar una foto
 
@@ -64,7 +66,8 @@ también su versión corta en `ui.faltan`, que es la que aparece en el aviso cua
    cuenta de muestra: **no baja el precio ni crea una oferta real**.
 3. Mostrar la página de inicio: la ventana aparece sola la primera vez, el bloque siempre
    está, y el botón «Ver la promo» vuelve a abrir la ventana.
-4. Si el precio llegara a cambiar, avisar antes: está en $200.000 en los 15 modelos.
+4. Si el precio llegara a cambiar, avisar antes: 15 modelos están a $200.000 y el modelo
+   Flash a $150.000.
 
 ## Cambiar los modelos sugeridos del carrito
 

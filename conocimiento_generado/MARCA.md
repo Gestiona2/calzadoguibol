@@ -30,6 +30,7 @@ Sin logo recibido: se usa el nombre `CALZADO GUIBOL` en Fraunces con el rótulo
 
 ## Tono
 
-Frases cortas y concretas. De tú. El precio siempre con cifra y moneda: `$200.000`.
+Frases cortas y concretas. De tú. El precio siempre con cifra y moneda: `$200.000` o
+`$150.000`, según el modelo.
 No prometer envíos, plazos, descuentos ni tallas disponibles sin confirmación del fabricante.
 El aviso de demo se muestra en el pie hasta que las fotos y los nombres sean definitivos.
