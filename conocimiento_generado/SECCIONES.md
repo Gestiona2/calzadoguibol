@@ -18,8 +18,9 @@ Todo lo que se puede cambiar está en `src/datos/`. Los `.astro` solo pintan eso
 
 Aparece en dos lugares: una ventana emergente la primera vez que se entra al sitio desde un
 navegador, y un bloque siempre visible en el inicio, entre la banda de precio y las colecciones.
-Ambos comparten el mismo contador. No hay descuento: el bloque muestra el modelo
-`tenis-blanco-flash` a $150.000 y los otros 15 siguen a $200.000.
+Ambos comparten el mismo contador y muestran la foto del modelo `tenis-blanco-flash`, que se
+toma de `productos.json`. No hay descuento: ese modelo está a $150.000 y los otros 15 siguen
+a $200.000.
 
 | Sección | Campo | Límites / nota |
 |---|---|---|

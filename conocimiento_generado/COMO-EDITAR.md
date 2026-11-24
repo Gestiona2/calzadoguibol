@@ -62,6 +62,8 @@ también su versión corta en `ui.faltan`, que es la que aparece en el aviso cua
 
 1. `src/datos/promo.json` → textos de `ventana` (la emergente) y `bloque` (el recuadro del
    inicio). El título se parte en `titulo` y `tituloAcento`.
+   La foto sale de `productos.json`: el modelo indicado en `bloque.modelo.slug` se muestra en
+   la ventana y en el bloque. Para cambiarla, cambiar `imagen` en ese modelo.
 2. Para cambiar cuánto dura el contador, cambiar `config.duracionHoras` (hoy 2). Es solo una
    cuenta de muestra: **no baja el precio ni crea una oferta real**.
 3. Mostrar la página de inicio: la ventana aparece sola la primera vez, el bloque siempre

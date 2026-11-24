@@ -40,8 +40,9 @@ promoción Flash en `src/datos/promo.json`.
   los datos de entrega. No hay botón de WhatsApp por producto.
 - Ver sugerencias de otros modelos dentro del carrito y agregarlas eligiendo talla.
 - Ver la promoción Flash en una ventana al entrar por primera vez, y volver a abrirla desde
-  el bloque del inicio. El bloque muestra el Tenis blanco Flash a $150.000 y permite elegir
-  talla y agregarlo al pedido. El contador es de muestra: no hay descuento real.
+  el bloque del inicio. La ventana y el bloque muestran la foto del Tenis blanco Flash a
+  $150.000; el bloque además permite elegir talla y agregarlo al pedido. El contador es de
+  muestra: no hay descuento real.
 - Escribir un mensaje desde la página de contacto: se abre WhatsApp con el texto listo.
 - Cambiar entre tema claro y oscuro (se recuerda en ese navegador).
 

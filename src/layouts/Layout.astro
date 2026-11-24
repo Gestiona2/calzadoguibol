@@ -9,6 +9,7 @@ import carrito from "../datos/carrito.json";
 import promo from "../datos/promo.json";
 import catalogo from "../datos/productos.json";
 import { enlace, ruta } from "../lib/ruta.js";
+import { tamanoImagen } from "../lib/imagenes.js";
 
 interface Props {
   titulo: string;
@@ -22,6 +23,11 @@ const sugerenciasCatalogo = catalogo.productos.map(
   ({ slug, nombre, categoria, precio, imagen, tallas }) => ({
     slug, nombre, categoria, precio, imagen, tallas,
   })
+);
+
+/* La misma foto del bloque del inicio, para la ventana de la promo. */
+const modeloPromo = catalogo.productos.find(
+  (p) => p.slug === promo.bloque.modelo?.slug
 );
 ---
 
@@ -117,6 +123,11 @@ const sugerenciasCatalogo = catalogo.productos.map(
         <span class="etiqueta">{promo.ventana.etiqueta}</span>
         <h2 id="promoTitulo">{promo.ventana.titulo}<span>{promo.ventana.tituloAcento}</span></h2>
         <p id="promoTexto">{promo.ventana.texto}</p>
+        {modeloPromo && (
+          <figure class="promo-modal-foto">
+            <img src={ruta(modeloPromo.imagen)} alt={modeloPromo.imagenAlt} width={tamanoImagen(modeloPromo.imagen).ancho} height={tamanoImagen(modeloPromo.imagen).alto} loading="eager" />
+          </figure>
+        )}
         <div class="promo-cuenta">
           <span>{promo.ventana.cuentaEtiqueta}</span>
           <strong data-promo-cuenta>--:--:--</strong>
