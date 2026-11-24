@@ -1,0 +1,32 @@
+{
+  "_comentario": "Textos de la promoción Flash: aparece una vez por navegador como ventana emergente y siempre como bloque en el inicio. No hay descuento real: el precio sigue siendo $200.000. duracionHoras define el contador de muestra y claveVista recuerda que ya se mostró. Todo se edita aquí, nunca en los archivos de diseño.",
+
+  "config": {
+    "duracionHoras": 2,
+    "claveVista": "calzado-guibol-promo-vista"
+  },
+
+  "ventana": {
+    "etiqueta": "Promo Flash",
+    "titulo": "Un solo precio,",
+    "tituloAcento": "por tiempo limitado.",
+    "texto": "Los 15 modelos de muestra cuestan $200.000. Elige tus favoritos, agrégalos al carrito y envía un solo pedido.",
+    "cuentaEtiqueta": "Termina en",
+    "boton": { "texto": "Ver los modelos", "href": "/coleccion/elegante" },
+    "cerrar": "Cerrar promoción",
+    "nota": "Demostración: sin descuento, envío gratis ni plazos. Precio fijo de $200.000."
+  },
+
+  "bloque": {
+    "etiqueta": "Promo Flash",
+    "titulo": "Todos los modelos,",
+    "tituloAcento": "un solo precio.",
+    "texto": "Elegante, tenis y casual a $200.000. Arma tu carrito con varios pares y envía un pedido completo.",
+    "cuentaEtiqueta": "Termina en",
+    "boton": { "texto": "Armar mi pedido", "href": "#carrito" },
+    "reabrir": "Ver la promo",
+    "nota": "Promoción de muestra para presentación. Sin descuentos ni promesas de entrega.",
+    "imagen": "/img/tenis-03.webp",
+    "imagenAlt": "Primer plano de unas zapatillas blancas de cuero"
+  }
+}

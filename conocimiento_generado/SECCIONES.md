@@ -14,6 +14,21 @@ Todo lo que se puede cambiar está en `src/datos/`. Los `.astro` solo pintan eso
 | Mensajes | `mensajes` | Textos que se abren en WhatsApp desde la página de contacto. Los campos `{nombre}` y `{mensaje}` se rellenan solos: no borrarlos. El mensaje del pedido se arma en `carrito.json`, no aquí |
 | Enlace de salto | `ui.saltarContenido` | Texto del enlace que aparece al recorrer la página con Tab. No cambiar su destino (`#contenido`) |
 
+## Promo Flash — `promo.json`
+
+Aparece en dos lugares: una ventana emergente la primera vez que se entra al sitio desde un
+navegador, y un bloque siempre visible en el inicio, entre la banda de precio y las colecciones.
+Ambos comparten el mismo contador. No hay descuento: el precio sigue siendo $200.000.
+
+| Sección | Campo | Límites / nota |
+|---|---|---|
+| Ventana emergente | `ventana.titulo`, `tituloAcento`, `texto` | El título va en dos líneas. La nota debe dejar claro que es demostración |
+| Ventana emergente | `ventana.boton` | Texto y destino del botón; sale de la ventana hacia una colección |
+| Ventana emergente | `ventana.cerrar` | Etiqueta del botón de cerrar, para lectores de pantalla |
+| Bloque del inicio | `bloque.*` | Incluye imagen, textos y el botón «Ver la promo», que vuelve a abrir la ventana |
+| Contador | `config.duracionHoras` | Hoy 2. Es de muestra: cambiarlo no cambia el precio ni crea una oferta real |
+| Recuerdo | `config.claveVista` | El navegador guarda aquí que ya vio la ventana. No cambiar sin necesidad |
+
 ## Carrito y pedido — `carrito.json`
 
 Todo lo que se ve en el panel del carrito y en el pedido final. El número de WhatsApp y el
@@ -28,6 +43,12 @@ nombre del negocio salen de `sitio.json`; aquí no se repiten.
 | Formulario | `ui.formularioTitulo`, `nombre`, `telefono`, `ciudad`, `nota` y sus `...Placeholder` | Solo se piden nombre, teléfono y ciudad. La nota es opcional. No agregar campos nuevos sin tocar el formulario |
 | Envío del pedido | `ui.enviar`, `notaEnvio`, `demo`, `enviado` | `enviado` es el aviso después de abrir WhatsApp |
 | Validación | `ui.falta`, `faltan` | `faltan` tiene `nombre`, `telefono` y `ciudad`; deben coincidir con los campos del formulario |
+| Sugerencias | `config.sugerenciasLimite` | Cuántos modelos se muestran al final del panel. Hoy 3 |
+| Sugerencias | `ui.sugerenciasTitulo`, `sugerenciasTexto`, `sugerenciasAgregar`, `sugerenciasVacio` | Textos del bloque «También te puede gustar». Los modelos no se escriben aquí: se eligen solos |
+
+Los modelos sugeridos salen de `productos.json`: primero los de la misma línea del último
+modelo agregado, sin repetir los que ya están en el pedido; si faltan, se completan con otras
+líneas. Cada sugerencia lleva su selector de talla y su botón de agregar.
 
 ## Inicio — `inicio.json`
 

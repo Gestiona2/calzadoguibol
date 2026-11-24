@@ -56,6 +56,24 @@ número de WhatsApp **no** se cambian aquí: salen de `sitio.json`.
 Si se cambia el texto de un campo obligatorio (`nombre`, `telefono`, `ciudad`), cambiar
 también su versión corta en `ui.faltan`, que es la que aparece en el aviso cuando falta.
 
+## Cambiar la promo Flash
+
+1. `src/datos/promo.json` → textos de `ventana` (la emergente) y `bloque` (el recuadro del
+   inicio). El título se parte en `titulo` y `tituloAcento`.
+2. Para cambiar cuánto dura el contador, cambiar `config.duracionHoras` (hoy 2). Es solo una
+   cuenta de muestra: **no baja el precio ni crea una oferta real**.
+3. Mostrar la página de inicio: la ventana aparece sola la primera vez, el bloque siempre
+   está, y el botón «Ver la promo» vuelve a abrir la ventana.
+4. Si el precio llegara a cambiar, avisar antes: está en $200.000 en los 15 modelos.
+
+## Cambiar los modelos sugeridos del carrito
+
+1. No hay una lista fija que editar: se eligen solos los modelos de la misma línea del último
+   que se agregó, sin repetir los que ya están en el pedido.
+2. Para cambiar cuántos aparecen: `src/datos/carrito.json` → `config.sugerenciasLimite` (hoy 3).
+3. Para cambiar lo que dice el bloque: los campos `sugerencias...` de ese mismo archivo.
+4. Mostrar el carrito vacío y con productos; comprobar que se puede elegir talla y agregar.
+
 ## Cambiar el nombre que aparece en el pedido
 
 El mensaje de WhatsApp empieza con «Nuevo pedido — [nombre]». Ese nombre sale de

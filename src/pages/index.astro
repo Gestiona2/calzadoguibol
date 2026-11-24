@@ -7,6 +7,7 @@ import TarjetaProducto from "../components/TarjetaProducto.astro";
 import datos from "../datos/inicio.json";
 import sitio from "../datos/sitio.json";
 import catalogo from "../datos/productos.json";
+import promo from "../datos/promo.json";
 import { enlace, ruta } from "../lib/ruta.js";
 import { tamanoImagen } from "../lib/imagenes.js";
 
@@ -49,6 +50,28 @@ const modelos = destacados.slugs
       </div>
       <div class="boton-band aparece"><a href={enlace(precio.boton.href)} class="btn btn-claro">{precio.boton.texto}</a></div>
       <p class="detalle">{precio.detalle}</p>
+    </div>
+  </section>
+
+  <section class="promo-bloque" id="promo" aria-labelledby="promoBloqueTitulo">
+    <div class="container promo-bloque-grid">
+      <div class="promo-bloque-texto aparece">
+        <span class="etiqueta">{promo.bloque.etiqueta}</span>
+        <h2 id="promoBloqueTitulo">{promo.bloque.titulo}<span>{promo.bloque.tituloAcento}</span></h2>
+        <p>{promo.bloque.texto}</p>
+        <div class="promo-cuenta">
+          <span>{promo.bloque.cuentaEtiqueta}</span>
+          <strong data-promo-cuenta>--:--:--</strong>
+        </div>
+        <div class="promo-bloque-acciones">
+          <a href={enlace(promo.bloque.boton.href)} class="btn btn-claro">{promo.bloque.boton.texto}</a>
+          <button type="button" class="btn btn-promocontorno" data-abrir-promo>{promo.bloque.reabrir}</button>
+        </div>
+        <p class="promo-nota">{promo.bloque.nota}</p>
+      </div>
+      <div class="promo-bloque-visual aparece">
+        <img src={ruta(promo.bloque.imagen)} alt={promo.bloque.imagenAlt} width={tamanoImagen(promo.bloque.imagen).ancho} height={tamanoImagen(promo.bloque.imagen).alto} loading="lazy" />
+      </div>
     </div>
   </section>
 

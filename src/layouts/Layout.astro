@@ -6,6 +6,8 @@
 import "../styles/global.css";
 import sitio from "../datos/sitio.json";
 import carrito from "../datos/carrito.json";
+import promo from "../datos/promo.json";
+import catalogo from "../datos/productos.json";
 import { enlace, ruta } from "../lib/ruta.js";
 
 interface Props {
@@ -14,6 +16,13 @@ interface Props {
   activa?: string;
 }
 const { titulo, descripcion = sitio.descripcion, activa = "" } = Astro.props;
+
+/* Solo lo que el panel del carrito necesita para sugerir modelos. */
+const sugerenciasCatalogo = catalogo.productos.map(
+  ({ slug, nombre, categoria, precio, imagen, tallas }) => ({
+    slug, nombre, categoria, precio, imagen, tallas,
+  })
+);
 ---
 
 <!doctype html>
@@ -89,6 +98,36 @@ const { titulo, descripcion = sitio.descripcion, activa = "" } = Astro.props;
       </div>
     </footer>
 
+    <div class="promo-fondo" id="promoFondo" hidden></div>
+
+    <div
+      class="promo-modal"
+      id="promoModal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="promoTitulo"
+      aria-describedby="promoTexto"
+      hidden
+      data-promo={JSON.stringify(promo)}
+    >
+      <button type="button" class="icono-boton promo-cerrar" id="cerrarPromo" aria-label={promo.ventana.cerrar}>
+        <i data-lucide="x"></i>
+      </button>
+      <div class="promo-modal-cuerpo">
+        <span class="etiqueta">{promo.ventana.etiqueta}</span>
+        <h2 id="promoTitulo">{promo.ventana.titulo}<span>{promo.ventana.tituloAcento}</span></h2>
+        <p id="promoTexto">{promo.ventana.texto}</p>
+        <div class="promo-cuenta">
+          <span>{promo.ventana.cuentaEtiqueta}</span>
+          <strong data-promo-cuenta>--:--:--</strong>
+        </div>
+        <a href={enlace(promo.ventana.boton.href)} class="btn btn-primary">
+          {promo.ventana.boton.texto} <i data-lucide="arrow-right"></i>
+        </a>
+        <p class="promo-nota">{promo.ventana.nota}</p>
+      </div>
+    </div>
+
     <div class="carrito-fondo" id="carritoFondo" hidden></div>
 
     <aside
@@ -102,6 +141,8 @@ const { titulo, descripcion = sitio.descripcion, activa = "" } = Astro.props;
       data-whatsapp={sitio.whatsapp}
       data-negocio={sitio.nombre}
       data-textos={JSON.stringify(carrito.ui)}
+      data-catalogo={JSON.stringify(sugerenciasCatalogo)}
+      data-config={JSON.stringify(carrito.config)}
     >
       <div class="carrito-cabecera">
         <h2 id="carritoTitulo">{carrito.ui.titulo}</h2>
@@ -198,6 +239,7 @@ const { titulo, descripcion = sitio.descripcion, activa = "" } = Astro.props;
     </script>
     <script>
       import "../scripts/carrito.js";
+      import "../scripts/promo.js";
     </script>
   </body>
 </html>

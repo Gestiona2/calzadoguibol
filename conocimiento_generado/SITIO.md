@@ -17,7 +17,7 @@ fotografías son de muestra; las fotos son de Pexels y están guardadas dentro d
 
 | Dirección | Qué muestra | Archivo de datos |
 |---|---|---|
-| `/` | Inicio: precio, tres líneas, seis modelos destacados, cómo pedir, preguntas | `src/datos/inicio.json` |
+| `/` | Inicio: precio, promo Flash, tres líneas, seis modelos destacados, cómo pedir, preguntas | `src/datos/inicio.json` y `src/datos/promo.json` |
 | `/coleccion/elegante` | Línea elegante, 5 modelos | `src/datos/elegante.json` |
 | `/coleccion/tenis` | Línea tenis, 5 modelos | `src/datos/tenis.json` |
 | `/coleccion/casual` | Línea casual, 5 modelos | `src/datos/casual.json` |
@@ -26,7 +26,8 @@ fotografías son de muestra; las fotos son de Pexels y están guardadas dentro d
 | `/404` | Página cuando una dirección no existe | `src/datos/no-encontrado.json` |
 
 Los datos compartidos (nombre, menú, WhatsApp, etiquetas de botones y mensajes) están en
-`src/datos/sitio.json`. Los textos del carrito están en `src/datos/carrito.json`.
+`src/datos/sitio.json`. Los textos del carrito están en `src/datos/carrito.json` y los de la
+promoción Flash en `src/datos/promo.json`.
 
 ## Qué se puede hacer en el sitio
 
@@ -36,6 +37,9 @@ Los datos compartidos (nombre, menú, WhatsApp, etiquetas de botones y mensajes)
 - El carrito se guarda en ese navegador: no se pierde al cambiar de página ni al volver.
 - Enviar un **solo pedido por WhatsApp** con todos los modelos, tallas, cantidades, total y
   los datos de entrega. No hay botón de WhatsApp por producto.
+- Ver sugerencias de otros modelos dentro del carrito y agregarlas eligiendo talla.
+- Ver la promoción Flash en una ventana al entrar por primera vez, y volver a abrirla desde
+  el bloque del inicio. El contador es de muestra: no hay descuento real.
 - Escribir un mensaje desde la página de contacto: se abre WhatsApp con el texto listo.
 - Cambiar entre tema claro y oscuro (se recuerda en ese navegador).
 

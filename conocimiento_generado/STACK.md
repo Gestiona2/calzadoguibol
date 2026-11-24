@@ -17,7 +17,7 @@ fotos) se referencian desde los `.astro` con `ruta()` para que lleven la base co
 ## Dónde está cada cosa
 
 ```
-src/datos/            Todo el texto editable (10 archivos JSON)
+src/datos/            Todo el texto editable (11 archivos JSON)
 src/pages/index.astro                 Inicio
 src/pages/coleccion/[slug].astro      Las 3 colecciones
 src/pages/producto/[slug].astro       Las 15 fichas
@@ -25,7 +25,8 @@ src/pages/contacto.astro              Contacto
 src/pages/404.astro                   Página no encontrada
 src/layouts/Layout.astro              Menú, pie, tema y panel del carrito
 src/components/TarjetaProducto.astro  Tarjeta de modelo con talla y botón de agregar
-src/scripts/carrito.js                Panel, cantidades, formulario y cierre del pedido
+src/scripts/carrito.js                Panel, cantidades, sugerencias, formulario y cierre del pedido
+src/scripts/promo.js                  Ventana emergente, reapertura y contador de muestra
 src/scripts/pedido.js                 Sumas, tallas y mensaje de WhatsApp (sin pantalla)
 src/scripts/formato.js                Precios en pesos colombianos
 src/lib/ruta.js                       Enlaces y rutas con la base del sitio
@@ -55,3 +56,9 @@ para que las fotos del pedido carguen igual en la demo que en un dominio propio.
 prueban sin navegador. `carrito.js` solo pinta y recoge lo que la persona escribe. El
 carrito se guarda en `localStorage` bajo la clave `calzado-guibol-pedido`; si el navegador
 lo bloquea, el carrito sigue funcionando durante la visita.
+
+**Sugerencias y promo:** el panel del carrito recibe un catálogo compacto desde
+`Layout.astro` y elige los modelos sugeridos en el navegador, sin guardarlos en ningún
+servidor. La ventana Flash se recuerda en `localStorage` bajo `calzado-guibol-promo-vista`
+(contiene la hora de fin del contador); el contador se reinicia sola al vencerse y nunca
+modifica los precios. Si se quiere ver la ventana otra vez desde cero, borrar esa clave.

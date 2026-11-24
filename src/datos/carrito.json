@@ -1,5 +1,9 @@
 {
-  "_comentario": "Todos los textos del carrito y del pedido. Si cambia el número de WhatsApp, se toma de sitio.json; aquí no se repite. El aviso de demo recuerda que no hay servidor.",
+  "_comentario": "Todos los textos del carrito y del pedido. Si cambia el número de WhatsApp, se toma de sitio.json; aquí no se repite. El aviso de demo recuerda que no hay servidor. Los modelos sugeridos se eligen solos: primero de la misma línea del último modelo agregado, sin repetir los que ya están en el pedido.",
+
+  "config": {
+    "sugerenciasLimite": 3
+  },
 
   "ui": {
     "abrirCarrito": "Abrir carrito",
@@ -40,6 +44,10 @@
       "telefono": "tu teléfono",
       "ciudad": "tu ciudad"
     },
-    "enviado": "Pedido listo. Revisa WhatsApp."
+    "enviado": "Pedido listo. Revisa WhatsApp.",
+    "sugerenciasTitulo": "También te puede gustar",
+    "sugerenciasTexto": "Otras opciones de la misma línea para sumar a tu pedido.",
+    "sugerenciasAgregar": "Agregar",
+    "sugerenciasVacio": "Ya no hay más modelos para sugerir."
   }
 }

@@ -49,6 +49,23 @@ export function montarCarrito() {
   const conBase = (ruta) =>
     `${base.replace(/\/$/, "")}/${String(ruta).replace(/^\//, "")}`;
 
+  let catalogo = [];
+  try {
+    catalogo = JSON.parse(panel.dataset.catalogo || "[]");
+  } catch {
+    /* sin catálogo no hay sugerencias; el pedido sigue funcionando */
+  }
+  let configuracion = {};
+  try {
+    configuracion = JSON.parse(panel.dataset.config || "{}");
+  } catch {
+    /* sin configuración se usa el límite por defecto */
+  }
+  const limiteSugerencias = Number(configuracion.sugerenciasLimite) > 0
+    ? Number(configuracion.sugerenciasLimite)
+    : 3;
+  const tallasSugeridas = new Map();
+
   const fondo = document.getElementById("carritoFondo");
   const botonAbrir = document.getElementById("abrirCarrito");
   const globo = document.getElementById("contadorCarrito");
@@ -84,9 +101,76 @@ export function montarCarrito() {
     return Object.fromEntries(new FormData(formulario));
   }
 
+  function leerTallasSugeridas() {
+    cuerpo.querySelectorAll("[data-sugerencia-talla]").forEach((seleccion) => {
+      tallasSugeridas.set(seleccion.dataset.sugerenciaTalla, seleccion.value);
+    });
+  }
+
+  function modelosSugeridos(p) {
+    const enPedido = new Set(p.lineas().map((linea) => linea.slug));
+    const ultima = p.lineas()[p.lineas().length - 1];
+    const categoria = catalogo.find((modelo) => modelo.slug === ultima?.slug)?.categoria || "";
+    const disponibles = catalogo.filter((modelo) => !enPedido.has(modelo.slug));
+    return [
+      ...disponibles.filter((modelo) => modelo.categoria === categoria),
+      ...disponibles.filter((modelo) => modelo.categoria !== categoria),
+    ].slice(0, limiteSugerencias);
+  }
+
+  function pintarSugerencias(p) {
+    if (!catalogo.length) return "";
+    const modelos = modelosSugeridos(p);
+    const lista = modelos.length === 0
+      ? `<p class="carrito-sugerencias-vacio">${escapar(t("sugerenciasVacio"))}</p>`
+      : `<div class="carrito-sugerencias-lista">
+          ${modelos
+            .map((modelo) => {
+              const id = `sugerencia-talla-${modelo.slug}`;
+              const elegida = tallasSugeridas.get(modelo.slug) || "";
+              return `
+            <article class="sugerencia">
+              <img src="${conBase(modelo.imagen)}" alt="" width="56" height="56" loading="lazy">
+              <div class="sugerencia-datos">
+                <a class="sugerencia-nombre" href="${conBase(`/producto/${modelo.slug}`)}" data-cerrar-carrito>${escapar(modelo.nombre)}</a>
+                <span class="sugerencia-precio">${escapar(pesos(modelo.precio))}</span>
+                <div class="sugerencia-accion">
+                  <select id="${id}" class="sugerencia-talla" data-sugerencia-talla="${escapar(modelo.slug)}"
+                          aria-label="${escapar(t("talla"))}: ${escapar(modelo.nombre)}">
+                    <option value="">${escapar(t("elegirTalla"))}</option>
+                    ${(modelo.tallas || [])
+                      .map((talla) => `<option value="${escapar(talla)}"${talla === elegida ? " selected" : ""}>${escapar(talla)}</option>`)
+                      .join("")}
+                  </select>
+                  <button type="button" class="btn btn-primary sugerencia-boton"
+                          data-agregar="${escapar(modelo.slug)}"
+                          data-titulo="${escapar(modelo.nombre)}"
+                          data-precio="${Number(modelo.precio)}"
+                          data-imagen="${escapar(modelo.imagen)}"
+                          data-talla-select="${id}"
+                          data-requiere-talla="true"
+                          aria-label="${escapar(t("agregar"))}: ${escapar(modelo.nombre)}">
+                    ${escapar(t("sugerenciasAgregar"))}
+                  </button>
+                </div>
+              </div>
+            </article>`;
+            })
+            .join("")}
+        </div>`;
+
+    return `
+      <section class="carrito-sugerencias" aria-labelledby="sugerenciasTitulo">
+        <h3 id="sugerenciasTitulo">${escapar(t("sugerenciasTitulo"))}</h3>
+        <p>${escapar(t("sugerenciasTexto"))}</p>
+        ${lista}
+      </section>`;
+  }
+
   function pintarPanel(p) {
     const lineas = p.lineas();
     const previos = leerFormulario();
+    leerTallasSugeridas();
 
     if (lineas.length === 0) {
       cuerpo.innerHTML = `
@@ -94,7 +178,8 @@ export function montarCarrito() {
           <p>${escapar(t("vacio"))}</p>
           <p class="carrito-vacio-texto">${escapar(t("vacioTexto"))}</p>
           <a class="btn btn-primary" href="${conBase("/coleccion/elegante")}" data-cerrar-carrito>${escapar(t("verModelos"))}</a>
-        </div>`;
+        </div>
+        ${pintarSugerencias(p)}`;
       return;
     }
 
@@ -150,7 +235,8 @@ export function montarCarrito() {
           <p class="carrito-nota">${escapar(t("notaEnvio"))}</p>
           <p class="carrito-nota">${escapar(t("demo"))}</p>
         </div>
-      </form>`;
+      </form>
+      ${pintarSugerencias(p)}`;
 
     cuerpo.querySelector("#formPedido")?.addEventListener("submit", enviarPedido);
   }
@@ -238,6 +324,9 @@ export function montarCarrito() {
   fondo?.addEventListener("click", cerrar);
 
   document.addEventListener("keydown", (evento) => {
+    const modalPromo = document.getElementById("promoModal");
+    if (modalPromo && modalPromo.classList.contains("abierto")) return;
+
     if (evento.key === "Escape" && !panel.hidden) {
       cerrar();
       return;

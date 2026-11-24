@@ -441,6 +441,94 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .aviso-carrito.visible { opacity: 1; transform: translate(-50%, 0); }
 
 /* ============================================================
+   PROMO FLASH — ventana emergente y bloque del inicio
+   ============================================================ */
+.promo-fondo {
+  position: fixed; inset: 0; z-index: 90;
+  background: rgba(12, 9, 7, .62); backdrop-filter: blur(3px);
+}
+.promo-modal {
+  position: fixed; left: 50%; top: 50%; z-index: 91;
+  width: min(100% - 32px, 540px); max-height: min(90vh, 720px);
+  overflow-y: auto; background: var(--surface); color: var(--text);
+  border: 1px solid var(--border); box-shadow: 0 24px 70px rgba(0, 0, 0, .38);
+  transform: translate(-50%, -48%) scale(.98); opacity: 0;
+  transition: opacity .24s ease, transform .24s ease;
+}
+.promo-modal.abierto { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+.promo-cerrar { position: absolute; top: 14px; right: 14px; z-index: 1; }
+.promo-modal-cuerpo { padding: 42px 36px 34px; }
+.promo-modal h2 { font-size: clamp(2rem, 5vw, 2.9rem); margin: 12px 0 16px; padding-right: 32px; }
+.promo-modal h2 span { display: block; color: var(--marca); }
+.promo-modal-cuerpo > p { color: var(--text-soft); }
+.promo-cuenta {
+  display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap;
+  padding: 16px 0; margin: 24px 0;
+  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+}
+.promo-cuenta span {
+  font-size: .68rem; font-weight: 800; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--text-muted);
+}
+.promo-cuenta strong {
+  font-family: var(--font-display); font-size: 1.9rem; line-height: 1;
+  color: var(--marca); font-variant-numeric: tabular-nums;
+}
+.promo-nota { font-size: .72rem; color: var(--text-muted); line-height: 1.5; margin-top: 18px; }
+
+.promo-bloque { background: var(--marca); color: var(--sobre-marca); border: 0; }
+.promo-bloque-grid {
+  display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px;
+  align-items: center; padding-top: 76px; padding-bottom: 76px;
+}
+.promo-bloque .etiqueta { color: var(--sobre-marca); }
+.promo-bloque h2 { font-size: clamp(2.2rem, 4.6vw, 3.9rem); margin: 12px 0 18px; }
+.promo-bloque h2 span { display: block; color: var(--sobre-marca); }
+.promo-bloque-texto > p { color: var(--sobre-marca); max-width: 48ch; }
+.promo-bloque .promo-cuenta { border-color: rgba(255, 255, 255, .4); }
+.promo-bloque .promo-cuenta span,
+.promo-bloque .promo-cuenta strong { color: var(--sobre-marca); }
+.promo-bloque-acciones { display: flex; flex-wrap: wrap; gap: 12px; }
+.promo-bloque .btn-claro { background: var(--sobre-marca); color: var(--marca); }
+.promo-bloque .btn-claro:hover { background: var(--claro); color: var(--oscuro); }
+.btn-promocontorno {
+  background: transparent; color: var(--sobre-marca);
+  border-color: rgba(255, 255, 255, .6);
+}
+.btn-promocontorno:hover { background: var(--sobre-marca); color: var(--marca); }
+.promo-bloque .promo-nota { color: var(--sobre-marca); opacity: .88; }
+.promo-bloque-visual {
+  aspect-ratio: 4 / 3.4; overflow: hidden; background: var(--sobre-marca);
+  border: 8px solid rgba(255, 255, 255, .2);
+}
+.promo-bloque-visual img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Sugerencias dentro del panel del carrito */
+.carrito-sugerencias {
+  border-top: 1px solid var(--border); margin-top: 28px; padding-top: 22px;
+}
+.carrito-sugerencias h3 { font-size: 1.22rem; margin-bottom: 4px; }
+.carrito-sugerencias > p { font-size: .78rem; color: var(--text-muted); margin-bottom: 12px; }
+.carrito-sugerencias-vacio { font-size: .82rem; color: var(--text-soft); }
+.sugerencia {
+  display: grid; grid-template-columns: 56px 1fr; gap: 12px;
+  align-items: center; padding: 12px 0; border-bottom: 1px solid var(--border);
+}
+.sugerencia:last-child { border-bottom: 0; }
+.sugerencia img { width: 56px; height: 56px; object-fit: cover; background: var(--surface-2); }
+.sugerencia-datos { min-width: 0; display: flex; flex-direction: column; gap: 5px; }
+.sugerencia-nombre { font-size: .86rem; font-weight: 700; }
+.sugerencia-nombre:hover { color: var(--marca); text-decoration: underline; }
+.sugerencia-precio { font-size: .8rem; color: var(--marca); font-variant-numeric: tabular-nums; }
+.sugerencia-accion { display: flex; gap: 8px; align-items: stretch; }
+.sugerencia-talla {
+  flex: 1; min-width: 0; padding: 8px; border: 1px solid var(--border-strong);
+  background: var(--bg); color: var(--text); font-family: var(--font-body);
+  font-size: .78rem; border-radius: 2px;
+}
+.sugerencia-boton { padding: 8px 10px; font-size: .72rem; }
+
+/* ============================================================
    APARICIONES SUAVES (IntersectionObserver, sin ocultar si falla JS)
    ============================================================ */
 .js .aparece { opacity: 0; transform: translateY(22px); transition: opacity .65s ease, transform .65s cubic-bezier(.2,.7,.2,1); }
@@ -467,6 +555,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .nav-links a { padding: 12px 0; border-bottom: 1px solid var(--border); }
   #botonMenu { display: grid; }
   .portada-grid, .fila-coleccion, .ficha, .contacto-grid { grid-template-columns: 1fr; }
+  .promo-bloque-grid { gap: 32px; }
   .fila-coleccion.impar .fila-img { order: 0; }
   .grilla-productos { grid-template-columns: repeat(2, 1fr); }
   .portada { padding-top: 30px; }
@@ -504,4 +593,14 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .tarjeta-talla { flex-basis: 70px; }
   .btn-agregar { flex: 1; }
   .aviso-carrito { bottom: 14px; }
+
+  .promo-modal { width: calc(100% - 24px); max-height: calc(100vh - 32px); }
+  .promo-modal-cuerpo { padding: 34px 22px 26px; }
+  .promo-cerrar { top: 10px; right: 10px; }
+  .promo-cuenta strong { font-size: 1.6rem; }
+  .promo-bloque-grid { grid-template-columns: 1fr; gap: 28px; padding-top: 52px; padding-bottom: 52px; }
+  .promo-bloque-visual { aspect-ratio: 4 / 2.6; border-width: 5px; }
+  .promo-bloque-acciones .btn { flex: 1 1 auto; }
+  .sugerencia { grid-template-columns: 48px 1fr; gap: 10px; }
+  .sugerencia img { width: 48px; height: 48px; }
 }
