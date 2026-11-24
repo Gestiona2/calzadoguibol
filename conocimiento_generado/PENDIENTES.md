@@ -21,6 +21,9 @@ Este sitio es un **demo para presentar al cliente**. Lo siguiente no es definiti
 
 - Falta revisión visual en 320, 375 y 390 px y en tema oscuro con una persona mirando (Fase 5.5
   del generador). Quien construyó el sitio no puede ver el renderizado.
+- Auditoría técnica hecha el 22 nov 2026: contraste en claro y oscuro, foco de teclado,
+  tamaños 390/768/1440 px y pruebas automáticas de accesibilidad, SEO y buenas prácticas
+  (100 en las tres, sin avisos). Esto **no sustituye** la revisión de una persona mirando.
 - Faltan páginas legales (política de privacidad, términos, tratamiento de datos). No se
   inventaron textos legales para el demo; los enlaces del pie se dejaron vacíos a propósito.
 - Publicación sin decidir con el cliente. `astro.config.mjs` apunta a la demo prevista.

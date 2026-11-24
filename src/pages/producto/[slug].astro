@@ -5,6 +5,7 @@ import TarjetaProducto from "../../components/TarjetaProducto.astro";
 import sitio from "../../datos/sitio.json";
 import catalogo from "../../datos/productos.json";
 import { enlace, ruta, whatsapp } from "../../lib/ruta.js";
+import { tamanoImagen } from "../../lib/imagenes.js";
 
 export function getStaticPaths() {
   return catalogo.productos.map((producto) => ({
@@ -42,7 +43,7 @@ const enlacePedido = whatsapp(sitio.whatsapp, mensaje);
 
     <div class="ficha">
       <div class="ficha-img aparece">
-        <img src={ruta(producto.imagen)} alt={producto.imagenAlt} loading="eager" />
+        <img src={ruta(producto.imagen)} alt={producto.imagenAlt} width={tamanoImagen(producto.imagen).ancho} height={tamanoImagen(producto.imagen).alto} loading="eager" fetchpriority="high" />
       </div>
 
       <div class="ficha-info aparece">

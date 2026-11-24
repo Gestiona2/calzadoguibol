@@ -2,6 +2,7 @@
 /** Tarjeta de un modelo. No contiene texto propio: todo viene de los datos. */
 import sitio from "../datos/sitio.json";
 import { enlace, ruta } from "../lib/ruta.js";
+import { tamanoImagen } from "../lib/imagenes.js";
 
 interface Props { producto: any; }
 const { producto } = Astro.props;
@@ -10,7 +11,7 @@ const categoria = sitio.menu.find((m) => m.id === producto.categoria);
 
 <a class="tarjeta-producto aparece" href={enlace(`/producto/${producto.slug}`)}>
   <div class="foto">
-    <img src={ruta(producto.imagen)} alt={producto.imagenAlt} loading="lazy" />
+    <img src={ruta(producto.imagen)} alt={producto.imagenAlt} width={tamanoImagen(producto.imagen).ancho} height={tamanoImagen(producto.imagen).alto} loading="lazy" />
   </div>
   <div class="cuerpo">
     <span class="linea">{categoria ? categoria.texto : producto.categoria}</span>

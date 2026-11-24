@@ -8,6 +8,7 @@ import elegante from "../../datos/elegante.json";
 import tenis from "../../datos/tenis.json";
 import casual from "../../datos/casual.json";
 import { enlace, ruta } from "../../lib/ruta.js";
+import { tamanoImagen } from "../../lib/imagenes.js";
 
 export function getStaticPaths() {
   const colecciones = { elegante, tenis, casual };
@@ -33,7 +34,7 @@ const modelos = catalogo.productos.filter((p) => p.categoria === slug);
         </div>
       </div>
       <div class="portada-visual aparece">
-        <div class="marco-img"><img src={ruta(datos.portada.imagen)} alt={datos.portada.imagenAlt} loading="eager" /></div>
+        <div class="marco-img"><img src={ruta(datos.portada.imagen)} alt={datos.portada.imagenAlt} width={tamanoImagen(datos.portada.imagen).ancho} height={tamanoImagen(datos.portada.imagen).alto} loading="eager" fetchpriority="high" /></div>
       </div>
     </div>
   </header>

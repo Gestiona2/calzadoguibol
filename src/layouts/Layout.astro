@@ -44,9 +44,10 @@ const mensajeGeneral = encodeURIComponent(sitio.mensajes.general);
   </head>
 
   <body>
+    <a class="salta" href="#contenido">{sitio.ui.saltarContenido}</a>
     <header class="nav" id="nav">
       <div class="container nav-inner">
-        <a href={enlace("/")} class="logo" aria-label={sitio.nombre}>
+        <a href={enlace("/")} class="logo">
           <strong>{sitio.nombre}</strong>
           <small>Calzado en cuero</small>
         </a>
@@ -65,7 +66,7 @@ const mensajeGeneral = encodeURIComponent(sitio.mensajes.general);
       </div>
     </header>
 
-    <main>
+    <main id="contenido">
       <slot />
     </main>
 
@@ -106,6 +107,13 @@ const mensajeGeneral = encodeURIComponent(sitio.mensajes.general);
 
         if (window.lucide) lucide.createIcons();
 
+        /* Enlace para saltar al contenido: visible en cuanto recibe el foco */
+        var salta = $(".salta");
+        if (salta) {
+          salta.addEventListener("focus", function () { salta.classList.add("visible"); });
+          salta.addEventListener("blur", function () { salta.classList.remove("visible"); });
+        }
+
         /* Tema */
         var botonTema = $("#botonTema");
         function pintarTema() {
@@ -113,6 +121,8 @@ const mensajeGeneral = encodeURIComponent(sitio.mensajes.general);
           var oscuro = raiz.getAttribute("data-theme") === "dark";
           botonTema.innerHTML = '<i data-lucide="' + (oscuro ? "sun" : "moon") + '"></i>';
           botonTema.setAttribute("aria-label", oscuro ? temaClaro : temaOscuro);
+          var metaColor = document.querySelector('meta[name="theme-color"]');
+          if (metaColor) metaColor.setAttribute("content", oscuro ? "#17120f" : "#f5f0e8");
           if (window.lucide) lucide.createIcons();
         }
         botonTema && botonTema.addEventListener("click", function () {

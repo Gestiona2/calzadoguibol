@@ -61,6 +61,8 @@
   --sobre-oscuro-soft: #cfbda9;
   --panel-oscuro: #241d18;
   --foco: #8a4b2a;
+  --sobre-marca: #ffffff;
+  color-scheme: light;
 }
 
 :root[data-theme="dark"] {
@@ -78,6 +80,8 @@
   --nav-bg: rgba(23, 18, 15, 0.94);
   --panel-oscuro: #100c0a;
   --foco: #dfb184;
+  --sobre-marca: #17120f;
+  color-scheme: dark;
 }
 
 /* ============================================================
@@ -94,11 +98,11 @@ body {
   -webkit-font-smoothing: antialiased;
   transition: background .35s ease, color .35s ease;
 }
-h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -.03em; line-height: 1.06; font-weight: 500; }
+h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -.03em; line-height: 1.06; font-weight: 500; text-wrap: balance; }
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
 button { font-family: inherit; }
-::selection { background: var(--marca); color: #fff; }
+::selection { background: var(--marca); color: var(--sobre-marca); }
 
 .container { width: 100%; max-width: 1240px; margin: 0 auto; padding: 0 32px; }
 .pad { padding-top: 104px; padding-bottom: 104px; }
@@ -108,6 +112,13 @@ section + section { border-top: 1px solid var(--border); }
 a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, summary:focus-visible {
   outline: 2px solid var(--foco); outline-offset: 3px; border-radius: 2px;
 }
+.salta {
+  position: fixed; top: 10px; left: 10px; z-index: 100;
+  transform: translateY(-200%);
+  background: var(--marca); color: var(--sobre-marca); padding: 10px 16px;
+  font-size: .85rem; font-weight: 700;
+}
+.salta:focus, .salta.visible { transform: none; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
   html { scroll-behavior: auto; }
@@ -148,16 +159,19 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .icono-boton:hover { border-color: var(--marca); background: var(--surface); }
 .icono-boton svg, .flota-wa svg, .volver-arriba svg { width: 18px; height: 18px; }
 #botonMenu { display: none; }
+.icono-boton, .lista-tallas button, .flota-wa, .volver-arriba { touch-action: manipulation; }
 
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 10px;
   font-family: var(--font-body); font-weight: 700; font-size: .86rem;
   padding: 13px 22px; border-radius: 2px; border: 1px solid transparent;
-  cursor: pointer; transition: background .2s, color .2s, border-color .2s, transform .2s;
+  cursor: pointer; touch-action: manipulation;
+  transition: background .2s, color .2s, border-color .2s, transform .2s;
 }
 .btn:hover { transform: translateY(-2px); }
+.btn:active { transform: translateY(0) scale(.98); }
 .btn svg { width: 16px; height: 16px; }
-.btn-primary { background: var(--marca); color: #fff; }
+.btn-primary { background: var(--marca); color: var(--sobre-marca); }
 .btn-primary:hover { background: var(--oscuro); color: var(--sobre-oscuro); }
 .btn-outline { border-color: var(--border-strong); color: var(--text); background: transparent; }
 .btn-outline:hover { border-color: var(--marca); color: var(--marca); }
@@ -196,10 +210,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .portada-visual img { width: 100%; height: 100%; object-fit: cover; }
 .sello {
   position: absolute; right: -18px; bottom: 34px; z-index: 2;
-  background: var(--marca); color: #fff; padding: 18px 24px;
+  background: var(--marca); color: var(--sobre-marca); padding: 18px 24px;
   min-width: 172px; border: 5px solid var(--bg);
 }
-.sello strong { display: block; font-family: var(--font-display); font-size: 1.7rem; line-height: 1; font-weight: 600; }
+.sello strong { display: block; font-family: var(--font-display); font-size: 1.7rem; line-height: 1; font-weight: 600; font-variant-numeric: tabular-nums; }
 .sello span { display: block; font-size: .64rem; text-transform: uppercase; letter-spacing: .16em; margin-top: 8px; font-weight: 700; }
 .pie-imagen { display: flex; justify-content: space-between; gap: 16px; margin-top: 12px; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-muted); font-weight: 700; }
 
@@ -213,7 +227,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
    ============================================================ */
 .banda-precio { background: var(--panel-oscuro); color: var(--sobre-oscuro); border: 0; }
 .banda-precio .contenido { display: grid; grid-template-columns: auto 1fr auto; gap: 48px; align-items: center; }
-.cifra { font-family: var(--font-display); font-size: clamp(4.4rem, 11vw, 9.5rem); line-height: .85; font-weight: 500; color: var(--acento); white-space: nowrap; }
+.cifra { font-family: var(--font-display); font-size: clamp(4.4rem, 11vw, 9.5rem); line-height: .85; font-weight: 500; color: var(--acento); white-space: nowrap; font-variant-numeric: tabular-nums; }
 .cifra .moneda { font-size: .42em; vertical-align: top; margin-right: 4px; }
 .banda-precio h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); margin-bottom: 10px; }
 .banda-precio p { color: var(--sobre-oscuro-soft); max-width: 52ch; font-size: .92rem; }
@@ -245,7 +259,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .tarjeta-producto h3 { font-size: 1.32rem; font-weight: 500; }
 .tarjeta-producto p { font-size: .86rem; color: var(--text-soft); line-height: 1.5; }
 .tarjeta-producto .fila-final { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: auto; padding-top: 14px; border-top: 1px solid var(--border); }
-.tarjeta-producto .precio { font-family: var(--font-display); font-size: 1.22rem; color: var(--text); }
+.tarjeta-producto .precio { font-family: var(--font-display); font-size: 1.22rem; color: var(--text); font-variant-numeric: tabular-nums; }
 .tarjeta-producto .flecha { color: var(--marca); }
 .tarjeta-producto .flecha svg { width: 20px; height: 20px; }
 .cabeza-grilla { display: flex; justify-content: space-between; align-items: end; gap: 20px; flex-wrap: wrap; margin-top: 40px; margin-bottom: 26px; }
@@ -291,7 +305,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .ficha-img img { width: 100%; height: 100%; object-fit: cover; }
 .ficha-info { padding-top: 14px; }
 .ficha-info h1 { font-size: clamp(2.5rem, 5vw, 4.2rem); margin: 16px 0 10px; }
-.ficha-info .precio-grande { font-family: var(--font-display); font-size: 2.4rem; color: var(--marca); margin: 18px 0; }
+.ficha-info .precio-grande { font-family: var(--font-display); font-size: 2.4rem; color: var(--marca); margin: 18px 0; font-variant-numeric: tabular-nums; }
 .ficha-info .resumen { font-size: 1.05rem; color: var(--text-soft); max-width: 42ch; }
 .ficha-info .descripcion { color: var(--text-soft); margin: 22px 0 26px; max-width: 48ch; }
 .tallas { margin: 28px 0 10px; }
@@ -303,7 +317,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   transition: background .15s, color .15s, border-color .15s;
 }
 .lista-tallas button:hover { border-color: var(--marca); }
-.lista-tallas button[aria-pressed="true"] { background: var(--marca); color: #fff; border-color: var(--marca); }
+.lista-tallas button[aria-pressed="true"] { background: var(--marca); color: var(--sobre-marca); border-color: var(--marca); }
 .nota-tallas { font-size: .76rem; color: var(--text-muted); margin-top: 10px; }
 .boton-pedir { margin-top: 22px; width: 100%; max-width: 340px; }
 .caracteristicas { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; padding-top: 22px; border-top: 1px solid var(--border); }
@@ -350,7 +364,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   display: grid; place-items: center; cursor: pointer; border: 0;
   box-shadow: 0 6px 20px rgba(0,0,0,.18);
 }
-.flota-wa { bottom: 22px; background: var(--marca); color: #fff; }
+.flota-wa { bottom: 22px; background: var(--marca); color: var(--sobre-marca); }
 .flota-wa svg { width: 24px; height: 24px; }
 .volver-arriba { bottom: 84px; background: var(--surface); color: var(--text); border: 1px solid var(--border); opacity: 0; pointer-events: none; transition: opacity .25s; }
 .volver-arriba.visible { opacity: 1; pointer-events: auto; }

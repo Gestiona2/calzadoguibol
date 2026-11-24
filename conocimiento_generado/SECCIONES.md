@@ -11,6 +11,7 @@ Todo lo que se puede cambiar está en `src/datos/`. Los `.astro` solo pintan eso
 | Botón del menú | `ctaPrincipal` | Texto y destino del botón que aparece en todas las páginas |
 | Etiquetas de interfaz | `ui` | Nombres de botones, tallas, aviso de demo y pie |
 | Mensajes | `mensajes` | Textos que se abren en WhatsApp. Los campos `{producto}`, `{precio}`, `{talla}`, `{nombre}` y `{mensaje}` se rellenan solos: no borrarlos |
+| Enlace de salto | `ui.saltarContenido` | Texto del enlace que aparece al recorrer la página con Tab. No cambiar su destino (`#contenido`) |
 
 ## Inicio — `inicio.json`
 
