@@ -24,6 +24,9 @@ Este sitio es un **demo para presentar al cliente**. Lo siguiente no es definiti
 - Faltan páginas legales (política de privacidad, términos, tratamiento de datos). No se
   inventaron textos legales para el demo; los enlaces del pie se dejaron vacíos a propósito.
 - Publicación sin decidir con el cliente. `astro.config.mjs` apunta a la demo prevista.
+- Sin repositorio remoto: se crea con el cliente cuando se decida la publicación. Hasta
+  entonces `doctor.sh` avisará de que el sitio "no está conectado a ningún lugar de
+  publicación". No es un fallo del sitio; no inventes un remoto para callar el aviso.
 
 ## Decisiones deliberadamente tomadas
 
