@@ -39,7 +39,10 @@ conocimiento_generado/                 Esta documentación
 docs/MARCA.md                          Manual de marca completo
 ```
 
-## Publicación prevista
+## Publicación de la demo
+
+La demo está publicada en <https://demos.emp2web.com/calzadoguibol/>. `scripts/publicar-demo.sh`
+compila y sube `dist/` a `gh-pages` del repo de demostración `Gestiona2/calzadoguibol`.
 
 `astro.config.mjs` usa `site: https://demos.emp2web.com` y `base: /calzadoguibol` para la
 demo. Para publicar en dominio propio se cambia con variables de entorno, sin tocar enlaces:

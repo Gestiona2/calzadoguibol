@@ -69,14 +69,13 @@ comprobado es la peor combinación.**
 
 ## Publicar
 
-La dirección prevista de la demo es **https://demos.emp2web.com/calzadoguibol** (todavía no
-activada; ver `PUBLICAR.md`).
+La demo está publicada en **https://demos.emp2web.com/calzadoguibol/** (ver `PUBLICAR.md`).
 
 1. Cambiar
 2. Mostrar (vista previa) y decir qué mirar
 3. Esperar aprobación explícita
-4. Publicar
-5. Avisar: **tarda de 2 a 4 minutos**. Si no lo ve, que recargue con Ctrl+F5
+4. Publicar con `bash scripts/publicar-demo.sh`
+5. Avisar: **tarda de 1 a 2 minutos**. Si no lo ve, que recargue con Ctrl+F5
 
 Si la publicación falla, el sitio **sigue mostrando la versión anterior** — no se rompe.
 Avísale y que contacte al proveedor. No intentes arreglar la configuración de publicación.

@@ -1,9 +1,8 @@
 # Tu sitio web — cómo hacerle cambios
 
-Tu sitio: **https://demos.emp2web.com/calzadoguibol**
+Tu sitio: **https://demos.emp2web.com/calzadoguibol/**
 
-*(Es la dirección de demostración prevista; todavía no está activada. El dominio
-definitivo se decide contigo.)*
+*(Es la dirección de demostración, ya activada. El dominio definitivo se decide contigo.)*
 
 Tienes un asistente que hace los cambios por ti. **Le hablas en español normal**, como le
 pedirías algo a una persona. No hay que aprender nada técnico.
@@ -63,7 +62,7 @@ va a decir en qué dirección mirarlo.
 **3. Tú apruebas.** Si te gusta, le dices que lo publique. Si no, le dices qué cambiar y lo
 ajusta.
 
-**4. Lo publica.** Tarda **de 2 a 4 minutos** en verse en internet. Si no lo ves de
+**4. Lo publica.** Tarda **de 1 a 2 minutos** en verse en internet. Si no lo ves de
 inmediato, es normal: espera un momento y recarga con **Ctrl+F5**.
 
 > **Nunca publica sin preguntarte.** Si no le dijiste que sí, tu sitio no cambió.

@@ -1,6 +1,8 @@
 # Pendientes de Calzado Guibol
 
-Este sitio es un **demo para presentar al cliente**. Lo siguiente no es definitivo.
+Este sitio es un **demo para presentar al cliente**, publicado en
+<https://demos.emp2web.com/calzadoguibol/> desde el 24 nov 2026. Lo siguiente no es
+definitivo.
 
 ## Fotos y nombres de producto
 
@@ -8,7 +10,8 @@ Este sitio es un **demo para presentar al cliente**. Lo siguiente no es definiti
   Están en `public/img/`. Falta que Calzado Guibol aporte fotos propias y revisarlas en pantalla.
 - Los 16 nombres de modelos son descriptivos, inventados para la muestra. Confirmar con el dueño.
 - El **Tenis blanco Flash** se creó para esta demo a petición del dueño. Su nombre, sus
-  tallas y su precio de $150.000 son de muestra: confirmarlos antes de publicar.
+  tallas y su precio de $150.000 son de muestra: confirmarlos antes de pasar al sitio
+  definitivo.
 - Las tallas `38` a `44` son de muestra. Confirmar las tallas reales por modelo.
 
 ## Datos del negocio
@@ -22,14 +25,15 @@ Este sitio es un **demo para presentar al cliente**. Lo siguiente no es definiti
 ## Contenido y revisión
 
 - Falta revisión visual en 320, 375 y 390 px y en tema oscuro con una persona mirando (Fase 5.5
-  del generador). Quien construyó el sitio no puede ver el renderizado.
+  del generador). Quien construyó el sitio no puede ver el renderizado. El dueño aprobó
+  publicar la demo, pero eso no sustituye esa revisión.
 - Auditoría técnica hecha el 22 nov 2026: contraste en claro y oscuro, foco de teclado,
   tamaños 390/768/1440 px y pruebas automáticas de accesibilidad, SEO y buenas prácticas
   (100 en las tres, sin avisos). Esto **no sustituye** la revisión de una persona mirando.
 - El carrito se probó completo el 23 nov 2026: agregar desde tarjeta y ficha, dos tallas del
   mismo modelo como líneas separadas, cantidades, total, persistencia al recargar, panel en
   claro y oscuro, y mensaje final consolidado sin campos vacíos. Falta que una persona lo
-  mire y lo apruebe en la vista previa antes de publicar.
+  mire y lo apruebe en la versión publicada.
 - La promo Flash se probó el 23 nov 2026: ventana al entrar, cierre con Escape y botón,
   reapertura desde el bloque del inicio, contador compartido entre ventana y bloque, y bloque
   visible en la home. Falta la revisión visual de una persona. Es **de muestra**: el
@@ -39,14 +43,15 @@ Este sitio es un **demo para presentar al cliente**. Lo siguiente no es definiti
 - Los modelos sugeridos dentro del carrito se probaron el 23 nov 2026: se eligen de la misma
   línea del último modelo agregado, se puede elegir talla y agregarlos, y la talla elegida
   se conserva al actualizarse el panel. No hay una lista revisada por el dueño.
-- El Tenis blanco Flash y su precio de $150.000 se agregaron el 23 nov 2026. Falta que una
-  persona mire el bloque de la promo, su ficha y el carrito con ese modelo antes de publicar.
+- El Tenis blanco Flash y su precio de $150.000 se agregaron el 23 nov 2026. Ya aparece en
+  la demo publicada (bloque de la promo, ficha, colección Tenis y carrito); falta que una
+  persona lo mire antes de darlo por definitivo.
 - Faltan páginas legales (política de privacidad, términos, tratamiento de datos). No se
   inventaron textos legales para el demo; los enlaces del pie se dejaron vacíos a propósito.
-- Publicación sin decidir con el cliente. `astro.config.mjs` apunta a la demo prevista.
-- Sin repositorio remoto: se crea con el cliente cuando se decida la publicación. Hasta
-  entonces `doctor.sh` avisará de que el sitio "no está conectado a ningún lugar de
-  publicación". No es un fallo del sitio; no inventes un remoto para callar el aviso.
+- Demo publicada con aprobación explícita del dueño el 24 nov 2026. El repositorio
+  `Gestiona2/calzadoguibol` es de demostración del proveedor: el día de la entrega se crea
+  el repositorio del cliente. `scripts/publicar-demo.sh` publica la rama `gh-pages` sin
+  borrar historial.
 
 ## Decisiones deliberadamente tomadas
 

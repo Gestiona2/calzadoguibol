@@ -8,7 +8,7 @@ El pedido se coordina por WhatsApp (**320 270 6283** en la demo).
 de muestra. La lista completa de lo que falta está en
 `conocimiento_generado/PENDIENTES.md`.
 
-Demo prevista: `https://demos.emp2web.com/calzadoguibol` (aún no publicada).
+Demo publicada el 24 nov 2026: <https://demos.emp2web.com/calzadoguibol/>.
 
 ## Páginas
 
@@ -49,12 +49,12 @@ el diseño y no llevan texto escrito directamente:
 El detalle de cada campo está en `conocimiento_generado/SECCIONES.md` y las recetas en
 `COMO-EDITAR.md`.
 
-## Antes de publicar
+## Para publicar un cambio
 
-1. `npm run build` sin errores.
-2. Revisar en 320, 375 y 390 px y en tema claro y oscuro.
-3. Mostrar al cliente y esperar aprobación explícita.
-4. Publicar y avisar de que tarda de 2 a 4 minutos.
+1. Verificarlo en la vista previa, en 320, 375 y 390 px y en tema claro y oscuro.
+2. Mostrarlo al cliente y esperar aprobación explícita.
+3. Guardar el cambio (`git add`, `git commit`, `git push`).
+4. Ejecutar `bash scripts/publicar-demo.sh` y avisar de que tarda de 1 a 2 minutos.
 
 Ver `conocimiento_generado/PUBLICAR.md` y `LIMITES.md`.
 

@@ -39,13 +39,13 @@ pide.
 
 **3. Tú apruebas.** Si te gusta, le dices que lo publique. Si no, le dices qué cambiar.
 
-**4. Lo publica.** Tarda **de 2 a 4 minutos** en verse en internet. Si no lo ves de
+**4. Lo publica.** Tarda **de 1 a 2 minutos** en verse en internet. Si no lo ves de
 inmediato, espera un momento y recarga con **Ctrl+F5**.
 
 > **Nunca publica sin preguntarte.** Si no le dijiste que sí, tu página no cambió.
 >
-> La dirección prevista de la demo es **https://demos.emp2web.com/calzadoguibol** (aún no
-> está activada).
+> Tu dirección de demostración es **https://demos.emp2web.com/calzadoguibol/**. El dominio
+> definitivo se decide contigo.
 
 ## Cómo deshacer
 
