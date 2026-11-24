@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /* ============================================================
-   FUENTES AUTO-HOSPEDADAS — /public/fonts
+   FUENTES AUTO-HOSPEDADAS — src/fonts (Vite las versiona y aplica la base)
    Fraunces (display) + Manrope (cuerpo). Sin Google, sin CDN.
    ============================================================ */
 @font-face {
@@ -9,21 +9,21 @@
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
-  src: url("/fonts/fraunces-normal.woff2") format("woff2");
+  src: url("../fonts/fraunces-normal.woff2") format("woff2");
 }
 @font-face {
   font-family: "Fraunces";
   font-style: italic;
   font-weight: 100 900;
   font-display: swap;
-  src: url("/fonts/fraunces-italic.woff2") format("woff2");
+  src: url("../fonts/fraunces-italic.woff2") format("woff2");
 }
 @font-face {
   font-family: "Manrope";
   font-style: normal;
   font-weight: 200 800;
   font-display: swap;
-  src: url("/fonts/manrope-normal.woff2") format("woff2");
+  src: url("../fonts/manrope-normal.woff2") format("woff2");
 }
 
 /* ============================================================

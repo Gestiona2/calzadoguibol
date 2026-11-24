@@ -5,7 +5,7 @@
  */
 import "../styles/global.css";
 import sitio from "../datos/sitio.json";
-import { enlace } from "../lib/ruta.js";
+import { enlace, ruta } from "../lib/ruta.js";
 
 interface Props {
   titulo: string;
@@ -23,7 +23,7 @@ const mensajeGeneral = encodeURIComponent(sitio.mensajes.general);
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{titulo}</title>
     <meta name="description" content={descripcion} />
-    <link rel="icon" type="image/svg+xml" href="/brand/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href={ruta("/brand/favicon.svg")} />
 
     <meta property="og:title" content={titulo} />
     <meta property="og:description" content={descripcion} />
@@ -97,7 +97,7 @@ const mensajeGeneral = encodeURIComponent(sitio.mensajes.general);
       <i data-lucide="arrow-up"></i>
     </button>
 
-    <script is:inline src="/vendor/lucide/lucide.min.js"></script>
+    <script is:inline src={ruta("/vendor/lucide/lucide.min.js")}></script>
     <script is:inline define:vars={{ clave: sitio.claveTema, temaOscuro: sitio.ui.temaOscuro, temaClaro: sitio.ui.temaClaro, abrirMenu: sitio.ui.abrirMenu, cerrarMenu: sitio.ui.cerrarMenu }}>
       (function () {
         var $ = function (s) { return document.querySelector(s); };

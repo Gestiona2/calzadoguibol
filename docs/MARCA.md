@@ -20,8 +20,8 @@ directamente. Están todos en `src/styles/global.css`.
 
 ## Tipografías
 
-- **Títulos:** Fraunces (serif variable, subset latin). Archivo local en `public/fonts/fraunces-normal.woff2`.
-- **Cuerpo:** Manrope (sans variable, subset latin). Archivo local en `public/fonts/manrope-normal.woff2`.
+- **Títulos:** Fraunces (serif variable, subset latin). Archivo local en `src/fonts/fraunces-normal.woff2`.
+- **Cuerpo:** Manrope (sans variable, subset latin). Archivo local en `src/fonts/manrope-normal.woff2`.
 - Ambas bajo licencia SIL Open Font License, auto-hospedadas: no se llama a Google Fonts.
 
 ## Tono de voz

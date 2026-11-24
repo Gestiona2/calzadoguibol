@@ -1,0 +1,10 @@
+Tipografías en .woff2, VARIABLES y subset latin (U+0000-00FF).
+
+Viven en src/fonts/ para que Vite las procese: así funcionan igual con base "/" que con
+base "/calzadoguibol", tanto en la vista previa como en el sitio publicado. Nunca enlazar
+a fonts.googleapis.com ni a otro servidor ajeno.
+
+Nombres usados por src/styles/global.css:
+- fraunces-normal.woff2  → títulos
+- fraunces-italic.woff2  → títulos en cursiva
+- manrope-normal.woff2   → cuerpo

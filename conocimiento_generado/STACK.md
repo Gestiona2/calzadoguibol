@@ -2,11 +2,16 @@
 
 - **Astro 7.0** (sitio estático, sin servidor) + **Tailwind CSS 4.1** (`@tailwindcss/vite`)
 - **Lucide**: subconjunto local de íconos en `public/vendor/lucide/lucide.min.js`
-- **Tipografías**: Fraunces y Manrope, archivos woff2 locales en `public/fonts/`
+- **Tipografías**: Fraunces y Manrope, archivos woff2 locales en `src/fonts/`
 - **Fotos**: 15 WebP en `public/img/`, de Pexels, guardadas dentro del sitio
 - Sin bases de datos, sin API keys, sin formularios con backend
 
 Versiones exactas: `package.json` y `package-lock.json`.
+
+**Por qué las fuentes están en `src/fonts/` y no en `public/`:** Vite las procesa y les
+aplica la base del sitio, así que cargan igual en la vista previa (`/calzadoguibol/...`)
+que en un dominio propio (`/`). Los recursos que sí quedan en `public/` (favicon, íconos,
+fotos) se referencian desde los `.astro` con `ruta()` para que lleven la base correcta.
 
 ## Dónde está cada cosa
 
@@ -21,8 +26,8 @@ src/layouts/Layout.astro              Menú, pie, tema y botones flotantes
 src/components/TarjetaProducto.astro  Tarjeta reutilizable de modelo
 src/lib/ruta.js                       Enlaces y rutas con la base del sitio
 src/styles/global.css                 Tokens de marca y todos los estilos
+src/fonts/                             Tipografías locales (Vite las versiona)
 public/brand/                          Favicon
-public/fonts/                          Tipografías locales
 public/img/                            Fotografías
 public/vendor/                         Íconos
 conocimiento_generado/                 Esta documentación

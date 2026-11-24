@@ -18,8 +18,8 @@ en los archivos `.astro`.
 
 ## Tipografías
 
-- Títulos: **Fraunces**, archivo local `public/fonts/fraunces-normal.woff2`
-- Cuerpo: **Manrope**, archivo local `public/fonts/manrope-normal.woff2`
+- Títulos: **Fraunces**, archivo local `src/fonts/fraunces-normal.woff2`
+- Cuerpo: **Manrope**, archivo local `src/fonts/manrope-normal.woff2`
 - Ambas auto-hospedadas, sin Google Fonts.
 
 ## Logotipo

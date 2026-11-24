@@ -34,7 +34,7 @@ asuma que algo está incluido cuando no lo está.
 ## Límites técnicos
 
 - No se instalan dependencias de pago ni servicios externos de terceros.
-- Las fuentes (Fraunces, Manrope) se sirven localmente desde `public/fonts/`.
+- Las fuentes (Fraunces, Manrope) se sirven localmente desde `src/fonts/`.
 - El precio es único y fijo para toda la demo: todo a $200.000, definido en
   `src/datos/inicio.json` y `src/datos/sitio.json`.
 - El número de WhatsApp de la demo es `573202706283` y está centralizado en
